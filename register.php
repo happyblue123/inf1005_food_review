@@ -1,19 +1,19 @@
 <head>
-    <?php 
-        include "inc/head.inc.php"
-    ?>
+    <?php
+    include "inc/head.inc.php"
+        ?>
 </head>
 
-<body> 
-    <?php 
-    include "inc/nav.inc.php"; 
-    ?> 
+<body>
+    <?php
+    include "inc/nav.inc.php";
+    ?>
     <h2>Register</h2>
- 
-    <main class="container"> 
-    <p>
+
+    <main class="container">
+        <p>
             For existing members, please go to the
-            <a href="#">Sign In page</a>.
+            <a href="sign_in.php">Sign In page</a>.
         </p>
         <form action="process_register.php" method="post">
             <div class="mb-3">
@@ -44,9 +44,9 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
-    </main> 
- 
-    <?php 
-    include "inc/footer.inc.php"; 
-    ?> 
+    </main>
+
+    <?php
+    include "inc/footer.inc.php";
+    ?>
 </body>
