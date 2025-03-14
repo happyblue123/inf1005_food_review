@@ -1,3 +1,3 @@
-<footer class="container"> 
-    <p><em>Copyright &copy; 2023 'Food Review name' Pte. Ltd.</em></p> 
-</footer> 
+<footer class="text-white text-center">
+    <p>&copy; 2025 My Website</p>
+</footer>
