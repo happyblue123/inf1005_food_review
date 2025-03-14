@@ -17,13 +17,8 @@
         </p>
         <form action="process_register.php" method="post">
             <div class="mb-3">
-                <label for="fname" class="form-label">First Name:</label>
-                <input type="text" id="fname" name="fname" class="form-control" placeholder="Enter first name">
-            </div>
-            <div class="mb-3">
-                <label for="lname" class="form-label">Last Name:</label>
-                <input required maxlength="45" type="text" id="lname" name="lname" class="form-control"
-                    placeholder="Enter last name">
+                <label for="name" class="form-label"> Name:</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter name">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
