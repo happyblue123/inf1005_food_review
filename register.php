@@ -1,12 +1,12 @@
-<head>
-    <?php
-    include "inc/head.inc.php"
-        ?>
-</head>
+
+<?php
+include "inc/head.inc.php"
+?>
+
 
 <body>
     <?php
-    include "inc/nav.inc.php";
+    include "inc/header.inc.php";
     ?>
     <h2>Register</h2>
 
@@ -15,7 +15,7 @@
             For existing members, please go to the
             <a href="sign_in.php">Sign In page</a>.
         </p>
-        <form action="process_register.php" method="post">
+        <form action="/process/process_register.php" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label"> Name:</label>
                 <input type="text" id="name" name="name" class="form-control" placeholder="Enter name">
