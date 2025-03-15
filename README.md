@@ -1,1 +1,0 @@
-# inf1005_food_review

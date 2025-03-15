@@ -21,14 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Image gallery transition
     const imageGallery = document.querySelector('.image-gallery');
     const images = [
-        '../Images/pexels-ash-craig-122861-376464.jpg',
-        '../Images/pexels-evonics-1058277.jpg',
-        '../Images/pexels-janetrangdoan-1099680.jpg',
-        '../Images/pexels-life-of-pix-67468.jpg',
-        '../Images/pexels-pixabay-262047.jpg',
-        '../Images/pexels-xmtnguyen-699953.jpg', 
-        '../Images/pexels-robinstickel-70497.jpg',
-        '../Images/pexels-rajesh-tp-749235-1633525.jpg'
+        '../public/Images/pexels-ash-craig-122861-376464.jpg',
+        '../public/Images/pexels-evonics-1058277.jpg',
+        '../public/Images/pexels-janetrangdoan-1099680.jpg',
+        '../public/Images/pexels-life-of-pix-67468.jpg',
+        '../public/Images/pexels-pixabay-262047.jpg',
+        '../public/Images/pexels-xmtnguyen-699953.jpg', 
+        '../public/Images/pexels-robinstickel-70497.jpg',
+        '../public/Images/pexels-rajesh-tp-749235-1633525.jpg'
     ];
     let currentIndex = 0;
 

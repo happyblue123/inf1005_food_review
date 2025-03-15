@@ -1,3 +1,12 @@
+<?php
+session_start(); // Start the session
+$login = isset($_SESSION['userid']);
+if ($login) {
+    header('Location: /home');
+    exit();
+}
+?>
+
 <head>
     <?php
     include "inc/head.inc.php"
@@ -6,7 +15,12 @@
 
 <body>
     <?php
-    include "inc/nav.inc.php";
+    if ($login) {
+        include "inc/headerwlogout.inc.php";
+    }
+    else {
+        include "inc/header.inc.php";
+    }
     ?>
     <h2>Register</h2>
 
@@ -15,10 +29,10 @@
             For existing members, please go to the
             <a href="sign_in.php">Sign In page</a>.
         </p>
-        <form action="process_register.php" method="post">
+        <form method="POST">
             <div class="mb-3">
-                <label for="name" class="form-label"> Name:</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Enter name">
+                <label for="username" class="form-label"> Name:</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Enter username">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
