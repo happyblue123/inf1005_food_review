@@ -121,6 +121,62 @@ class AuthController {
         require_once __DIR__ . "/../views/login.php";
     }
 
+    public function resetpwd() {
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            session_start();
+            $username = $_SESSION['username'];
+            $current_pwd = trim($_POST['cpwd']);
+            $new_pwd = trim($_POST['newpwd']);
+            $new_cfmpwd = trim($_POST['newpwd_confirm']);
+            $error = "";
+            // Create a new User object
+            $user = new User();
+            // Check if the new passwords match
+            // Password length validation
+
+            if ($new_pwd !== $new_cfmpwd) {
+                // Passwords don't match, show an error
+                $error = "New passwords do not match.";
+                echo "<script>alert('$error');</script>";
+                echo "<script>window.location.href = '/resetpassword';</script>";
+                
+            }
+
+            if (strlen($new_pwd) < 6) {
+                $error = "Password must be at least 6 characters.";
+                echo "<script>alert('$error');</script>";
+                echo "<script>window.location.href = '/resetpassword';</script>";
+                exit;
+            }
+    
+            // Validate the current password
+            if (!$user->validatePassword($username, $current_pwd)) {
+                // Current password is incorrect, show an error
+                $error = "There was an error updating your password. Please try again.";
+                echo "<script>alert('$error');</script>";
+                echo "<script>window.location.href = '/resetpassword';</script>";
+                exit;
+            }
+    
+            // Update the password
+            if ($user->updatePassword($username, $new_cfmpwd)) {
+                // Password updated successfully
+                echo '<script>alert("Password has been updated successfully.");</script>';
+                echo "<script>window.location.href = '/resetpassword';</script>";
+                exit;
+            } 
+            else {
+                // Something went wrong while updating the password
+                $error = "There was an error updating your password. Please try again.";
+                echo "<script>alert('$error');</script>";
+                echo "<script>window.location.href = '/resetpassword';</script>";
+                exit;
+            }
+        }
+        require_once __DIR__ . "/../views/resetpassword.php";
+    }
+    
     public function logout() {
         session_start();
         session_unset(); // Unset all session variables

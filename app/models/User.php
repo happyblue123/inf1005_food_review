@@ -49,5 +49,29 @@ class User {
             return false;
         }
     }
+
+    // Method to validate the current password
+    public function validatePassword($username, $current_pwd) {
+        // Fetch the stored password hash from the database for the user
+        $stmt = $this->db->conn->prepare("SELECT password FROM users WHERE username = ?");
+        $stmt->execute([$username]);
+        $user = $stmt->fetch();
+
+        if ($user && password_verify($current_pwd, $user['password'])) {
+            return true;
+        }
+        return false;
+    }
+
+    // Method to update the password
+    public function updatePassword($username, $new_pwd) {
+        // Hash the new password before saving it
+        $hashed_pwd = password_hash($new_pwd, PASSWORD_DEFAULT);
+
+        // Update the password in the database
+        $stmt = $this->db->conn->prepare("UPDATE users SET password = ? WHERE username = ?");
+        $stmt->execute([$hashed_pwd, $username]);
+        return $stmt->execute();
+    }
 }
 ?>
