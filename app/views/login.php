@@ -25,10 +25,6 @@ if ($login) {
     <h2>Login</h2>
 
     <main class="container">
-        <p>
-            For existing members, please go to the
-            <a href="sign_in.php">Sign In page</a>.
-        </p>
         <form method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
