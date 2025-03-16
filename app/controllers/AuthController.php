@@ -125,7 +125,7 @@ class AuthController {
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             session_start();
-            $username = $_SESSION['username'];
+            $userid = $_SESSION['userid'];
             $current_pwd = trim($_POST['cpwd']);
             $new_pwd = trim($_POST['newpwd']);
             $new_cfmpwd = trim($_POST['newpwd_confirm']);
@@ -137,10 +137,10 @@ class AuthController {
 
             if ($new_pwd !== $new_cfmpwd) {
                 // Passwords don't match, show an error
-                $error = "New passwords do not match.";
+                $error = "Passwords do not match.";
                 echo "<script>alert('$error');</script>";
                 echo "<script>window.location.href = '/resetpassword';</script>";
-                
+                exit;
             }
 
             if (strlen($new_pwd) < 6) {
@@ -151,7 +151,7 @@ class AuthController {
             }
     
             // Validate the current password
-            if (!$user->validatePassword($username, $current_pwd)) {
+            if (!$user->validatePassword($userid, $current_pwd)) {
                 // Current password is incorrect, show an error
                 $error = "There was an error updating your password. Please try again.";
                 echo "<script>alert('$error');</script>";
@@ -160,7 +160,7 @@ class AuthController {
             }
     
             // Update the password
-            if ($user->updatePassword($username, $new_cfmpwd)) {
+            if ($user->updatePassword($userid, $new_cfmpwd)) {
                 // Password updated successfully
                 echo '<script>alert("Password has been updated successfully.");</script>';
                 echo "<script>window.location.href = '/resetpassword';</script>";
