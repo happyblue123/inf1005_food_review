@@ -30,7 +30,7 @@ $login = isset($_SESSION['userid']);
         <input type="text" id="movie-search" name="movie_name" placeholder="Search for a movie..." required>
     </div>
 
-    <div>
+    <div id='trending-movies'>
         <h2>Trending Movies</h2>
         <div id="trending-movie-container">
             <?php if (!empty($movieData)): ?>
