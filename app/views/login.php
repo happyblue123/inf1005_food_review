@@ -25,7 +25,7 @@ if ($login) {
     <h2>Login</h2>
 
     <main class="container">
-        <form method="POST">
+        <form action='/login' method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
                 <input required maxlength="45" type="email" id="email" name="email" class="form-control"

@@ -21,7 +21,7 @@ $login = isset($_SESSION['userid']);
     <h2>Password Reset</h2>
 
     <main class="container">
-        <form method="POST">
+        <form action='/resetpassword' method="POST">
             <?php if (!$login) {
                 echo "<div class='mb-3'>
                 <label for='email' class='form-label'>Email:</label>

@@ -25,7 +25,7 @@ if ($login) {
     <h2>Register</h2>
 
     <main class="container">
-        <form method="POST">
+        <form action='/register' method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label"> Name:</label>
                 <input type="text" id="username" name="username" class="form-control" placeholder="Enter username">
