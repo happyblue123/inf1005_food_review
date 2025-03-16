@@ -19,13 +19,15 @@ class User {
             // Execute the statement
             if ($stmt->execute([$username, $email, $hashed_password])) {
                 return true;  // Registration successful
-            } else {
+            } 
+            else {
                 // Log or inspect errors if the execution fails
                 $errorInfo = $stmt->errorInfo();
                 error_log("Database error: " . $errorInfo[2]);  // Log the error to a file or output
                 return false;  // Query execution failed
             }
-        } catch (PDOException $e) {
+        } 
+        catch (PDOException $e) {
             // Handle duplicate entry error (Error Code: 1062)
             if ($e->getCode() == 1062 || $e->getCode() == 23000) {
                 
@@ -73,5 +75,42 @@ class User {
         $stmt->execute([$hashed_pwd, $userid]);
         return $stmt->execute();
     }
+
+    public function fetchprofile($userid) {
+        $stmt = $this->db->conn->prepare("select username, email from users where userid = ?");
+        $stmt->execute([$userid]);
+        $user = $stmt->fetch();
+        return $user;
+    }
+
+    public function updateProfile($userid, $username, $email) {
+
+        $stmt = $this->db->conn->prepare("SELECT username, email FROM users WHERE userid = ?");
+        $stmt->execute([$userid]);
+        $currentUser = $stmt->fetch();
+
+        if ($currentUser['username'] === $username && $currentUser['email'] === $email) {
+            return true; // No changes made, still return true as no error occurred
+        }
+
+        $stmt = $this->db->conn->prepare("SELECT COUNT(*) FROM users WHERE (username = ? OR email = ?) AND userid != ?");
+        $stmt->execute([$username, $email, $userid]);
+        
+
+        if ($stmt->fetchColumn() > 0) {
+            return 1065;
+        }
+        $updateStmt = $this->db->conn->prepare("UPDATE users SET username = ?, email = ? WHERE userid = ?");
+        $updateStmt->execute([$username, $email, $userid]);
+        if ($updateStmt->rowCount() > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+
+    }    
+    
 }
 ?>

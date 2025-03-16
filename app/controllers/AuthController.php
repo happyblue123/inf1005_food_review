@@ -177,6 +177,66 @@ class AuthController {
         require_once __DIR__ . "/../views/resetpassword.php";
     }
     
+    public function fetchprofile() {
+        session_start();
+        $user = new User();
+        $userid = $_SESSION['userid'];
+        $user = $user->fetchprofile($userid);
+        
+        require_once __DIR__ . "/../views/profile.php";
+    }
+
+    public function updateprofile() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            session_start();
+            $_SESSION['message'] = "";
+            $error = false;
+            $user = new User();
+            $userid = $_SESSION['userid'];
+            // Replace FILTER_SANITIZE_STRING with FILTER_SANITIZE_FULL_SPECIAL_CHARS
+            $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            if (empty($username) || strlen($username) > 50) {
+                $error = true;
+            }
+    
+            // Sanitize email (strip tags, remove unwanted characters)
+            $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+            
+            // Validate email format
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $error = true;
+            }
+            
+            if ($error) {
+                // Set session variable with error message
+                $_SESSION['message'] = "Error updating profile, please try again.";
+
+                // Redirect to the profile page
+                header("Location: /profile");
+                exit;
+            }
+
+            $result = $user->updateProfile($userid, $username, $email);
+            // echo $result;
+            if ($result === 1065) {
+                $_SESSION['message'] = "Username or Email exists.";
+                header("Location:/profile");
+                exit;
+            }
+            if ($result) {
+                $_SESSION['message'] = "Profile updated successfully."; 
+            }
+            else {
+                $_SESSION['message'] = "Error updating profile, please try again.";    
+            }
+            header("Location: /profile");
+            exit;
+        
+        }
+    }
+    
+
     public function logout() {
         session_start();
         session_unset(); // Unset all session variables

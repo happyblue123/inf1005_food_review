@@ -1,9 +1,37 @@
 <?php
+
+require_once __DIR__ . "/../models/Review.php";
+
 class MovieController {
     private $apiKey = '6cf96494d2d88470ef456aa5cf938cf2'; // Replace with your TMDb API key
 
     public function handleSearch($moviename) {
         $movieData = $this->fetchMovieData($moviename);
+        $movieid = $movieData[0]['id'];
+        $review = new Review();
+        $reviewsData = $review->fetchReviewData($movieid);
+        
+        $totalReviews = 0;
+        $averageRating = 0;
+
+        foreach ($reviewsData as $review) {
+            $totalReviews++;
+            $averageRating += $review['rating'];
+
+            $formattedReviews[] = [
+                'username'    => $review['username'],
+                'rating'      => $review['rating'],
+                'review_text' => $review['review_text'],
+                'created_at'  => $review['created_at']
+            ];
+        }
+
+        if ($totalReviews > 0) {
+            $averageRating /= $totalReviews;  // Get the average by dividing the sum of ratings by total reviews
+        } else {
+            $averageRating = 0;  // In case there are no reviews, set the average to 0
+        }
+
         // If movieData is not empty, only pass the first result to the view
         $movieData = $movieData ? [$movieData[0]] : [];
         require_once __DIR__ . '/../views/search.php';
