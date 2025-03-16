@@ -48,13 +48,12 @@ main p {
 }
 
 footer {
-    background-color: #343a40;
-    padding: 20px 0;
-}
-
-footer p {
-    margin: 0;
-    font-size: 1rem;
+    border-top: 1px solid gray;
+    text-align: center;
+    font-style: italic;
+    font-size: 0.9em;
+    margin-top: 20px;
+    padding: 10px;
 }
 
 .btn-custom {
@@ -165,4 +164,18 @@ footer p {
     color: #fff;
     font-size: 1.5rem;
     text-align: center;
+}
+
+.forgot-password {
+    color: black; /* Normal text color */
+    text-decoration: none; /* No underline */
+    cursor: default; /* Normal text cursor */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition */
+}
+
+/* On hover, change color and show underline */
+.forgot-password:hover {
+    color: blue; /* Change color to blue */
+    text-decoration: underline; /* Show underline */
+    cursor: pointer; /* Show pointer cursor */
 }

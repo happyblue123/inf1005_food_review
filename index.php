@@ -4,6 +4,9 @@
 <?php
     include "inc/head.inc.php"
 ?>
+<?php
+include "inc/nav.inc.php";
+?>
 
 <body>
     <header class="text-white text-center">

@@ -1,24 +1,22 @@
-
 <?php
-include "inc/head.inc.php"
+include "inc/head.inc.php";
 ?>
-
 
 <body>
     <?php
-    include "inc/header.inc.php";
+    include "inc/nav.inc.php";
     ?>
-    <h2>Register</h2>
 
     <main class="container">
+        <h1>Member Registration</h1>
         <p>
-            For existing members, please go to the
-            <a href="sign_in.php">Sign In page</a>.
+            For existing members, please
+            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>.
         </p>
-        <form action="/process/process_register.php" method="post">
+        <form action="process_register.php" method="post">
             <div class="mb-3">
-                <label for="name" class="form-label"> Name:</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Enter name">
+                <label for="name" class="form-label"> Username:</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter Username">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
@@ -49,4 +47,8 @@ include "inc/head.inc.php"
     <?php
     include "inc/footer.inc.php";
     ?>
+
+    <!-- Ensure Bootstrap JS is Included for Modal to Work -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
