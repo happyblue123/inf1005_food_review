@@ -1,0 +1,32 @@
+@media (max-width: 768px) {
+    #trending-movie-container {
+        grid-template-columns: repeat(1, 1fr); /* 1 movie per row */
+    }
+}
+
+/* Center the heading */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#trending-movie-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 movies per row */
+    gap: 20px; /* Adds spacing between the grid items */
+    padding: 20px;
+}
+
+.movie-item {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.movie-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}

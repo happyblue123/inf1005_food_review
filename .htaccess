@@ -3,6 +3,9 @@ RewriteEngine On
 # Prevent direct access to certain directories (optional, for security)
 RewriteRule ^(app|core|models|views) - [F,L]
 
+# Route /search/<movie_name> to SearchController
+RewriteRule ^search/([^/]+)$ index.php/search/$1 [L,QSA]
+
 # Serve static files directly if they exist
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
