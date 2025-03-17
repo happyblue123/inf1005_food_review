@@ -60,13 +60,23 @@ if (isset($movieData[0]['id'])) {
     
     <div id="reviews">
         <h2>Reviews</h2>
+        
+        <button class="new_review">Click here to review</button>
+                
         <?php if ($totalReviews != 0): ?>
             <?php foreach ($reviewsData as $review): ?>
-                <div class='each_review'>
-                    <p>username: <?= $review['username'];?></p>
-                    <p>rating: <?=$review['rating'];?></p>
-                    <p><?=$review['review_text'];?></p>
-                    <p><?=$review['created_at'];?></p>
+                <div class="each_review" data-review-id="<?= $review['reviewid']; ?>">
+                    <p class="review-username"><?= $review['username']; ?></p>
+                    <p class="review-rating"><?= $review['rating']; ?></p>
+                    <p class="review-text"><?= $review['review_text']; ?></p>
+                    <p><?= $review['created_at']; ?></p>
+
+                    <?php if (isset($_SESSION['userid']) && $review['userid'] == $_SESSION['userid']): ?>
+                        <div class="edit_delete_buttons">
+                            <button class="edit_button">Edit</button>
+                            <button class="delete_button">Delete</button>
+                        </div>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
@@ -74,38 +84,47 @@ if (isset($movieData[0]['id'])) {
         <?php endif; ?>
     </div>
     
-    <?php if (isset($_SESSION['message'])): ?>
-        <p><?php echo $_SESSION['message']; ?></p>
-        <?php unset($_SESSION['message']); // Clear the message after displaying it ?>
-    <?php endif; ?>
-
-
-    <div id="form-review">
-        <h2>Leave a review</h2>
-
-        <form action="/submitReview" method="POST">
-            <div>
-                <label for="rating">Rating:</label>
-                <div id="rating">
-                    <!-- Star icons for rating (hoverable and clickable) -->
-                    <i class="fa fa-star" data-index="0"></i>
-                    <i class="fa fa-star" data-index="1"></i>
-                    <i class="fa fa-star" data-index="2"></i>
-                    <i class="fa fa-star" data-index="3"></i>
-                    <i class="fa fa-star" data-index="4"></i>
-                    <input type="hidden" name="rating" id="rating-value" value="">
-                </div>
-            </div>
-
-            <div>
-                <label for="review">Your Review:</label>
-                <textarea name="review" id="review" rows="4" placeholder="Write your review here..."></textarea>
-            </div>
-
-            <button type="submit">Submit Review</button>
-        </form>
+    <!-- Confirmation Modal Structure -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Are you sure you want to delete this review?</p>
+            <button id="confirm-delete" data-review-id="">Confirm</button>
+            <button id="cancel-delete">Cancel</button>
+        </div>
     </div>
 
+
+
+
+    <!-- Modal Structure -->
+    <div id="review-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <!-- Review form here -->
+            <form action="/submitReview" method="POST">
+                <input type="hidden" name="review_id" id="review-id" value="">
+                <div>
+                    <label for="rating">Rating:</label>
+                    <div id="rating">
+                        <i class="fa fa-star" data-index="0"></i>
+                        <i class="fa fa-star" data-index="1"></i>
+                        <i class="fa fa-star" data-index="2"></i>
+                        <i class="fa fa-star" data-index="3"></i>
+                        <i class="fa fa-star" data-index="4"></i>
+                        <input type="hidden" name="rating" id="rating-value" value="" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="review">Your Review:</label>
+                    <textarea required name="review" id="review-text" rows="4" placeholder="Write your review here..."></textarea>
+                </div>
+
+                <button type="submit" id="submit-button">Submit Review</button>
+            </form>
+        </div>
+    </div>
 
 
     <?php include "inc/footer.inc.php"; ?>

@@ -13,12 +13,18 @@ class MovieController {
             $review = new Review();
             $movieid = $movieData[0]['id'];
             $reviewsData = $review->fetchReviewData($movieid);
-                            
+
+            usort($reviewsData, function ($a, $b) {
+                return strtotime($b['created_at']) - strtotime($a['created_at']); // Newest first
+            });
+            
             foreach ($reviewsData as $review) {
                 $totalReviews++;
                 $averageRating += $review['rating'];
 
                 $formattedReviews[] = [
+                    'userid'    => $review['userid'],
+                    'reviewid'    => $review['reviewid'],
                     'username'    => $review['username'],
                     'rating'      => $review['rating'],
                     'review_text' => $review['review_text'],
@@ -28,6 +34,7 @@ class MovieController {
 
             if ($totalReviews > 0) {
                 $averageRating /= $totalReviews;  // Get the average by dividing the sum of ratings by total reviews
+                $averageRating = number_format($averageRating, 2);
             } else {
                 $averageRating = 0;  // In case there are no reviews, set the average to 0
             }
