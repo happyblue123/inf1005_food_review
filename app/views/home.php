@@ -1,7 +1,6 @@
 <?php
-session_start(); // Start the session
+session_start();
 $login = isset($_SESSION['userid']);
-
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +20,7 @@ $login = isset($_SESSION['userid']);
         include "inc/header.inc.php";
     }
     ?>
-
-    <div class="container">
         
-
     <div id="search-container">
         <h2>Movie Search</h2>
         <input type="text" id="movie-search" name="movie_name" placeholder="Search for a movie..." required>
@@ -48,10 +44,6 @@ $login = isset($_SESSION['userid']);
             <?php endif; ?>
         </div>
     </div>
-
-
-
-
 
     <?php include "inc/footer.inc.php"; ?>
 </body>
