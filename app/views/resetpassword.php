@@ -1,6 +1,10 @@
 <?php
-session_start(); // Start the session
+session_start();
 $login = isset($_SESSION['userid']);
+if (!$login) {
+    header('Location: /home');
+    exit;
+}
 ?>
 
 <head>
@@ -32,7 +36,7 @@ $login = isset($_SESSION['userid']);
             ?>
             
             <?php
-            if ($login) {
+            if ($login) { // show below to users who are logged in
                 echo "<div class='mb-3'>
                     <label for='cpwd' class='form-label'>Current Password:</label>
                     <input required type='password' id='cpwd' name='cpwd' class='form-control' placeholder='Enter current password'>

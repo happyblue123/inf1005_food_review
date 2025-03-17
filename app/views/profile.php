@@ -1,11 +1,11 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) { // Check if session is not started
-    session_start();
-}
 $login = isset($_SESSION['userid']);
 if (!$login) {
     header('Location: /home');
     exit();
+}
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
 ?>
 
@@ -28,8 +28,8 @@ if (!$login) {
     <main class="container">
         <h2>Edit Profile</h2>
         <form action="/updateprofile" method="POST">
-            <?php if (isset($_SESSION['message'])): ?>
-                    <?php echo $_SESSION['message']; ?>
+            <?php if (isset($_SESSION['message'])): ?> 
+                <?php echo $_SESSION['message']; ?> <!-- show result after form submission -->
                 <?php unset($_SESSION['message']); ?>
             <?php endif; ?>
             <div class="form-group">

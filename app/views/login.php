@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start the session
+session_start();
 $login = isset($_SESSION['userid']);
 if ($login) {
     header('Location: /home');

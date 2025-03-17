@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start the session
+session_start();
 $login = isset($_SESSION['userid']);
 if ($login) {
     header('Location: /home');
@@ -27,7 +27,7 @@ if ($login) {
     <main class="container">
         <form action='/register' method="POST">
             <div class="mb-3">
-                <label for="username" class="form-label"> Name:</label>
+                <label for="username" class="form-label"> Username:</label>
                 <input type="text" id="username" name="username" class="form-control" placeholder="Enter username">
             </div>
             <div class="mb-3">

@@ -4,7 +4,6 @@ require_once __DIR__ . "/../models/User.php";
 class AuthController {
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Initialize error array
             $errors = [];
         
             // Sanitize inputs
@@ -44,9 +43,7 @@ class AuthController {
                 $result = $user->register($username, $email, $password_cfm);
         
                 if ($result === true) {
-                    // Registration successful
                     if ($result === true) {
-                        // Registration successful
                         echo '<script>
                                 alert("You have successfully registered, you can login now.");
                                 window.location.href = "/home";
@@ -79,12 +76,12 @@ class AuthController {
 
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $errors = [];
+
             // Sanitize and validate inputs first
             $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
             $password = trim($_POST['pwd']);
             
-            $errors = [];
-    
             // Validate inputs
             if (empty($email)) {
                 $errors[] = "Email is required.";
@@ -93,27 +90,26 @@ class AuthController {
                 $errors[] = "Password is required.";
             }
     
-            // If there are no validation errors
+            // If there are no validation errors, proceed with login logic (assume login checks email/password)
             if (empty($errors)) {
-                // Proceed with login logic (assume login checks email/password)
                 $user = new User();
                 $result = $user->login($email, $password);
                 if ($result) {
-                    // Successful login, redirect or show success
+                    // Successful login
                     session_start();
                     $_SESSION['userid'] = $result[0];
                     $_SESSION['username'] = $result[1];
-                    header("Location: /home");  // or wherever you want to redirect
+                    header("Location: /home");
                     exit();
-                } else {
-                    // Handle login failure (e.g., invalid credentials)
+                } 
+                else {
                     $errors[] = "Email or Password is incorrect.";
                 }
             }
     
-            // If there are errors, display them
+            // If there are errors, display them in alert box
             if (!empty($errors)) {
-                $allErrors = implode("\n", $errors);  // Join all errors with a newline character
+                $allErrors = implode("\n", $errors);
                 echo "<script>alert('$allErrors');</script>";
             }
         }
@@ -130,11 +126,10 @@ class AuthController {
             $new_pwd = trim($_POST['newpwd']);
             $new_cfmpwd = trim($_POST['newpwd_confirm']);
             $error = "";
-            // Create a new User object
-            $user = new User();
-            // Check if the new passwords match
-            // Password length validation
 
+            $user = new User();
+
+            // Check if the new passwords match
             if ($new_pwd !== $new_cfmpwd) {
                 // Passwords don't match, show an error
                 $error = "Passwords do not match.";
@@ -143,6 +138,7 @@ class AuthController {
                 exit;
             }
 
+            // Password length validation
             if (strlen($new_pwd) < 6) {
                 $error = "Password must be at least 6 characters.";
                 echo "<script>alert('$error');</script>";
@@ -161,11 +157,10 @@ class AuthController {
     
             // Update the password
             if ($user->updatePassword($userid, $new_cfmpwd)) {
-                // Password updated successfully
                 echo '<script>alert("Password has been updated successfully.");</script>';
                 echo "<script>window.location.href = '/resetpassword';</script>";
                 exit;
-            } 
+            }
             else {
                 // Something went wrong while updating the password
                 $error = "There was an error updating your password. Please try again.";
@@ -190,36 +185,37 @@ class AuthController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             $_SESSION['message'] = "";
-            $error = false;
+            $error = false; // assume no error
+
             $user = new User();
             $userid = $_SESSION['userid'];
-            // Replace FILTER_SANITIZE_STRING with FILTER_SANITIZE_FULL_SPECIAL_CHARS
-            $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            
-            if (empty($username) || strlen($username) > 50) {
-                $error = true;
+            $email = $_POST['email'];
+            $username = $_POST['username'];
+
+            // check if input is empty or exceeds max length
+            if (empty($email) || empty($username) || strlen($username) > 50) {
+                $_SESSION['message'] = "Error updating profile, please try again.";
+                header("Location: /profile");
+                exit;
             }
-    
-            // Sanitize email (strip tags, remove unwanted characters)
-            $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-            
+
+            // Input sanitzation
+            $username = filter_var(trim($username), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $email = filter_var(trim($email), FILTER_SANITIZE_EMAIL);
+
             // Validate email format
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error = true;
             }
             
             if ($error) {
-                // Set session variable with error message
                 $_SESSION['message'] = "Error updating profile, please try again.";
-
-                // Redirect to the profile page
                 header("Location: /profile");
                 exit;
             }
 
             $result = $user->updateProfile($userid, $username, $email);
-            // echo $result;
-            if ($result === 1065) {
+            if ($result === 'duplicate') {
                 $_SESSION['message'] = "Username or Email exists.";
                 header("Location:/profile");
                 exit;
@@ -241,8 +237,6 @@ class AuthController {
         session_start();
         session_unset(); // Unset all session variables
         session_destroy(); // Destroy the session
-    
-        // Redirect to the login page or homepage after logout
         header('Location: /home');
         exit();
     }
