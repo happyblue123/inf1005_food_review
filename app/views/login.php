@@ -1,4 +1,5 @@
 <?php
+/*
 session_start();
 $login = isset($_SESSION['userid']);
 if ($login) {
@@ -45,3 +46,4 @@ if ($login) {
     include "inc/footer.inc.php";
     ?>
 </body>
+*/
