@@ -11,6 +11,7 @@ $login = isset($_SESSION['userid']);
     <link rel="stylesheet" href="/public/css/home.css">
     <script src="/public/javascript/searchbar.js"></script>
     <script src="/public/javascript/fetchtrending.js"></script>
+    <script src="/public/javascript/home.js"></script>
     <title>Trending Movies</title>
 </head>
 <body>
@@ -21,6 +22,23 @@ $login = isset($_SESSION['userid']);
         include "inc/header.inc.php";
     }
     ?>
+
+<div class="video-container">
+    <!-- Video Background -->
+    <video autoplay muted loop>
+        <source src="/video/home_page_video_bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Foreground Text -->
+    <div class="content">
+        <h2>Movie reivews <span id="changing-text"></span><span class="cursor">|</span></h2>
+        <p class="gray-darker">Find the latest movie reviews and ratings here!</p>
+    </div>
+</div>
+
+
+
 
     <div class="container">
         
