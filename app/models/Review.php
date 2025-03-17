@@ -32,9 +32,16 @@ class Review {
     
     }
     
-    public function deleteReviewById($reviewid) {
-        $stmt = $this->db->conn->prepare("DELETE FROM reviews WHERE reviewid = ?");
-        return $stmt->execute([$reviewid]);
+    public function deleteReviewById($reviewid, $userid) {
+        $stmt = $this->db->conn->prepare("DELETE FROM reviews WHERE reviewid = ? and userid = ?");
+        $stmt->execute([$reviewid, $userid]);
+    
+        if ($stmt->rowCount() > 0) {
+            return true;
+        } 
+        else {
+            return false;
+        }
     }
     
 }

@@ -66,15 +66,15 @@ class ReviewController {
 
     public function deleteReview($reviewId) {
         session_start();
-
+        $userid = $_SESSION['userid'];
         $review = new Review();
-        $result = $review->deleteReviewById($reviewId);
+        $result = $review->deleteReviewById($reviewId, $userid);
     
         if ($result) {
-            $_SESSION['message'] = "Review deleted successfully!";
+            $_SESSION['delete_result'] = "Review deleted successfully!";
         } 
         else {
-            $_SESSION['error_message'] = "Failed to delete the review.";
+            $_SESSION['delete_result'] = "Failed to delete the review.";
         }
         
         header('Location: /search/' . urlencode($_SESSION['moviename']));

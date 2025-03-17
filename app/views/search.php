@@ -57,7 +57,11 @@ if (isset($movieData[0]['id'])) {
     
     <div id="reviews">
         <h2>Reviews</h2>
-
+        
+        <?php if (isset($_SESSION['delete_result'])): ?>
+            <h4 id="delete_result"><?php echo $_SESSION['delete_result']; ?></h4>
+            <?php unset($_SESSION['delete_result']); ?>
+        <?php endif ?>
         <button class="new_review">Click here to review</button>
                 
         <?php if ($totalReviews != 0): ?>
