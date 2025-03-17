@@ -19,8 +19,10 @@ class ReviewController {
             $rating = (int) $_POST['rating'];
             $user_review = $_POST['review'];
     
-            $error = false;
+            $error = false; // assume no error when submitting form
             $error_msg = "";
+
+            // check for empty form
             if (empty($user_review)) {
                 $error = true;
                 $error_msg = "Review cannot be empty.";
@@ -38,29 +40,26 @@ class ReviewController {
                 exit;
             }
             
-            $user_review = trim($user_review);                  // Remove leading/trailing whitespace
-            $user_review = strip_tags($user_review, '<b><i>');  // Allow <b> and <i> tags only (if needed)
-            $user_review = htmlspecialchars($user_review, ENT_QUOTES, 'UTF-8'); // Convert special characters for safe display
-
-
+            // if form is not empty, perform input sanitization
+            $user_review = trim($user_review);
+            $user_review = strip_tags($user_review, '<b><i>');
+            $user_review = htmlspecialchars($user_review, ENT_QUOTES, 'UTF-8');
+            
             $review = new Review();
     
-            // Check if we're updating an existing review
-            if (isset($_POST['review_id']) && !empty($_POST['review_id'])) {
-                // Update review logic
+            // Check if action performed is to update an existing review
+            if (isset($_POST['review_id']) && !empty($_POST['review_id'])) { // if there is a reviewid set
                 $reviewId = (int) $_POST['review_id'];
                 $result = $review->updateReview($reviewId, $userid, $movieid, $rating, $user_review);
-            } else {
-                // New review submission logic
+            } 
+            else {
                 $result = $review->submitReview($userid, $movieid, $moviename, $rating, $user_review);
             }
     
-            // Redirect back to the search page after successful review submission or update
             header('Location: /search/' . urlencode($_SESSION['moviename']));
             exit;
         }
     
-        // Load the search page after processing
         require_once __DIR__ . "/../views/search.php";
     }
     
@@ -68,18 +67,16 @@ class ReviewController {
     public function deleteReview($reviewId) {
         session_start();
 
-        // Call the method to delete the review by ID
         $review = new Review();
         $result = $review->deleteReviewById($reviewId);
     
-        // Redirect to the same page or wherever appropriate after deletion
         if ($result) {
-            // Optionally, set a success message in the session
             $_SESSION['message'] = "Review deleted successfully!";
-        } else {
-            // Optionally, set an error message if something went wrong
+        } 
+        else {
             $_SESSION['error_message'] = "Failed to delete the review.";
         }
+        
         header('Location: /search/' . urlencode($_SESSION['moviename']));
         exit();
     }

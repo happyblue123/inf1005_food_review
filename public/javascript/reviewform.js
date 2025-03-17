@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Modal and Confirmation Modal elements
+    // Modal and Confirmation Modal elements for deleting reviews
     const modal = document.getElementById("review-modal");
     const confirmationModal = document.getElementById("confirmation-modal");
     const closeModalButtons = document.querySelectorAll(".close");
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const editButtons = document.querySelectorAll(".edit_button");
     const deleteButtons = document.querySelectorAll(".delete_button");
     
-    // Form and input elements
+    // Review orm and input elements
     const reviewForm = document.querySelector("form");
     const reviewIdInput = document.getElementById("review-id");
     const reviewTextArea = document.getElementById("review-text");
@@ -19,19 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Star rating elements
     const stars = document.querySelectorAll("#rating i");
     
-    let selectedRating = 0; // Store selected rating
-    let reviewToDeleteId = null; // Review ID to delete
+    let selectedRating = 0;
+    let reviewToDeleteId = null;
     
     // Initialize star rating functionality
     if (stars.length > 0 && ratingValueInput) {
         stars.forEach((star, index) => {
-            // Hover effect
             star.addEventListener("mouseover", () => highlightStars(index));
-            
-            // Reset hover effect
             star.addEventListener("mouseout", () => highlightStars(selectedRating - 1));
-            
-            // Click to select rating
             star.addEventListener("click", () => {
                 selectedRating = index + 1;
                 ratingValueInput.value = selectedRating;
@@ -99,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Handle confirm delete action
     document.getElementById("confirm-delete").addEventListener("click", function () {
         if (reviewToDeleteId) {
-            // Redirect to the ReviewController (using a GET request)
             window.location.href = `/deleteReview/${reviewToDeleteId}`;
         }
     });

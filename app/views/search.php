@@ -2,8 +2,9 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$login = isset($_SESSION['userid']); // Check if the user is logged in
+$login = isset($_SESSION['userid']);
 
+// set moviename and movieid fetched from api through MovieController only if movie exists
 if (isset($movieData[0]['title'])) {
     $_SESSION['moviename'] = $movieData[0]['title'];
 }
@@ -29,10 +30,7 @@ if (isset($movieData[0]['id'])) {
         include "inc/header.inc.php";
     }
     ?>
-
-    <div class="container">
         
-
     <div id="search-container">
         <h2>Movie Search</h2>
         <input type="text" id="movie-search" placeholder="Search for a movie...">
@@ -40,7 +38,7 @@ if (isset($movieData[0]['id'])) {
 
     <div id='moviesearched'>
         <div class='movie-info'>
-            <?php if (!empty($movieData)): ?>
+            <?php if (!empty($movieData)): ?> <!-- if queried movie is found then display the info -->
                 <h3><?php echo htmlspecialchars($movieData[0]['title']); ?></h3>
                 <p><strong>Release Date:</strong> <?php echo htmlspecialchars($movieData[0]['release_date']); ?></p>
                 <p><strong>Overview:</strong> <?php echo htmlspecialchars($movieData[0]['overview']); ?></p>
@@ -55,12 +53,11 @@ if (isset($movieData[0]['id'])) {
                 <p>No movies found matching your search criteria.</p>
             <?php endif; ?>
         </div>
-        
     </div>
     
     <div id="reviews">
         <h2>Reviews</h2>
-        
+
         <button class="new_review">Click here to review</button>
                 
         <?php if ($totalReviews != 0): ?>
@@ -84,7 +81,7 @@ if (isset($movieData[0]['id'])) {
         <?php endif; ?>
     </div>
     
-    <!-- Confirmation Modal Structure -->
+    <!-- confirmation modal for deleting reviews -->
     <div id="confirmation-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -94,10 +91,7 @@ if (isset($movieData[0]['id'])) {
         </div>
     </div>
 
-
-
-
-    <!-- Modal Structure -->
+    <!-- modal for submitting new review or editing review -->
     <div id="review-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
