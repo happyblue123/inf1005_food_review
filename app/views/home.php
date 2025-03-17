@@ -36,12 +36,7 @@ $login = isset($_SESSION['userid']);
     </div>
 </div>
 
-
-
-
-    <div class="container">
         
-
     <div id="search-container">
         <h2>Movie Search</h2>
         <input type="text" id="movie-search" name="movie_name" placeholder="Search for a movie..." required>
@@ -51,7 +46,6 @@ $login = isset($_SESSION['userid']);
         <h2>Trending Movies</h2>
         <div id="trending-movie-container">
             <?php if (!empty($movieData)): ?>
-                
                 <?php foreach ($movieData as $movie): ?>
                     <div class="movie-item">
                         <a href="/search/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">

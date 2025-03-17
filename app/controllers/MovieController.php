@@ -15,9 +15,10 @@ class MovieController {
             $reviewsData = $review->fetchReviewData($movieid);
 
             usort($reviewsData, function ($a, $b) {
-                return strtotime($b['created_at']) - strtotime($a['created_at']); // Newest first
+                return strtotime($b['created_at']) - strtotime($a['created_at']); // Sort the reviews by date, newest first
             });
             
+            // format the results fetched from db reviews table
             foreach ($reviewsData as $review) {
                 $totalReviews++;
                 $averageRating += $review['rating'];
@@ -33,14 +34,13 @@ class MovieController {
             }
 
             if ($totalReviews > 0) {
-                $averageRating /= $totalReviews;  // Get the average by dividing the sum of ratings by total reviews
+                $averageRating /= $totalReviews;
                 $averageRating = number_format($averageRating, 2);
-            } else {
+            } 
+            else {
                 $averageRating = 0;  // In case there are no reviews, set the average to 0
             }
         }
-        // // If movieData is not empty, only pass the first result to the view
-        // $movieData = $movieData ? [$movieData[0]] : [];
         require_once __DIR__ . '/../views/search.php';
     }
 
@@ -64,10 +64,10 @@ class MovieController {
         $moviename = urldecode($moviename);
 
         $data = json_decode($response, true);
-        // Loop through the results and check if the title matches the given movie name
+        // Loop through the results and check if the title matches the searched movie name
         foreach ($data['results'] ?? [] as $movie) {
             if (strtolower($movie['title']) === strtolower($moviename)) {
-                return [$movie];  // Return the matching movie
+                return [$movie];
             }
         }
 
@@ -90,13 +90,13 @@ class MovieController {
             return [];
         }
         
-        // Decode the JSON response
         $data = json_decode($response, true);
         // Check if the 'results' key exists and return the movies
         if (isset($data['results']) && !empty($data['results'])) {
             return $data['results'];
-        } else {
-            return [];  // Return empty if no results are found
+        } 
+        else {
+            return [];
         }
         
     }
