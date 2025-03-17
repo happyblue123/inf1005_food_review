@@ -47,15 +47,15 @@ if (isset($movieData[0]['id'])) {
                 <?php if (isset($movieData[0]['poster_path'])): ?>
                     <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movieData[0]['poster_path']); ?>" alt="<?php echo htmlspecialchars($movieData[0]['title']); ?>">
                 <?php endif; ?>
-
+                <div class='movie-rating'>
+                    <p class='total-reviews'>Total reviews: <?php echo $totalReviews?></p>
+                    <p class='avg-rating'>Avg rating: <?php echo $averageRating?></p>
+                </div>
             <?php else: ?>
                 <p>No movies found matching your search criteria.</p>
             <?php endif; ?>
         </div>
-        <div class='movie-rating'>
-            <p class='total-reviews'>Total reviews: <?php echo $totalReviews?></p>
-            <p class='avg-rating'>Avg rating: <?php echo $averageRating?></p>
-        </div>
+        
     </div>
     
     <div id="reviews">

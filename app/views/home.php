@@ -37,8 +37,10 @@ $login = isset($_SESSION['userid']);
                 
                 <?php foreach ($movieData as $movie): ?>
                     <div class="movie-item">
-                        <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
-                        <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>">
+                        <a href="/search/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
+                            <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>">
+                        </a>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
