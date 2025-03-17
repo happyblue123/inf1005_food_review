@@ -34,7 +34,7 @@ class ReviewController {
             }
 
             if ($error) {
-                $error_msg = "Error, please try again.";
+                $error_msg = "Review cannot be empty.";
                 $_SESSION['message'] = $error_msg;
                 header('Location: /search/' . urlencode($_SESSION['moviename']));
                 exit;
