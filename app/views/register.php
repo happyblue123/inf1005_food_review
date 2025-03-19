@@ -10,7 +10,7 @@ if ($login) {
 <head>
     <?php
     include "inc/head.inc.php"
-        ?>
+    ?>
 </head>
 
 <body>

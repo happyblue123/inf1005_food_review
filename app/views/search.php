@@ -26,7 +26,8 @@ if (isset($movieData[0]['id'])) {
     <?php
     if ($login) {
         include "inc/headerwlogout.inc.php";
-    } else {
+    } 
+    else {
         include "inc/header.inc.php";
     }
     ?>
@@ -67,8 +68,12 @@ if (isset($movieData[0]['id'])) {
         <?php if ($totalReviews != 0): ?>
             <?php foreach ($reviewsData as $review): ?>
                 <div class="each_review" data-review-id="<?= $review['reviewid']; ?>">
-                    <?php if ($review['userid'] == $_SESSION['userid']): ?>
-                        <strong><p class="review-username">me</p></strong>
+                    <?php if ($login): ?>
+                        <?php if ($review['userid'] == $_SESSION['userid']): ?>
+                            <strong><p class="review-username">me</p></strong>
+                        <?php else :  ?>
+                            <p class="review-username"><?= $review['username']; ?></p>
+                        <?php endif; ?>
                     <?php else :  ?>
                         <p class="review-username"><?= $review['username']; ?></p>
                     <?php endif; ?>

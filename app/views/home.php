@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $login = isset($_SESSION['userid']);
 ?>
 
@@ -9,7 +11,6 @@ $login = isset($_SESSION['userid']);
     <?php include "inc/head.inc.php"; ?>
     <link rel="stylesheet" href="/public/css/home.css">
     <script src="/public/javascript/searchbar.js"></script>
-    <script src="/public/javascript/fetchtrending.js"></script>
     <script src="/public/javascript/home.js"></script>
     <title>Trending Movies</title>
 </head>

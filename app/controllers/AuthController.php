@@ -76,6 +76,7 @@ class AuthController {
 
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            session_start();
             $errors = [];
 
             // Sanitize and validate inputs first
@@ -89,32 +90,33 @@ class AuthController {
             if (empty($password)) {
                 $errors[] = "Password is required.";
             }
-    
+            
+            // If there are errors, display them
+            if (!empty($errors)) {
+                $allErrors = implode("\n", $errors);
+                $_SESSION['login_error'] = $allErrors;
+            }
+
             // If there are no validation errors, proceed with login logic (assume login checks email/password)
             if (empty($errors)) {
                 $user = new User();
                 $result = $user->login($email, $password);
                 if ($result) {
                     // Successful login
-                    session_start();
                     $_SESSION['userid'] = $result[0];
                     $_SESSION['username'] = $result[1];
-                    header("Location: /home");
-                    exit();
                 } 
                 else {
-                    $errors[] = "Email or Password is incorrect.";
+                    $login_fail_msg = "Email or Password is incorrect.";
+                    $_SESSION['login_error'] = $login_fail_msg;
                 }
             }
-    
-            // If there are errors, display them in alert box
-            if (!empty($errors)) {
-                $allErrors = implode("\n", $errors);
-                echo "<script>alert('$allErrors');</script>";
-            }
+            header('Location: /home');
+            
         }
-    
-        require_once __DIR__ . "/../views/login.php";
+        header('Location: /home');
+        exit;
+        require_once __DIR__ . "/../views/home.php";
     }
 
     public function resetpwd() {
