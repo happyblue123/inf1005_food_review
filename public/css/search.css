@@ -2,7 +2,7 @@
 /*        GENERAL STYLES     */
 /* ========================= */
 
-button {
+main button {
     margin-top: 10px;
     padding: 10px 20px;
     font-size: 16px;
@@ -14,7 +14,7 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+main button:hover {
     background-color: #0056b3;
 }
 
@@ -104,7 +104,7 @@ textarea {
 /*          MODAL            */
 /* ========================= */
 
-.modal {
+main .modal {
     display: none; /* Hidden by default */
     position: fixed;
     z-index: 1000;
@@ -120,7 +120,7 @@ textarea {
 }
 
 /* Modal Content */
-.modal-content {
+main .modal-content {
     background-color: white;
     width: 50%;
     max-width: 500px;
@@ -133,7 +133,7 @@ textarea {
 }
 
 /* Close Button */
-.close {
+main .close {
     position: absolute;
     top: 10px;
     right: 20px;
@@ -143,7 +143,7 @@ textarea {
     transition: color 0.3s ease;
 }
 
-.close:hover {
+main .close:hover {
     color: #ff0000;
 }
 
