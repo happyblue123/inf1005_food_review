@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $login = isset($_SESSION['userid']);
 if ($login) {
     header('Location: /home');
@@ -24,6 +26,15 @@ if ($login) {
 
     
     <main class="container">
+        <?php if(isset($_SESSION['register_result'])): ?>
+            <?php if ($_SESSION['register_result'][0] === 1): ?>
+                <p class='form-title' style="color: green"><?php echo $_SESSION['register_result'][1]; ?></p>
+            <?php else: ?>
+                <p class='form-title' style="color: red"><?php echo $_SESSION['register_result'][1]; ?></p>
+            <?php endif; ?>
+             
+            <?php unset($_SESSION['register_result']); ?>
+        <?php endif; ?>
         <h2 class="form-title">PERSONAL DETAILS</h2>
         <form action='/register' method="POST">
             <label for="username" class="form-label">USERNAME</label>

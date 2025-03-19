@@ -4,6 +4,7 @@ require_once __DIR__ . "/../models/User.php";
 class AuthController {
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            session_start();
             $errors = [];
         
             // Sanitize inputs
@@ -44,27 +45,23 @@ class AuthController {
         
                 if ($result === true) {
                     if ($result === true) {
-                        echo '<script>
-                                alert("You have successfully registered, you can login now.");
-                                window.location.href = "/home";
-                              </script>';
-                        exit();
+                        $_SESSION['register_result'] = [1, 'You have successfully registered, you can login now.'];
                     }
                 } 
                 elseif ($result === 'duplicate') {
                     // Duplicate entry
-                    $errors[] = "The email or username is already taken.";
+                    $_SESSION['register_result'] = [0, "The email or username is already taken."];
                 } 
                 else {
                     // General registration failure
-                    $errors[] = "Registration failed due to a system error.";
+                    $_SESSION['register_result'] = [0, "Registration failed due to a system error."];
                 }
             }
         
             // If there are errors, show them in an alert
             if (!empty($errors)) {
-                $allErrors = implode("\\n", $errors);  // Join all errors with a newline character
-                echo "<script>alert('$allErrors');</script>";
+                $allErrors = implode("\n", $errors);  // Join all errors with a newline character
+                $_SESSION['register_result'] = [0, $allErrors];
             }
         }
         
