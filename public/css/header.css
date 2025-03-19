@@ -4,3 +4,51 @@ img#logo{
     margin: 0 auto;
     display: block;
 }
+
+.user-icon {
+    position: absolute;
+    right: 30px; /* Pushes it to the right */
+    top: 50%; /* Aligns it vertically */
+    transform: translateY(-50%); /* Ensures it's centered */
+}
+.navbar .d-flex {
+    position: absolute;
+    right: 80px;
+    top: 50px;
+}
+/* Style the login button */
+.btn-primary {
+    background: linear-gradient(135deg, #6c63ff, #4e54c8); /* Soft gradient */
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+/* Button hover effect */
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a52e0, #3d45a1);
+    transform: scale(1.02);
+}
+a.forgot-password {
+    text-decoration: none; /* Default: No underline */
+    
+    transition: all 0.3s ease-in-out; /* Smooth effect */
+}
+
+a.forgot-password:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+.gif-container {
+    display: flex;
+    justify-content: space-between; /* Moves one to the left, one to the right */
+    align-items: center;
+    width: 100%;  /* Ensure it takes the full width */
+    padding: 0 -15px; /* Adjust spacing */
+}
+.account-text {
+    margin-top: -75px; /* Move up */
+    margin-left: -25px; /* Move left */
+}
+
+

@@ -66,38 +66,45 @@
       
 
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/home">
-        <img id="logo" src="/Images/logo.png" alt="peoplereviewmovies_logo">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/home">
+            <img id="logo" src="/Images/logo.png" alt="peoplereviewmovies_logo">
+        </a>
 
-    <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-            </li>
-            <!-- User Icon to Open Login Popup -->
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    <img src="/Images/user.png" alt="User Icon" width="30" height="30" style="cursor: pointer;">
-                </a>
-            </li>
-        </ul>
+        <!-- Toggle Button for Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Items (Collapsible) -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Profile Icon (Kept Outside the Collapsible Navbar) -->
+        <div class="d-flex align-items-center">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                <img src="/Images/user.png" alt="User Icon" width="30" height="30" style="cursor: pointer;">
+            </a>
+        </div>
     </div>
 </nav>
 
-<!-- if login failed/error, open modal automatically showing login failed -->
+
+
+<!-- Fix for Login Error Message -->
 <?php if (isset($_SESSION['login_error'])): ?>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -110,24 +117,27 @@
 </script>
 <?php endif; ?>
 
-
-
-<!-- LOGIN POPUP MODAL (Ensures it works on ALL pages) -->
+<!-- LOGIN POPUP MODAL -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">SIGN IN</h5>
+            <div class="gif-container">
+    <img src="/video/login.gif" alt="User GIF" width="60">
+    <img src="/Images/clapperboard.png" alt="Movie Ticket GIF" width="80">
+</div>
+
+
+
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p class="text-center">Don't have an account? <a href="/register">Register</a>.</p>
-                <p id="login-error" style="color: red" class="text-center"></p>
-                <!-- ✅ Updated action to "/login" -->
-                <form id="loginForm" action="/login" method="POST">
+            <p class="text-center account-text">Don't have an account? <a href="/register">Register</a></p>
 
-                    <!-- Email Input -->
+                <p id="login-error" style="color: red" class="text-center"></p>
+                
+                <form id="loginForm" action="/login" method="POST">
                     <div class="mb-3">
                         <div class="input-group">
                             <span class="input-group-text">
@@ -138,7 +148,6 @@
                         </div>
                     </div>
 
-                    <!-- Password Input -->
                     <div class="mb-3">
                         <div class="input-group">
                             <span class="input-group-text">
@@ -156,9 +165,9 @@
                         <button type="submit" class="btn btn-primary w-100">LOGIN</button>
                     </div>
 
-                    <!-- Forgot Password -->
                     <div class="text-center mt-3">
-                        <a href="/resetpassword" class="text-decoration-none">Forgot password?</a>
+                    <a href="/resetpassword" class="forgot-password">Forgot password?</a>
+
                     </div>
 
                 </form>
@@ -166,5 +175,3 @@
         </div>
     </div>
 </div>
-
-
