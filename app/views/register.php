@@ -56,7 +56,10 @@ if ($login) {
             <button type="submit" class="submit-btn">CREATE ACCOUNT</button>
 
             
-            <p class="text-center account-text">Already have an account? <a href="/login">Sign In</a></p>
+            <p class="text-center account-text">
+    Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+</p>
+
         </form>
     </main>
 
