@@ -23,6 +23,18 @@ $login = isset($_SESSION['userid']);
     }
     ?>
 
+<!-- <div class="gradient-background">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+        <div class="gradient-sphere sphere-3"></div>
+        <div class="glow"></div>
+        <div class="grid-overlay"></div>
+        <div class="noise-overlay"></div>
+        <div class="particles-container" id="particles-container"></div>
+
+</div> -->
+
+
 <div class="video-container">
     <!-- Video Background -->
     <video autoplay muted loop>
@@ -37,6 +49,7 @@ $login = isset($_SESSION['userid']);
     </div>
 </div>
 
+
         
     <div id="search-container">
         <h2>Movie Search</h2>
@@ -50,7 +63,7 @@ $login = isset($_SESSION['userid']);
                 <?php foreach ($movieData as $movie): ?>
                     <div class="movie-item">
                         <a href="/search/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
-                            <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
+                            <div id="movie-h3-div"><h3><?php echo htmlspecialchars($movie['title']); ?></h3></div>
                             <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>">
                         </a>
                     </div>

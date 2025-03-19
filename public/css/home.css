@@ -78,3 +78,27 @@ h2 {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
+
+#search-container h2{
+    color: white;
+}
+
+div#search-container {
+    padding: 20px;
+}
+
+body {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    /* overflow: hidden; */
+    background-color: #3e3a3a;
+    color: white;
+    /* height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+div#movie-h3-div{
+    white-space: nowrap;
+    overflow: hidden;
+}
