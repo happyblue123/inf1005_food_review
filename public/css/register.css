@@ -1,0 +1,96 @@
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+}
+
+.form-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-weight: normal; 
+    font-size: 14px; 
+    display: block;
+    margin: 8px 0 4px; 
+    color: #333; /* Optional: Adjust text color */
+}
+
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #000; 
+    outline: none;
+    font-size: 16px;
+    position: relative;
+}
+
+
+.password-container {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px; 
+    height: 20px;
+    cursor: pointer;
+}
+
+
+.checkbox-container {
+    display: flex;
+    align-items: center; 
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    margin-right: 8px; 
+    vertical-align: middle;
+    transform: translateY(-3px); 
+}
+
+.privacy-link {
+    
+    text-decoration: underline;
+    font-weight: normal; 
+    font-size: 14px;
+}
+
+
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid black;
+    background: white;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: black;
+    color: white;
+}
+
+.account-text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.account-text a {
+    font-weight: normal;
+    text-decoration: underline;
+}

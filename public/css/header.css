@@ -4,13 +4,73 @@ img#logo{
     margin: 0 auto;
     display: block;
 }
+.navbar {
+    background: linear-gradient(90deg, #ffffffd6, #f8f9fa);
+}
+
 
 .user-icon {
     position: absolute;
-    right: 30px; /* Pushes it to the right */
+    right: 300px; /* Pushes it to the right */
     top: 50%; /* Aligns it vertically */
     transform: translateY(-50%); /* Ensures it's centered */
 }
+.user-profile img {
+    width: 25px;
+    height: 25px;
+}
+.input-group {
+    display: flex;
+    align-items: center; /* Aligns all elements properly */
+    border-bottom: 2px solid black; /* Keeps the line under the input */
+    padding: 5px;
+    width: 100%;
+    position: relative; /* Ensures proper placement */
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    flex: 1; /* Ensures input takes up the remaining space */
+    padding: 8px;
+    font-size: 16px;
+}
+
+.icon, .eye-icon {
+    margin-right: 10px; /* Adds spacing between icons and text */
+    display: flex;
+    align-items: center;
+}
+
+.eye-icon {
+    margin-left: auto; /* Moves the eye icon to the right */
+    cursor: pointer;
+}
+.input-group-text {
+    background: none !important;  /* ✅ Removes background */
+    border: none !important;  /* ✅ Removes border */
+    padding: 0; /* ✅ Ensures no extra spacing */
+}
+
+
+.navbar {
+    height: 60px; /* Adjust height as needed */
+    padding: 5px 15px; /* Reduce padding to make it more compact */
+}
+
+.navbar-brand img {
+    max-height: 40px; /* Adjust logo size */
+}
+
+.navbar-nav .nav-link {
+    font-size: 14px; /* Make text slightly smaller */
+    padding: 8px 10px; /* Reduce spacing between nav items */
+}
+
+.navbar-toggler {
+    padding: 4px 8px; /* Reduce toggle button size */
+}
+
 .navbar .d-flex {
     position: absolute;
     right: 80px;
@@ -18,18 +78,22 @@ img#logo{
 }
 /* Style the login button */
 .btn-primary {
-    background: linear-gradient(135deg, #6c63ff, #4e54c8); /* Soft gradient */
-    border: none;
-    border-radius: 10px;
+    background: white;  /* ✅ White background */
+    color: black;  /* ✅ Black text */
+    border: 2px solid black;  /* ✅ Black border */
     padding: 10px;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: bold;
     transition: 0.3s;
 }
+
 /* Button hover effect */
 .btn-primary:hover {
-    background: linear-gradient(135deg, #5a52e0, #3d45a1);
-    transform: scale(1.02);
+    background: black; /* ✅ Turn background black on hover */
+    color: white; /* ✅ Make text white on hover */
+    border: 2px solid black; /* Keep black border */
 }
+
 a.forgot-password {
     text-decoration: none; /* Default: No underline */
     

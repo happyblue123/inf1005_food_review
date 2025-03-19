@@ -66,41 +66,39 @@
       
 
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <!-- NAVBAR -->
+       <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
+        <!-- Logo -->
         <a class="navbar-brand" href="/home">
             <img id="logo" src="/Images/logo.png" alt="peoplereviewmovies_logo">
         </a>
 
-        <!-- Toggle Button for Mobile -->
+        <!-- Navbar Toggle Button for Mobile -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Navbar Items (Collapsible) -->
+        <!-- Navbar Items Aligned to the Left -->
         <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
+            <ul class="navbar-nav ms-3"> <!-- ms-3 adds left margin for spacing -->
+                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
             </ul>
         </div>
 
-        <!-- Profile Icon (Kept Outside the Collapsible Navbar) -->
-        <div class="d-flex align-items-center">
+        <!-- Profile Icon at the Right End -->
+        <div class="user-profile">
             <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-                <img src="/Images/user.png" alt="User Icon" width="30" height="30" style="cursor: pointer;">
+                <img src="/Images/user.png" alt="User Icon" width="30" height="30">
             </a>
         </div>
     </div>
 </nav>
+
+
 
 
 
