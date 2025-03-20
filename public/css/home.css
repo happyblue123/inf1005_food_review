@@ -11,24 +11,61 @@ h2 {
 }
 
 #trending-movie-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 movies per row */
-    gap: 20px; /* Adds spacing between the grid items */
-    padding: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    justify-content: center; /* Center items horizontally */
+    gap: 20px; /* Add spacing between items */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .movie-item {
+        max-width: 150px; /* Reduce size for smaller screens */
+    }
+
+    .movie-item h3 {
+        font-size: 0.9rem; /* Adjust font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-item {
+        max-width: 120px; /* Further reduce size for very small screens */
+    }
+
+    .movie-item h3 {
+        font-size: 0.8rem;
+    }
 }
 
 .movie-item {
+    width: 100%; /* Default to full width */
+    max-width: 200px; /* Limit the maximum width */
+    height: auto; /* Allow height to adjust dynamically */
     background-color: #f8f8f8;
     padding: 15px;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px; /* Add spacing between items */
 }
 
 .movie-item img {
-    width: 100%;
+    /* width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 8px; */
+    width: 100%; /* Ensure the image fits the container's width */
+    height: 100%; /* Ensure the image fills the container's height */
+    max-height: 250px; /* Limit the maximum height */
+    border-radius: 8px; /* Add rounded corners */
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+    object-position: center; /* Center the image within the container */
+    overflow: hidden; /* Prevent overflow */
 }
 
 /* Fullscreen container */
@@ -89,16 +126,36 @@ div#search-container {
 
 body {
     font-family: 'Inter', 'Helvetica Neue', sans-serif;
-    /* overflow: hidden; */
     background-color: #3e3a3a;
     color: white;
-    /* height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center; */
 }
 
 div#movie-h3-div{
     white-space: nowrap;
     overflow: hidden;
+}
+
+.movie-item h3 {
+    font-size: 1rem; /* Use relative font size */
+    margin: 10px 0;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+
+
+/* Link styles, force a tag to respect div tag so that it overflows into ... */
+.movie-item a {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color */
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Distribute space evenly */
+    align-items: center; /* Center align content */
+    height: 100%; /* Ensure the link fills the container */
+    width: 100%; /* Ensure the link respects the container's width */
+    color: darkcyan;
 }
