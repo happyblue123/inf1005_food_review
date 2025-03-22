@@ -8,7 +8,7 @@ class HomeController {
         $movieController = new MovieController();
         
         // Fetch trending movies using MovieController
-        $movieData = $movieController->fetchTrendingMovies();
+        $movieData = $movieController->fetchMovies();
         
         // Pass the data to the home view
         require_once __DIR__ . '/../views/home.php';
