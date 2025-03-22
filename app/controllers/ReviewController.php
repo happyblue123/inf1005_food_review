@@ -50,13 +50,13 @@ class ReviewController {
             // Check if action performed is to update an existing review
             if (isset($_POST['review_id']) && !empty($_POST['review_id'])) { // if there is a reviewid set
                 $reviewId = (int) $_POST['review_id'];
-                $result = $review->updateReview($reviewId, $userid, $movieid, $rating, $user_review);
+                $result = $review->updateReview($reviewId, $userid, $movieid, $moviename, $rating, $user_review);
             } 
             else {
                 $result = $review->submitReview($userid, $movieid, $moviename, $rating, $user_review);
             }
     
-            header('Location: /search/' . urlencode($_SESSION['moviename']));
+            header('Location: /search/' . urlencode($moviename));
             exit;
         }
     
@@ -80,7 +80,5 @@ class ReviewController {
         header('Location: /search/' . urlencode($_SESSION['moviename']));
         exit();
     }
-    
-    
 }
 ?>
