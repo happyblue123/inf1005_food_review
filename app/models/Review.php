@@ -27,8 +27,8 @@ class Review {
     }
 
     public function updateReview($review_id, $userid, $movieid, $moviename, $rating, $user_review) {
-        $stmt = $this->db->conn->prepare("UPDATE reviews SET rating = ?, review_text = ?, moviename = ?, created_at = NOW() WHERE reviewid = ? AND userid = ?");
-        return $stmt->execute([$rating, $user_review, $moviename, $review_id, $userid]);
+        $stmt = $this->db->conn->prepare("UPDATE reviews SET rating = ?, review_text = ?, created_at = NOW() WHERE reviewid = ? AND userid = ?");
+        return $stmt->execute([$rating, $user_review, $review_id, $userid]);
     }
     
     public function deleteReviewById($reviewid, $userid) {
