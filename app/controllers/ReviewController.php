@@ -45,6 +45,17 @@ class ReviewController {
             $user_review = strip_tags($user_review, '<b><i>');
             $user_review = htmlspecialchars($user_review, ENT_QUOTES, 'UTF-8');
             
+            // to filter for vulgar words
+            $url = "https://www.purgomalum.com/service/json?text=" . urlencode($user_review);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  // Return the response as a string
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  // Disable SSL verification (optional)
+            curl_close($ch);
+            $response = curl_exec($ch);
+            $data = json_decode($response, true);
+            $user_review = $data['result'];
+            
             $review = new Review();
     
             // Check if action performed is to update an existing review
