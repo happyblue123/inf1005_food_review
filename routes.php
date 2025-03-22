@@ -10,5 +10,6 @@ $router->add('logout', 'AuthController', 'logout');
 $router->add('search/(:any)', 'MovieController', 'handleSearch');
 $router->add('submitReview', 'ReviewController', 'submitReview');
 $router->add('deleteReview/(:any)', 'ReviewController', 'deleteReview');
+$router->add('about', 'AboutController', 'about');
 // $router->add('aboutus', 'HomeController', 'aboutus');
 ?>
