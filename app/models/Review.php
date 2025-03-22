@@ -10,6 +10,10 @@ class Review {
     }
 
     public function submitReview($userid, $movieid, $moviename, $rating, $user_review) {
+        $movie = new Movie();
+        // this is to check if our db have the movieid,
+        //  if dont have it will insert the movie in parent table if not cannot insert review
+        $movie->verifyMovieinDB($movieid, $moviename);
         $stmt = $this->db->conn->prepare("INSERT INTO reviews (userid, movieid, moviename, rating, review_text, created_at) VALUES (?, ?, ?, ?, ?, NOW())");
         return $stmt->execute([$userid, $movieid, $moviename, $rating, $user_review]);
     }
