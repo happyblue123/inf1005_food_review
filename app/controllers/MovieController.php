@@ -6,7 +6,7 @@ class MovieController {
     private $apiKey = '6cf96494d2d88470ef456aa5cf938cf2'; // Replace with your TMDb API key
 
     public function handleSearch($moviename) {
-        $movieData = $this->fetchMovieData($moviename);
+        $movieData = $this->fetchMovieDataByName($moviename);
         $totalReviews = 0;
         $averageRating = 0;
         if (!empty($movieData)) {
@@ -44,7 +44,7 @@ class MovieController {
         require_once __DIR__ . '/../views/search.php';
     }
 
-    private function fetchMovieData($moviename) {
+    private function fetchMovieDataByName($moviename) {
         $url = 'https://api.themoviedb.org/3/search/movie?api_key=' . $this->apiKey . '&query=' . urlencode($moviename);
 
         // Initialize cURL
@@ -74,31 +74,42 @@ class MovieController {
         return [];
     }
 
-    public function fetchTrendingMovies() {
-        $url = 'https://api.themoviedb.org/3/trending/movie/day?api_key=' . $this->apiKey;
-        // Initialize cURL
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  // Return the response as a string
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  // Disable SSL verification (optional)
-        
-        $response = curl_exec($ch);
-        curl_close($ch);
+    public function fetchMovies() {
 
-        // Check if the request was successful
-        if ($response === FALSE) {
-            return [];
-        }
+        $urls = [
+            'trending' => 'https://api.themoviedb.org/3/trending/movie/day?api_key=' . $this->apiKey,
+            'now_playing' => 'https://api.themoviedb.org/3/movie/now_playing?api_key=' . $this->apiKey,
+            'upcoming' => 'https://api.themoviedb.org/3/movie/upcoming?api_key=' . $this->apiKey
+        ];
+
+        $movies = [];
+
+        foreach ($urls as $key => $url) {
+            // Initialize cURL
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  // Optional: Disable SSL verification
+            
+            $response = curl_exec($ch);
+            curl_close($ch);
         
-        $data = json_decode($response, true);
-        // Check if the 'results' key exists and return the movies
-        if (isset($data['results']) && !empty($data['results'])) {
-            return $data['results'];
-        } 
-        else {
-            return [];
+            // Check if request was successful
+            if ($response !== FALSE) {
+                $data = json_decode($response, true);
+                
+                if (isset($data['results']) && !empty($data['results'])) {
+                    $movies[$key] = $data['results'];
+                } 
+                else {
+                    $movies[$key] = [];  // Empty array if no results found
+                }
+            } 
+            else {
+                $movies[$key] = [];  // Handle cURL failure
+            }
         }
-        
+        return $movies;
     }
 
 }

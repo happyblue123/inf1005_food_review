@@ -10,11 +10,8 @@ class Review {
     }
 
     public function submitReview($userid, $movieid, $moviename, $rating, $user_review) {
-        $movie = new Movie();
-        $movie->verifyMovieinDB($movieid, $moviename);
-        $stmt = $this->db->conn->prepare("INSERT INTO reviews (userid, movieid, rating, review_text, created_at) VALUES (?, ?, ?, ?, NOW())");
-        return $stmt->execute([$userid, $movieid, $rating, $user_review]);
-
+        $stmt = $this->db->conn->prepare("INSERT INTO reviews (userid, movieid, moviename, rating, review_text, created_at) VALUES (?, ?, ?, ?, ?, NOW())");
+        return $stmt->execute([$userid, $movieid, $moviename, $rating, $user_review]);
     }
     
     public function fetchReviewData($movieid) {
@@ -25,11 +22,9 @@ class Review {
         return $allreviews;        
     }
 
-    public function updateReview($review_id, $userid, $movieid, $rating, $user_review) {
-        $movie = new Movie();
-        $stmt = $this->db->conn->prepare("UPDATE reviews SET rating = ?, review_text = ?, created_at = NOW() WHERE reviewid = ? AND userid = ?");
-        return $stmt->execute([$rating, $user_review, $review_id, $userid]);
-    
+    public function updateReview($review_id, $userid, $movieid, $moviename, $rating, $user_review) {
+        $stmt = $this->db->conn->prepare("UPDATE reviews SET rating = ?, review_text = ?, moviename = ?, created_at = NOW() WHERE reviewid = ? AND userid = ?");
+        return $stmt->execute([$rating, $user_review, $moviename, $review_id, $userid]);
     }
     
     public function deleteReviewById($reviewid, $userid) {
@@ -43,6 +38,11 @@ class Review {
             return false;
         }
     }
-    
+
+    public function getReviewsByUserId($userId) {
+        $stmt = $this->db->conn->prepare("SELECT * FROM reviews WHERE userid = ?");
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>

@@ -114,6 +114,7 @@ a.forgot-password:hover {
 .account-text {
     margin-top: -75px; /* Move up */
     margin-left: -25px; /* Move left */
+    color: black;
 }
 
 
