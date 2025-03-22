@@ -55,9 +55,9 @@ $login = isset($_SESSION['userid']);
                 <div class="row">
                     <div class="col-lg-10 col-md-12">
                         <div class="reveal-text">
-                            <h2>Journey Through Space</h2>
-                            <p>As you venture deeper into the cosmos, countless wonders await your discovery. The vast expanse of space holds secrets that have fascinated humanity since we first gazed at the stars.</p>
-                            <p>This text appears with a smooth animation as you scroll past the first image, creating an engaging experience that draws you into the cosmic narrative.</p>
+                            <h2>Real reviews by real moviegoers</h2>
+                            <p>Movie reviews on this site are strcity done by average moviegoers like you and me</p>
+                            <p>We belive that reviews by critis and other mainstream media don't accurately portary your viewing expereince, and thus using their reviews is a bad idea.</p>
                         </div>
                     </div>
                 </div>
@@ -71,9 +71,9 @@ $login = isset($_SESSION['userid']);
                 <div class="row">
                     <div class="col-lg-10 col-md-12">
                         <div class="reveal-text">
-                            <h2>Nebulae and Star Formations</h2>
-                            <p>Nebulae are cosmic nurseries where stars are born from clouds of gas and dust. These magnificent structures create some of the most beautiful sights in our universe.</p>
-                            <p>Notice how each image moves at a different speed as you scroll, creating a sense of depth and dimension on your cosmic journey.</p>
+                            <h2>Up to date with all the movies</h2>
+                            <p>Our site has a index of most movies in the world.</p>
+                            <p>Find movies from the 80s all the way to upcomming movies, and review them.</p>
                         </div>
                     </div>
                 </div>
@@ -87,9 +87,9 @@ $login = isset($_SESSION['userid']);
                 <div class="row">
                     <div class="col-lg-10 col-md-12">
                         <div class="reveal-text">
-                            <h2>The Infinite Beyond</h2>
-                            <p>Beyond our solar system lie countless galaxies, each containing billions of stars. The scale of the universe is truly incomprehensible, making our exploration all the more humbling.</p>
-                            <p>As you reach the end of this journey, consider how the parallax effect mirrors our understanding of space itself - layers upon layers of cosmic wonder, each moving at its own pace through the eternal dance of the universe.</p>
+                            <h2>Not for sale</h2>
+                            <p>Our website operates with no sponsorship as well as no ads.</p>
+                            <p>We are editorially independent and will never accept sponsorship and implement ads.</p>
                         </div>
                     </div>
                 </div>

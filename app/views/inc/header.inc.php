@@ -83,7 +83,7 @@
         <!-- Navbar Items Aligned to the Left -->
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ms-3"> <!-- ms-3 adds left margin for spacing -->
-                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
             </ul>
