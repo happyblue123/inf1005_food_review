@@ -59,7 +59,13 @@ if (isset($movieData[0]['id'])) {
         
         <div id="reviews">
             <h2>Reviews</h2>
-            
+            <?php if(isset($_SESSION['error_display'])) : ?>
+                <p style="color: red"><?php echo $_SESSION['error_message'];?></p>
+                <?php
+                unset($_SESSION['error_display']);
+                unset($_SESSION['error_message']);
+                ?>
+            <?php endif ?>
             <?php if (isset($_SESSION['delete_result'])): ?>
                 <h4 id="delete_result"><?php echo $_SESSION['delete_result']; ?></h4>
                 <?php unset($_SESSION['delete_result']); ?>
@@ -145,7 +151,7 @@ if (isset($movieData[0]['id'])) {
 
                     <div>
                         <label for="review">Your Review:</label>
-                        <textarea required name="review" id="review-text" rows="4" placeholder="Write your review here..."></textarea>
+                        <textarea required name="review" id="review-text" maxlength="500" rows="4" placeholder="Write your review here..."></textarea>
                     </div>
 
                     <button type="submit" id="submit-button">Submit Review</button>

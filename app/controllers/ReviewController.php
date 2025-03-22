@@ -32,7 +32,13 @@ class ReviewController {
                 $error = true;
                 $error_msg = "Invalid rating. Please provide a rating between 1 and 5.";
             }
-    
+            
+            // check if review text is more than max
+            if (strlen($user_review) > 500) {
+                $error = true;
+                $error_msg = "Max char 500.";
+            } 
+
             if ($error) {
                 $_SESSION['error_message'] = $error_msg;
                 $_SESSION['error_display'] = true;
@@ -55,6 +61,12 @@ class ReviewController {
             $response = curl_exec($ch);
             $data = json_decode($response, true);
             $user_review = $data['result'];
+            // error handling for purgomalum api
+            if (isset($data['error'])) {
+                $_SESSION['error_message'] = "Error submitting review!";
+                $_SESSION['error_display'] = true;
+                header('Location: /search/' . urlencode($_SESSION['moviename']));
+            }
             
             $review = new Review();
     
