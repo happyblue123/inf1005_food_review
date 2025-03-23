@@ -28,7 +28,7 @@ $(document).ready(function() {
         select: function(event, ui) {
             // Redirect to search page with the selected movie name in the URL
             const movieName = ui.item.value; // Get the selected movie name
-            window.location.href = `/search/${encodeURIComponent(movieName)}`; // Redirect to /search/<movie_name>
+            window.location.href = `/search/query/${encodeURIComponent(movieName)}`; // Redirect to /search/<movie_name>
         }
     });
 });

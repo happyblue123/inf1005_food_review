@@ -60,7 +60,8 @@ class Router {
     // Convert a route like search/(:any) to a regex pattern
     private function convertRouteToPattern($route) {
         // Replace (:any) with regex for dynamic segments
-        return '#^' . preg_replace('/(:any)/', '([^/]+)', $route) . '$#';
+        // return '#^' . preg_replace('/(:any)/', '([^/]+)', $route) . '$#';
+        return '#^' . preg_replace('/(:any)/', '(.+)', $route) . '$#';
     }
 }
 
