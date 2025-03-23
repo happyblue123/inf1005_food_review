@@ -41,7 +41,7 @@ class MovieController {
                 $averageRating = 0;  // In case there are no reviews, set the average to 0
             }
         }
-        require_once __DIR__ . '/../views/search.php';
+        require_once __DIR__ . '/../views/movie.php';
     }
 
     private function fetchMovieDataByName($moviename) {

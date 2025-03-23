@@ -7,9 +7,10 @@ $router->add('resetpassword', 'AuthController', 'resetpwd');
 $router->add('profile', 'AuthController', 'fetchprofile');
 $router->add('updateprofile', 'AuthController', 'updateprofile');
 $router->add('logout', 'AuthController', 'logout');
-$router->add('search/(:any)', 'MovieController', 'handleSearch');
+$router->add('movie/(:any)', 'MovieController', 'handleSearch');
 $router->add('submitReview', 'ReviewController', 'submitReview');
 $router->add('deleteReview/(:any)', 'ReviewController', 'deleteReview');
 $router->add('about', 'AboutController', 'about');
+$router->add('chatroom', 'ChatController', 'createChatroom');
 // $router->add('aboutus', 'HomeController', 'aboutus');
 ?>

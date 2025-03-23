@@ -62,7 +62,7 @@ $login = isset($_SESSION['userid']);
             <?php if (!empty($movieData['trending'])): ?>
                 <?php foreach ($movieData['trending'] as $movie): ?>
                     <div class="movie-item">
-                        <a href="/search/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
                             <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
                             <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>">
                         </a>
@@ -80,7 +80,7 @@ $login = isset($_SESSION['userid']);
             <?php if (!empty($movieData['now_playing'])): ?>
                 <?php foreach ($movieData['now_playing'] as $movie): ?>
                     <div class="movie-item">
-                        <a href="/search/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
                             <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
                             <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>">
                         </a>
@@ -98,7 +98,7 @@ $login = isset($_SESSION['userid']);
             <?php if (!empty($movieData['upcoming'])): ?>
                 <?php foreach ($movieData['upcoming'] as $movie): ?>
                     <div class="movie-item">
-                        <a href="/search/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
                             <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
                             <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>">
                         </a>
