@@ -7,72 +7,68 @@ html, body {
 }
 
 #main-content {
-    display: flex; /* Flexbox layout to place side-panel and result-container side by side */
+    display: flex;
     justify-content: space-between;
     box-sizing: border-box;
 }
 
 #side-panel {
-    width: 250px; /* Fixed width for the side panel */
-    padding: 20px; /* Add padding around the panel content */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #f4f4f4; /* Light background color */
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    position: sticky; /* Make the side panel stick on scroll */
-    top: 20px; /* Stick it 20px from the top */
-    max-height: 80vh; /* Set a maximum height (e.g., 80% of the viewport height) */
-    overflow-y: auto; /* Enable vertical scrolling when content overflows */
+    width: 250px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f4f4f4;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 #side-panel h3 {
-    font-family: 'Helvetica Neue', sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
     color: #333;
-    margin-bottom: 15px; /* Space between the title and the list */
-    text-transform: uppercase; /* Uppercase text for the header */
-    letter-spacing: 1px; /* Slight spacing between letters */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 #side-panel ul {
-    list-style-type: none; /* Remove default list styling */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 #side-panel ul li {
-    margin-bottom: 12px; /* Add space between each list item */
+    margin-bottom: 12px;
 }
 
 #side-panel ul li a {
-    font-family: 'Helvetica Neue', sans-serif;
     font-size: 1rem;
-    color: #333; /* Dark color for the links */
-    text-decoration: none; /* Remove underline */
-    display: block; /* Make links block elements for easier styling */
-    padding: 8px 10px; /* Add padding around the links */
-    border-radius: 4px; /* Rounded corners for links */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 }
 
 #side-panel ul li a:hover {
-    background-color: #007bff; /* Highlight the link on hover */
-    color: #fff; /* White text color on hover */
+    background-color: #007bff;
+    color: #fff;
 }
 
 #side-panel ul li a:active {
-    background-color: #0056b3; /* Darker blue when clicked */
+    background-color: #0056b3;
 }
-
 
 #result-container {
-    flex: 1; /* Take the remaining space */
+    flex: 1;
     padding: 20px;
     box-sizing: border-box;
-    max-height: 80vh; /* Set a maximum height (e.g., 80% of the viewport height) */
-    overflow-y: auto; /* Enable vertical scrolling when content overflows */
+    max-height: 80vh;
+    overflow-y: auto;
 }
-
 
 .movie-card {
     display: grid;
@@ -88,7 +84,6 @@ html, body {
     max-width: 100%;
     box-sizing: border-box;
     transition: all 0.3s ease;
-    height: auto;
 }
 
 .movie-card:hover {
@@ -97,7 +92,6 @@ html, body {
 }
 
 .movie-name h3 {
-    font-family: 'Helvetica Neue', sans-serif;
     font-size: 1.0rem;
     font-weight: 600;
     color: #333;
@@ -140,7 +134,6 @@ html, body {
 }
 
 .movie-details p {
-    font-family: 'Helvetica Neue', sans-serif;
     font-size: 0.8rem;
     color: #555;
     line-height: 1.3;
@@ -179,6 +172,38 @@ html, body {
 .movie-card:hover .movie-rating {
     background-color: rgba(0, 123, 255, 0.8);
     color: #fff;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
+    margin: 10px auto;
+}
+
+.pagination a {
+    text-decoration: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: white;
+    background-color: #007bff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    width: 45%;
+    text-align: center;
+}
+
+.pagination a:hover {
+    background-color: #0056b3;
+}
+
+.pagination .prev {
+    text-align: left;
+}
+
+.pagination .next {
+    text-align: right;
 }
 
 @media (max-width: 768px) {

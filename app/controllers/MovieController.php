@@ -5,8 +5,8 @@ require_once __DIR__ . "/../models/Review.php";
 class MovieController {
     private $apiKey = '6cf96494d2d88470ef456aa5cf938cf2'; // Replace with your TMDb API key
 
-    private function fetchMoviesByGenre($genre_id) {
-        $url = "https://api.themoviedb.org/3/discover/movie?api_key=" . $this->apiKey . "&with_genres=" . $genre_id;
+    private function fetchMoviesByGenre($genre_id, $page_id) {
+        $url = "https://api.themoviedb.org/3/discover/movie?api_key=" . $this->apiKey . "&with_genres=" . $genre_id . "&page=" . $page_id;
         // Initialize cURL
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -22,10 +22,15 @@ class MovieController {
         }
 
         $data = json_decode($response, true);
-        return $data['results'];
+        if (empty($data['results'])) {
+            return [];
+        }
+        else {
+            return $data['results'];
+        } 
     }
 
-    public function handleSearch($fullRoute, $userinput) {
+    public function handleSearch($fullRoute, $param) {
         // info to populate side panel - genre
         $genrelist_file = $_SERVER['DOCUMENT_ROOT'] . '/public/json/genrelist.json';
         $jsonData = file_get_contents($genrelist_file);
@@ -34,22 +39,35 @@ class MovieController {
         $queried_parts = explode("/", $fullRoute);
         $route_to = $queried_parts[1];
         $search_by = $queried_parts[2];
-
+        
+        if (strpos($param, '?') === false) { // ensure ?page exist before using explode
+            $userinput = $param;
+            $page_id = 1; // default page   
+        }
+        else {
+            $userinput = explode("?", $param)[0];
+            $page_param = explode("?", $param)[1]; // pageparam is page=1;
+            $page_id = explode("=", $page_param)[1];
+        }
+     
         if ($route_to === "movie") {
             $movie_name = $userinput;
-            $movieData = $this->fetchMovieDataByName($movie_name, $route_to);
+            $movieData = $this->fetchMovieDataByName($movie_name, $route_to, 1); // page is always 1 since there is only 1 result
         }
         else if ($route_to === "search") {
             if ($search_by === "genre") {
-                $search_by_genre = true;
                 $index = array_search($userinput, array_column($genreList, 'name'));
-                $genre_id = $genreList[$index]['id'];
-                print_r($genre_id);
-                $movieData = $this->fetchMoviesByGenre($genre_id);
+                if ($index === false) {
+                    $movieData = []; // no such genre
+                }
+                else {
+                    $genre_id = $genreList[$index]['id'];
+                    $movieData = $this->fetchMoviesByGenre($genre_id, $page_id);
+                }
             }       
             else if ($search_by === "query") {
                 $movie_name = $userinput;
-                $movieData = $this->fetchMovieDataByName($movie_name, $route_to);
+                $movieData = $this->fetchMovieDataByName($movie_name, $route_to, $page_id);
             }
         }
             
@@ -100,8 +118,8 @@ class MovieController {
         }
     }
 
-    private function fetchMovieDataByName($moviename, $route_to) {
-        $url = 'https://api.themoviedb.org/3/search/movie?api_key=' . $this->apiKey . '&query=' . urlencode($moviename);
+    private function fetchMovieDataByName($moviename, $route_to, $page_id) {
+        $url = 'https://api.themoviedb.org/3/search/movie?api_key=' . $this->apiKey . '&query=' . urlencode($moviename) . "&page=" . $page_id;
 
         // Initialize cURL
         $ch = curl_init();

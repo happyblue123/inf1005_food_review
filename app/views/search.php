@@ -39,7 +39,7 @@ $login = isset($_SESSION['userid']);
             </div>
 
             <div id="result-container">
-                <?php if (!empty($movieData)): ?> 
+                <?php if (!empty($movieData)): ?>
                     <?php foreach ($movieData as $movie) : ?>
                         <div class="movie-card">
                             <div class="movie-name">
@@ -77,8 +77,28 @@ $login = isset($_SESSION['userid']);
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <p>No movies found matching your search criteria.</p>
+                    <p>No results.</p>
                 <?php endif; ?>
+
+                <?php
+                // Get current URL (excluding query parameters)
+                $currentUrl = strtok($_SERVER["REQUEST_URI"], '?');
+
+                // Get current page from the URL, default to 1 if not set
+                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+                // Generate previous and next page numbers
+                $prevPage = ($page > 1) ? $page - 1 : 1; // Prevent going below 1
+                $nextPage = $page + 1;
+
+                // Generate full URLs
+                $prevUrl = $currentUrl . "?page=" . $prevPage;
+                $nextUrl = $currentUrl . "?page=" . $nextPage;
+                ?>
+                <div class="pagination">
+                    <a href="<?= $prevUrl; ?>" class="prev">← Prev</a>
+                    <a href="<?= $nextUrl; ?>" class="next">Next →</a>
+                </div>
             </div>
         </div>
     </main>
