@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . "/../models/User.php";
+require_once __DIR__ . "/../models/Watchlist.php";
+require_once __DIR__ . "/../models/Movie.php";
 
 class AuthController {
     public function register() {
@@ -177,6 +179,9 @@ class AuthController {
         $userid = $_SESSION['userid'];
         $user = $user->fetchprofile($userid);
         
+        $watchlist = new Watchlist();
+        $watchlist = $watchlist->getWatchlistByUserId($userid);
+        print_r($watchlist);
         require_once __DIR__ . "/../views/profile.php";
     }
 

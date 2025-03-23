@@ -15,4 +15,5 @@ $router->add('submitReview', 'ReviewController', 'submitReview');
 $router->add('deleteReview/(:any)', 'ReviewController', 'deleteReview');
 $router->add('about', 'AboutController', 'about');
 $router->add('chatroom', 'ChatController', 'createChatroom');
+$router->add('add-to-watchlist/(:any)', 'SearchController', 'saveMovieToWatchlist');
 ?>

@@ -42,7 +42,15 @@ $userReviews = $reviewModel->getReviewsByUserId($_SESSION['userid']);
         <div id="watchlist" class="tab-content">
             <!-- Content for Watchlist/Favourites -->
             <h2>Watchlist/Favourites</h2>
-            <p>Your watchlist and favourites will be displayed here.</p>
+            <?php if (!empty($watchlist)): ?>
+                <ul>
+                    <?php foreach ($watchlist as $movie): ?>
+                        <li><a href="/movie/<?= urlencode($movie['moviename']); ?>"><?= htmlspecialchars($movie['moviename']); ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Your watchlist is empty.</p>
+            <?php endif; ?>
         </div>
         <div id="reviews" class="tab-content">
             <!-- Content for Reviews Made -->
@@ -51,7 +59,7 @@ $userReviews = $reviewModel->getReviewsByUserId($_SESSION['userid']);
                 <ul>
                     <?php foreach ($userReviews as $review): ?>
                         <li>
-                            <a href="/search/<?= isset($review['moviename']) ? urlencode($review['moviename']) : 'unknown'; ?>#review-<?= isset($review['reviewid']) ? $review['reviewid'] : 'unknown'; ?>">
+                            <a href="/movie/<?= isset($review['moviename']) ? urlencode($review['moviename']) : 'unknown'; ?>#review-<?= isset($review['reviewid']) ? $review['reviewid'] : 'unknown'; ?>">
                                 <?= isset($review['moviename']) ? htmlspecialchars($review['moviename']) : 'Unknown Movie'; ?> - <?= isset($review['rating']) ? htmlspecialchars($review['rating']) : 'No Rating'; ?>/5
                             </a>
                             <p><?= isset($review['review_text']) ? htmlspecialchars($review['review_text']) : 'No Review'; ?></p>

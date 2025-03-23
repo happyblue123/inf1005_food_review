@@ -35,6 +35,9 @@ if (isset($movieData[0]['id'])) {
 
         <div id='moviesearched'>
             <div class='movie-info'>
+            <a href="/add-to-watchlist/<?php echo $movieData[0]['id']; ?>&<?php echo $movieData[0]['title']; ?>"> 
+                <button type="submit">Add to Watchlist</button> <!-- remember to style this -->
+            </a>
                 <?php if (!empty($movieData)): ?> <!-- if queried movie is found then display the info -->
                     <h3><?php echo htmlspecialchars($movieData[0]['title']); ?></h3>
                     <p><strong>Release Date:</strong> <?php echo htmlspecialchars($movieData[0]['release_date']); ?></p>
