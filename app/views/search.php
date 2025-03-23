@@ -29,14 +29,12 @@ $login = isset($_SESSION['userid']);
             <input type="text" id="movie-search" placeholder="Search for a movie...">
         </div> -->
         <div id="main-content">
-            <div id="side-panel">
+            <div id="side-panel"> <!-- Navigation-like panel with links for different genres -->
                 <h3>Genre</h3>
-                <!-- Navigation-like panel with links for different genres -->
                 <ul>
-                    <li><a href="/search?genre=action">Action</a></li>
-                    <li><a href="/search?genre=comedy">Comedy</a></li>
-                    <li><a href="/search?genre=drama">Drama</a></li>
-                    <!-- Add more genres as needed -->
+                <?php foreach ($genreList as $genre): ?>
+                    <li><a href="/search/genre/<?=urlencode($genre['name']); ?>"><?= htmlspecialchars($genre['name']); ?></a></li>
+                <?php endforeach; ?>
                 </ul>
             </div>
 

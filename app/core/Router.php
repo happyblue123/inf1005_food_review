@@ -44,25 +44,30 @@ class Router {
         $controller->$methodName();
     }
 
-    // Dispatch controller and method for dynamic routes
     private function dispatchDynamic($handler, $matches) {
         $controllerName = $handler['controller'];
         $methodName = $handler['method'];
-
-        // Include the controller and call the method
+    
+        // Extract the full route (the URL being matched)
+        $fullRoute = $_SERVER['REQUEST_URI'];  // This gives the full URL requested
+    
+        // Include the controller
         require_once __DIR__ . "/../controllers/$controllerName.php";
         $controller = new $controllerName();
-
-        // Pass dynamic parameters to the controller method
-        $controller->$methodName(...$matches);
+    
+        // Pass both the full route and dynamic parameters to the controller method
+        $controller->$methodName($fullRoute, ...$matches);  // Spread the dynamic segments into the method
     }
+    
 
-    // Convert a route like search/(:any) to a regex pattern
     private function convertRouteToPattern($route) {
         // Replace (:any) with regex for dynamic segments
-        // return '#^' . preg_replace('/(:any)/', '([^/]+)', $route) . '$#';
-        return '#^' . preg_replace('/(:any)/', '(.+)', $route) . '$#';
+        // \([^/]+\) matches a segment of the URL that is not a slash
+        $pattern = preg_replace('/(:any)/', '([^/]+)', $route);
+        // Add start (^) and end ($) anchors to ensure it's a full match
+        return '#^' . $pattern . '$#';
     }
+    
 }
 
 

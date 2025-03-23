@@ -5,20 +5,54 @@ require_once __DIR__ . "/../models/Review.php";
 class MovieController {
     private $apiKey = '6cf96494d2d88470ef456aa5cf938cf2'; // Replace with your TMDb API key
 
-    public function handleSearch($query) {
-        $queried_parts = explode("/", $query);
-        
-        if (count($queried_parts) > 1) {
-            $query = $queried_parts[0];
-            $movie_name = $queried_parts[1];
-            $route_to = "search";
-        }
-        else if (count($queried_parts) == 1) {
-            $movie_name = $queried_parts[0];
-            $route_to = "movie";
+    private function fetchMoviesByGenre($genre_id) {
+        $url = "https://api.themoviedb.org/3/discover/movie?api_key=" . $this->apiKey . "&with_genres=" . $genre_id;
+        // Initialize cURL
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  // Return the response as a string
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  // Disable SSL verification (optional)
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        // Check if the response is valid
+        if ($response === FALSE) {
+            return null;
         }
 
-        $movieData = $this->fetchMovieDataByName($movie_name, $route_to);
+        $data = json_decode($response, true);
+        return $data['results'];
+    }
+
+    public function handleSearch($fullRoute, $userinput) {
+        // info to populate side panel - genre
+        $genrelist_file = $_SERVER['DOCUMENT_ROOT'] . '/public/json/genrelist.json';
+        $jsonData = file_get_contents($genrelist_file);
+        $genreList = json_decode($jsonData, true)['genres'];
+        
+        $queried_parts = explode("/", $fullRoute);
+        $route_to = $queried_parts[1];
+        $search_by = $queried_parts[2];
+
+        if ($route_to === "movie") {
+            $movie_name = $userinput;
+            $movieData = $this->fetchMovieDataByName($movie_name, $route_to);
+        }
+        else if ($route_to === "search") {
+            if ($search_by === "genre") {
+                $search_by_genre = true;
+                $index = array_search($userinput, array_column($genreList, 'name'));
+                $genre_id = $genreList[$index]['id'];
+                print_r($genre_id);
+                $movieData = $this->fetchMoviesByGenre($genre_id);
+            }       
+            else if ($search_by === "query") {
+                $movie_name = $userinput;
+                $movieData = $this->fetchMovieDataByName($movie_name, $route_to);
+            }
+        }
+            
         if (!empty($movieData)) {
            
             foreach ($movieData as &$movie) {
