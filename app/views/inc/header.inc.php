@@ -65,7 +65,12 @@
         </nav> -->
       
 
-
+<?php 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();  // Start the session if it's not already started
+    $login = isset($_SESSION['userid']);
+}
+?>
        <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
@@ -88,12 +93,27 @@
                 <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
             </ul>
         </div>
-
+        
         <!-- Profile Icon at the Right End -->
         <div class="user-profile">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-                <img src="/Images/user.png" alt="User Icon" width="30" height="30">
-            </a>
+            <ul class="navbar-nav ms-5">
+                <li class="nav-item dropdown">
+                    <?php if ($login): ?>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="/Images/user.png" alt="User Icon" width="30" height="30">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/profile">My Account</a>
+                        <a class="dropdown-item" href="/resetpassword">Reset Password</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                    <?php else: ?>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <img src="/Images/user.png" alt="User Icon" width="30" height="30">
+                    </a>
+                    <?php endif; ?>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

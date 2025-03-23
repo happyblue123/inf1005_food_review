@@ -17,14 +17,9 @@ if ($login) {
 
 <body>
     <?php
-    if ($login) {
-        include "inc/headerwlogout.inc.php";
-    } else {
-        include "inc/header.inc.php";
-    }
+    include "inc/header.inc.php";
     ?>
 
-    
     <main class="container">
         <?php if(isset($_SESSION['register_result'])): ?>
             <?php if ($_SESSION['register_result'][0] === 1): ?>
