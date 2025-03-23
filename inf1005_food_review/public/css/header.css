@@ -1,0 +1,120 @@
+img#logo{
+    height: fit-content;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+}
+.navbar {
+    background: linear-gradient(90deg, #ffffffd6, #f8f9fa);
+    margin: 0%;
+}
+
+
+.user-icon {
+    position: absolute;
+    right: 300px; /* Pushes it to the right */
+    top: 50%; /* Aligns it vertically */
+    transform: translateY(-50%); /* Ensures it's centered */
+}
+.user-profile img {
+    width: 25px;
+    height: 25px;
+}
+.input-group {
+    display: flex;
+    align-items: center; /* Aligns all elements properly */
+    border-bottom: 2px solid black; /* Keeps the line under the input */
+    padding: 5px;
+    width: 100%;
+    position: relative; /* Ensures proper placement */
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    flex: 1; /* Ensures input takes up the remaining space */
+    padding: 8px;
+    font-size: 16px;
+}
+
+.icon, .eye-icon {
+    margin-right: 10px; /* Adds spacing between icons and text */
+    display: flex;
+    align-items: center;
+}
+
+.eye-icon {
+    margin-left: auto; /* Moves the eye icon to the right */
+    cursor: pointer;
+}
+.input-group-text {
+    background: none !important;  /* ✅ Removes background */
+    border: none !important;  /* ✅ Removes border */
+    padding: 0; /* ✅ Ensures no extra spacing */
+}
+
+
+.navbar {
+    height: 60px; /* Adjust height as needed */
+    padding: 5px 15px; /* Reduce padding to make it more compact */
+}
+
+.navbar-brand img {
+    max-height: 40px; /* Adjust logo size */
+}
+
+.navbar-nav .nav-link {
+    font-size: 14px; /* Make text slightly smaller */
+    padding: 8px 10px; /* Reduce spacing between nav items */
+}
+
+.navbar-toggler {
+    padding: 4px 8px; /* Reduce toggle button size */
+}
+
+.navbar .d-flex {
+    position: absolute;
+    right: 80px;
+    top: 50px;
+}
+/* Style the login button */
+.btn-primary {
+    background: white;  /* ✅ White background */
+    color: black;  /* ✅ Black text */
+    border: 2px solid black;  /* ✅ Black border */
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Button hover effect */
+.btn-primary:hover {
+    background: black; /* ✅ Turn background black on hover */
+    color: white; /* ✅ Make text white on hover */
+    border: 2px solid black; /* Keep black border */
+}
+
+a.forgot-password {
+    text-decoration: none; /* Default: No underline */
+    
+    transition: all 0.3s ease-in-out; /* Smooth effect */
+}
+
+a.forgot-password:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+.gif-container {
+    display: flex;
+    justify-content: space-between; /* Moves one to the left, one to the right */
+    align-items: center;
+    width: 100%;  /* Ensure it takes the full width */
+    padding: 0 -15px; /* Adjust spacing */
+}
+.account-text {
+    margin-top: -75px; /* Move up */
+    margin-left: -25px; /* Move left */
+    color: black;
+}
+
+
