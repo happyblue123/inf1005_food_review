@@ -24,12 +24,7 @@ if (isset($movieData[0]['id'])) {
 </head>
 <body>
     <?php
-    if ($login) {
-        include "inc/headerwlogout.inc.php";
-    } 
-    else {
-        include "inc/header.inc.php";
-    }
+    include "inc/header.inc.php";
     ?>
     
     <main>  
