@@ -17,7 +17,7 @@ if (isset($movieData[0]['id'])) {
 <html lang="en">
 <head>
 <?php include "inc/head.inc.php"; ?>
-<link rel="stylesheet" href="/public/css/search.css">
+<link rel="stylesheet" href="/public/css/movie.css">
 <script src="/public/javascript/searchbar.js"></script>
 <script src="/public/javascript/reviewform.js"></script>
 <title>Result of Search</title>
