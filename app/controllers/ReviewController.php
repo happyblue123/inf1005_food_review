@@ -9,7 +9,7 @@ class ReviewController {
     
             if (!$login) {
                 $_SESSION['message'] = "Please login to submit a review.";
-                header('Location: /search/' . urlencode($_SESSION['moviename']));
+                header('Location: /movie/' . urlencode($_SESSION['moviename']));
                 exit;
             }
     
@@ -42,7 +42,7 @@ class ReviewController {
             if ($error) {
                 $_SESSION['error_message'] = $error_msg;
                 $_SESSION['error_display'] = true;
-                header('Location: /search/' . urlencode($_SESSION['moviename']));
+                header('Location: /movie/' . urlencode($_SESSION['moviename']));
                 exit;
             }
             
@@ -65,7 +65,7 @@ class ReviewController {
             if (isset($data['error'])) {
                 $_SESSION['error_message'] = "Error submitting review!";
                 $_SESSION['error_display'] = true;
-                header('Location: /search/' . urlencode($_SESSION['moviename']));
+                header('Location: /movie/' . urlencode($_SESSION['moviename']));
             }
             
             $review = new Review();
@@ -79,20 +79,21 @@ class ReviewController {
                 $result = $review->submitReview($userid, $movieid, $moviename, $rating, $user_review);
             }
     
-            header('Location: /search/' . urlencode($moviename));
+            header('Location: /movie/' . urlencode($moviename));
             exit;
         }
     
-        require_once __DIR__ . "/../views/search.php";
+        require_once __DIR__ . "/../views/movie.php";
     }
     
 
-    public function deleteReview($reviewId) {
+    public function deleteReview($fullRoute) {
         session_start();
+        $reviewId = explode("/", $fullRoute)[2]; // full route = /deleteReview/id, hence index 2 is the review id
         $userid = $_SESSION['userid'];
+        
         $review = new Review();
         $result = $review->deleteReviewById($reviewId, $userid);
-    
         if ($result) {
             $_SESSION['delete_result'] = "Review deleted successfully!";
         } 
@@ -100,7 +101,7 @@ class ReviewController {
             $_SESSION['delete_result'] = "Failed to delete the review.";
         }
         
-        header('Location: /search/' . urlencode($_SESSION['moviename']));
+        header('Location: /movie/' . urlencode($_SESSION['moviename']));
         exit();
     }
 }
