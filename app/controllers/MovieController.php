@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . "/../models/Review.php";
+require_once __DIR__ . "/../models/Watchlist.php";
 
 class MovieController {
     private $apiKey = '6cf96494d2d88470ef456aa5cf938cf2'; // Replace with your TMDb API key
@@ -31,6 +32,8 @@ class MovieController {
     }
 
     public function handleSearch($fullRoute, $param) {
+        
+
         // info to populate side panel - genre
         $genrelist_file = $_SERVER['DOCUMENT_ROOT'] . '/public/json/genrelist.json';
         $jsonData = file_get_contents($genrelist_file);
@@ -72,7 +75,9 @@ class MovieController {
         }
             
         if (!empty($movieData)) {
-           
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             foreach ($movieData as &$movie) {
                 $review = new Review();
                 $movieid = $movie['id'];
@@ -111,6 +116,10 @@ class MovieController {
         }
 
         if ($route_to === 'movie') {
+            $watchlist = new Watchlist();
+            if (isset($_SESSION['userid'])) {
+                $isInWatchlist = $watchlist->isMovieInWatchlist($_SESSION['userid'], $movieData[0]['id']);
+            }
             require_once __DIR__ . '/../views/movie.php';
         } 
         elseif ($route_to === 'search') {

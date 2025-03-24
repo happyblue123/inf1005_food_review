@@ -1,0 +1,8 @@
+.watchlist-icon {
+    cursor: pointer;
+    font-size: 24px;
+    color: grey;
+}
+.watchlist-icon.in-watchlist {
+    color: gold;
+}

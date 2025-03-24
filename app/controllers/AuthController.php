@@ -181,7 +181,6 @@ class AuthController {
         
         $watchlist = new Watchlist();
         $watchlist = $watchlist->getWatchlistByUserId($userid);
-        print_r($watchlist);
         require_once __DIR__ . "/../views/profile.php";
     }
 

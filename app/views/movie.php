@@ -18,8 +18,10 @@ if (isset($movieData[0]['id'])) {
 <head>
 <?php include "inc/head.inc.php"; ?>
 <link rel="stylesheet" href="/public/css/movie.css">
+<link rel="stylesheet" href="/public/css/watchlist.css">
 <script src="/public/javascript/searchbar.js"></script>
 <script src="/public/javascript/reviewform.js"></script>
+<script src="/public/javascript/watchlist.js"></script>
 <title>Result of Search</title>
 </head>
 <body>
@@ -35,9 +37,13 @@ if (isset($movieData[0]['id'])) {
 
         <div id='moviesearched'>
             <div class='movie-info'>
-            <a href="/add-to-watchlist/<?php echo $movieData[0]['id']; ?>&<?php echo $movieData[0]['title']; ?>"> 
-                <button type="submit">Add to Watchlist</button> <!-- remember to style this -->
-            </a>
+                <i class="watchlist-icon <?= $isInWatchlist ? 'fas fa-star in-watchlist' : 'far fa-star' ?>"
+                data-movie-id="<?= $movieData[0]['id'] ?>"
+                data-movie-name="<?= htmlspecialchars($movieData[0]['title'], ENT_QUOTES, 'UTF-8') ?>"
+                data-in-watchlist="<?= $isInWatchlist ? 'true' : 'false' ?>"
+                onclick="toggleWatchlist(this)">
+                </i>
+                
                 <?php if (!empty($movieData)): ?> <!-- if queried movie is found then display the info -->
                     <h3><?php echo htmlspecialchars($movieData[0]['title']); ?></h3>
                     <p><strong>Release Date:</strong> <?php echo htmlspecialchars($movieData[0]['release_date']); ?></p>

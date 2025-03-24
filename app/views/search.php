@@ -38,7 +38,9 @@ $login = isset($_SESSION['userid']);
                     <?php foreach ($movieData as $movie) : ?>
                         <div class="movie-card">
                             <div class="movie-name">
+                                <a href="/movie/<?php echo urlencode($movie['title']); ?>">
                                 <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
+                                </a>
                             </div>
                             <div class="movie-content">
                                 <?php if (isset($movie['poster_path'])): ?>
