@@ -81,28 +81,33 @@ class ReviewController {
     
             header('Location: /movie/' . urlencode($moviename));
             exit;
+            require_once __DIR__ . "/../views/movie.php";
         }
     
-        require_once __DIR__ . "/../views/movie.php";
+        header('Location: /home');
     }
     
 
     public function deleteReview($fullRoute) {
         session_start();
         $reviewId = explode("/", $fullRoute)[2]; // full route = /deleteReview/id, hence index 2 is the review id
+        if (!(isset($_SESSION['userid']))) {
+            header('Location: /home');
+            exit;
+        }
         $userid = $_SESSION['userid'];
         
         $review = new Review();
         $result = $review->deleteReviewById($reviewId, $userid);
         if ($result) {
             $_SESSION['delete_result'] = "Review deleted successfully!";
+            header('Location: /movie/' . urlencode($_SESSION['moviename']));
         } 
         else {
             $_SESSION['delete_result'] = "Failed to delete the review.";
+            header('Location: /home');
+            exit;
         }
-        
-        header('Location: /movie/' . urlencode($_SESSION['moviename']));
-        exit();
     }
 }
 ?>
