@@ -99,9 +99,21 @@ class User {
         else {
             return false;
         }
+    }
 
-
-    }    
+    public function checkEmail($email) {
+        $stmt = $this->db->conn->prepare("select userid, email, username from users where email = ?");
+        $stmt->execute([$email]);
+        $result = $stmt->fetch();
+        return $result;
+    }
     
+
+    public function setNewPassword($userid, $newpwd) {
+        $newpwd = password_hash($newpwd, PASSWORD_DEFAULT);
+        $stmt = $this->db->conn->prepare("UPDATE users set password = ? WHERE userid = ?");
+        $stmt->execute([$newpwd, $userid]);
+    }
+
 }
 ?>

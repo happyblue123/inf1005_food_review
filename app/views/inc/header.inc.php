@@ -184,10 +184,15 @@ if (session_status() == PHP_SESSION_NONE) {
                     </div>
 
                     <div class="text-center mt-3">
-                    <a href="/resetpassword" class="forgot-password">Forgot password?</a>
-
+                        <a href="javascript:void(0)" class="forgot-password" id="forgotPwdLink">Forgot password?</a>
                     </div>
 
+                    <!-- Hidden input field that will pop up when the link is clicked -->
+                    <div id="forgotPwdContainer" style="display:none; margin-top: 20px;" class="text-center mt-3">
+                        <input type="email" id="email_reset" class="form-control" placeholder="Enter your email"/>
+                        <button class="btn btn-primary w-100" type="button" onclick="submitForgotPwd()">Send Email</button>
+                    </div>
+                    <div id="forgotPwdMessage" class="mt-2 text-center"></div>
                 </form>
             </div>
         </div>

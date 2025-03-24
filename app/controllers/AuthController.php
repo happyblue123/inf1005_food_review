@@ -3,6 +3,13 @@ require_once __DIR__ . "/../models/User.php";
 require_once __DIR__ . "/../models/Watchlist.php";
 require_once __DIR__ . "/../models/Movie.php";
 
+// Include Composer's autoloader
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+// Include PHPMailer classes
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class AuthController {
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -235,6 +242,77 @@ class AuthController {
         }
     }
     
+    public function forgotPwd() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            echo json_encode(["success" => false, "message" => "Invalid request method"]);
+            header('Location: /home');
+            exit;
+        }
+    
+        // Get JSON input from AJAX request
+        $data = json_decode(file_get_contents("php://input"), true);
+        
+        if (!isset($data['email']) || !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            echo json_encode(["success" => false, "message" => "Please provide a valid email format"]);
+            exit;
+        }
+
+        $email = $data['email'];
+        $user = new User();
+        $result = $user->checkEmail($email);
+    
+        if (empty($result)) { // If user is not registered, dont send email
+            exit;
+        }
+    
+        $randompwd = $this->generateRandomString();
+        $username = $result['username'];
+        $userid = $result['userid'];
+        $user->setNewPassword($userid, $randompwd);
+    
+        // Use Sendinblue to send mail
+        $mail = new PHPMailer(true);
+    
+        try {
+            // Server settings
+            $mail->isSMTP();
+            $mail->Host = 'smtp-relay.brevo.com';  
+            $mail->SMTPAuth = true;
+            $mail->Username = '88bfda001@smtp-brevo.com';  
+            $mail->Password = 'Ch7MJz9REKgFWANQ';  
+            $mail->Port = 587;  
+            
+            // Recipients
+            $mail->setFrom('2403911@sit.singaporetech.edu.sg', 'Peoples Movie');
+            $mail->addAddress("ngyongxianyx@gmail.com", $username);  
+            
+            // Content
+            $mail->isHTML(true);
+            $mail->Subject = 'Request to reset password';
+            $mail->Body    = 'Your password has been set to ' . $randompwd;
+            $mail->AltBody = 'Your new password is: ' . $randompwd;
+            
+            // Send email
+            $mail->send();
+    
+            echo json_encode(["success" => true, "message" => "Password reset link sent"]);
+            exit;
+        } 
+        catch (Exception $e) {
+            echo json_encode(["success" => false, "message" => "Email sending failed: " . $mail->ErrorInfo]);
+            exit;
+        }
+    }    
+
+    private function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 
     public function logout() {
         session_start();
