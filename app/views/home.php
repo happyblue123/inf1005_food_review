@@ -54,55 +54,151 @@ $login = isset($_SESSION['userid']);
 
     <div id='trending-movies'>
         <h2>Trending Movies</h2>
-        <div id="trending-movie-container">
-            <?php if (!empty($movieData['trending'])): ?>
-                <?php foreach ($movieData['trending'] as $movie): ?>
-                    <div class="movie-item">
-                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
-                            <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
-                            <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>">
-                        </a>
+        <div id="trendingCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <?php if (!empty($movieData['trending'])): 
+                    $slideCount = ceil(count($movieData['trending']) / 4);
+                    for ($i = 0; $i < $slideCount; $i++): ?>
+                        <button type="button" data-bs-target="#trendingCarousel" data-bs-slide-to="<?php echo $i; ?>" 
+                            <?php echo $i === 0 ? 'class="active" aria-current="true"' : ''; ?> aria-label="Slide <?php echo $i+1; ?>"></button>
+                    <?php endfor; ?>
+                <?php endif; ?>
+            </div>
+            
+            <!-- Carousel content -->
+            <div class="carousel-inner">
+                <?php if (!empty($movieData['trending'])): 
+                    $chunks = array_chunk($movieData['trending'], 4);
+                    foreach ($chunks as $index => $movieChunk): ?>
+                        <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                            <div class="d-flex justify-content-around">
+                                <?php foreach($movieChunk as $movie): ?>
+                                    <div class="movie-item">
+                                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                                            <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
+                                            <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" 
+                                                alt="<?php echo htmlspecialchars($movie['title']); ?>">
+                                        </a>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="carousel-item active">
+                        <p>Error fetching trending movies.</p>
                     </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>Error fetching trending movies.</p>
-            <?php endif; ?>
+                <?php endif; ?>
+            </div>
+            
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
         </div>
     </div>
-    
+
     <div>
         <h2>Now Showing</h2>
-        <div id="trending-movie-container">
-            <?php if (!empty($movieData['now_playing'])): ?>
-                <?php foreach ($movieData['now_playing'] as $movie): ?>
-                    <div class="movie-item">
-                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
-                            <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
-                            <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>">
-                        </a>
+        <div id="nowPlayingCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <?php if (!empty($movieData['now_playing'])): 
+                    $slideCount = ceil(count($movieData['now_playing']) / 4);
+                    for ($i = 0; $i < $slideCount; $i++): ?>
+                        <button type="button" data-bs-target="#nowPlayingCarousel" data-bs-slide-to="<?php echo $i; ?>" 
+                            <?php echo $i === 0 ? 'class="active" aria-current="true"' : ''; ?> aria-label="Slide <?php echo $i+1; ?>"></button>
+                    <?php endfor; ?>
+                <?php endif; ?>
+            </div>
+            
+            <!-- Carousel content -->
+            <div class="carousel-inner">
+                <?php if (!empty($movieData['now_playing'])): 
+                    $chunks = array_chunk($movieData['now_playing'], 4);
+                    foreach ($chunks as $index => $movieChunk): ?>
+                        <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                            <div class="d-flex justify-content-around">
+                                <?php foreach($movieChunk as $movie): ?>
+                                    <div class="movie-item">
+                                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                                            <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
+                                            <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" 
+                                                alt="<?php echo htmlspecialchars($movie['title']); ?>">
+                                        </a>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="carousel-item active">
+                        <p>Error fetching now playing movies.</p>
                     </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>Error fetching now playing.</p>
-            <?php endif; ?>
+                <?php endif; ?>
+            </div>
+            
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#nowPlayingCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#nowPlayingCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
         </div>
     </div>
 
     <div>
         <h2>Upcoming</h2>
-        <div id="trending-movie-container">
-            <?php if (!empty($movieData['upcoming'])): ?>
-                <?php foreach ($movieData['upcoming'] as $movie): ?>
-                    <div class="movie-item">
-                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
-                            <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
-                            <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" alt="<?php echo htmlspecialchars($movie['title']); ?>">
-                        </a>
+        <div id="upcomingCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <?php if (!empty($movieData['upcoming'])): 
+                    $slideCount = ceil(count($movieData['upcoming']) / 4);
+                    for ($i = 0; $i < $slideCount; $i++): ?>
+                        <button type="button" data-bs-target="#upcomingCarousel" data-bs-slide-to="<?php echo $i; ?>" 
+                            <?php echo $i === 0 ? 'class="active" aria-current="true"' : ''; ?> aria-label="Slide <?php echo $i+1; ?>"></button>
+                    <?php endfor; ?>
+                <?php endif; ?>
+            </div>
+            
+            <!-- Carousel content -->
+            <div class="carousel-inner">
+                <?php if (!empty($movieData['upcoming'])): 
+                    $chunks = array_chunk($movieData['upcoming'], 4);
+                    foreach ($chunks as $index => $movieChunk): ?>
+                        <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                            <div class="d-flex justify-content-around">
+                                <?php foreach($movieChunk as $movie): ?>
+                                    <div class="movie-item">
+                                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                                            <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
+                                            <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" 
+                                                alt="<?php echo htmlspecialchars($movie['title']); ?>">
+                                        </a>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="carousel-item active">
+                        <p>Error fetching upcoming movies.</p>
                     </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>Error fetching upcoming.</p>
-            <?php endif; ?>
+                <?php endif; ?>
+            </div>
+            
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#upcomingCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#upcomingCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
         </div>
     </div>
 

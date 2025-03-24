@@ -159,3 +159,44 @@ div#movie-h3-div{
     width: 100%; /* Ensure the link respects the container's width */
     color: darkcyan;
 }
+
+
+/* Smaller carousel control buttons */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%; /* Reduce width from default 15% */
+    height: 25%;
+    opacity: 0.8;
+    transform: translateY(100%);
+}
+
+/* Make the button icons smaller and more compact */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+/* Position the buttons to be more visible against movie content */
+.carousel-control-prev {
+    left: 0;
+}
+
+.carousel-control-next {
+    right: 0;
+}
+
+/* Improve hover states for better user experience */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+
+button.active {
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
+}
