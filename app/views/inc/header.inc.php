@@ -190,7 +190,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
                                 <!-- Modal Header -->
                                 <div class="modal-header border-0">
-                                    <h5 class="modal-title" id="forgotPwdModalLabel">Forgot your Password?</h5>
+                                    <h5 class="modal-title" id="forgotPwdModalLabel">RESET PASSWORD</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none; border: none; background: none;">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
