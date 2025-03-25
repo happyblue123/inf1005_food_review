@@ -65,13 +65,14 @@
         </nav> -->
       
 
-<?php 
+        <?php 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();  // Start the session if it's not already started
     $login = isset($_SESSION['userid']);
 }
 ?>
-       <!-- NAVBAR -->
+
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
         <!-- Logo -->
@@ -118,10 +119,6 @@ if (session_status() == PHP_SESSION_NONE) {
     </div>
 </nav>
 
-
-
-
-
 <!-- Fix for Login Error Message -->
 <?php if (isset($_SESSION['login_error'])): ?>
 <script>
@@ -145,8 +142,6 @@ if (session_status() == PHP_SESSION_NONE) {
     <img src="/video/login.gif" alt="User GIF" width="60">
     <img src="/Images/clapperboard.png" alt="Movie Ticket GIF" width="80">
 </div>
-
-
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -183,16 +178,43 @@ if (session_status() == PHP_SESSION_NONE) {
                         <button type="submit" class="btn btn-primary w-100">LOGIN</button>
                     </div>
 
-                    <div class="text-center mt-3">
-                        <a href="javascript:void(0)" class="forgot-password" id="forgotPwdLink">Forgot password?</a>
+                    <!-- Forgot Password Trigger -->
+<a href="javascript:void(0)" class="forgot-password" data-toggle="modal" data-target="#forgotPwdModal">
+  Forgot password?
+</a>
+
+<!-- Forgot Password Modal -->
+<div class="modal fade forgot-password-modal" id="forgotPwdModal" tabindex="-1" role="dialog" aria-labelledby="forgotPwdModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header border-0">
+                                    <h5 class="modal-title" id="forgotPwdModalLabel">Forgot your Password?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none; border: none; background: none;">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <p>Please enter your email address below, and we will send you a link to reset your password.</p>
+
+                                    <!-- Email Input -->
+                                    <input type="email" id="email_reset" placeholder="Email ID" />
+
+                                    <!-- Submit Button -->
+                                    <button type="submit" onclick="submitForgotPwd()">
+                                        SUBMIT
+                                    </button>
+
+                                    <!-- Feedback Message -->
+                                    <div id="forgotPwdMessage" class="mt-2"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Hidden input field that will pop up when the link is clicked -->
-                    <div id="forgotPwdContainer" style="display:none; margin-top: 20px;" class="text-center mt-3">
-                        <input type="email" id="email_reset" class="form-control" placeholder="Enter your email"/>
-                        <button class="btn btn-primary w-100" type="button" onclick="submitForgotPwd()">Send Email</button>
-                    </div>
-                    <div id="forgotPwdMessage" class="mt-2 text-center"></div>
                 </form>
             </div>
         </div>
