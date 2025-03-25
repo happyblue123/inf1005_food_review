@@ -12,7 +12,6 @@ if ($login) {
 <head>
     <?php include "inc/head.inc.php"; ?>
     <link rel="stylesheet" href="public/css/register.css">
-    <link rel="stylesheet" href="public/css/login.css">
 </head>
 
 <body>
@@ -21,16 +20,15 @@ if ($login) {
     ?>
 
     <main class="container">
+        <img id="logo" src="/Images/logo.png" alt="peoplereviewmovies_logo" class="border rounded mb-5">
         <?php if(isset($_SESSION['register_result'])): ?>
-            <?php if ($_SESSION['register_result'][0] === 1): ?>
-                <p class='form-title' style="color: green"><?php echo $_SESSION['register_result'][1]; ?></p>
-            <?php else: ?>
-                <p class='form-title' style="color: red"><?php echo $_SESSION['register_result'][1]; ?></p>
-            <?php endif; ?>
-             
+            <?php 
+            $registerClass = ($_SESSION['register_result'][0] === 1) ? 'success' : 'error'; 
+            $message = $_SESSION['register_result'][1];
+            ?>
+            <p class="register-result <?php echo $registerClass; ?>"><?php echo $message; ?></p>
             <?php unset($_SESSION['register_result']); ?>
         <?php endif; ?>
-        <h2 class="form-title">PERSONAL DETAILS</h2>
         <form action='/register' method="POST">
             <label for="username" class="form-label">USERNAME</label>
             <div class="mb-3">
