@@ -31,5 +31,16 @@ $(document).ready(function() {
             window.location.href = `/search/query/${encodeURIComponent(movieName)}`; // Redirect to /search/<movie_name>
         }
     });
-});
 
+    // Detect Enter key press in the search field
+    $('#movie-search').on('keydown', function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent default action (like form submission)
+            const searchTerm = $(this).val(); // Get the value of the input field
+            if (searchTerm.length >= 2) {
+                // Redirect to search page with the movie name
+                window.location.href = `/search/query/${encodeURIComponent(searchTerm)}`;
+            }
+        }
+    });
+});
