@@ -116,5 +116,116 @@ a.forgot-password:hover {
     margin-left: -25px; /* Move left */
     color: black;
 }
+/*********************************
+ * Forgot Password Modal Styles
+ *********************************/
 
+/* Ensure the modal dialog is centered and has a reasonable max width */
+.forgot-password-modal .modal-dialog {
+    max-width: 500px;           /* Adjust width as needed */
+    margin: auto;
+  }
+  
+  /* Center the modal content and add padding */
+  .forgot-password-modal .modal-content {
+    text-align: center;         /* Horizontally center text */
+    padding: 20px;
+    border-radius: 8px;         /* Rounded corners (optional) */
+  }
+  
+  /* Increase the font size for the modal title and make it bold */
+  .forgot-password-modal .modal-title {
+    font-size: 1rem;            /* Larger font for the heading */
+    font-weight: bold;
+    margin: 0 auto;
+  }
+  
+  /* Remove default border and center the header content */
+  .forgot-password-modal .modal-header {
+    border-bottom: none;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    color: black;
+    font-size: 0.5rem;
+  }
+  
+  /* Style the close button (X) to be larger and placed at top-right */
+  .forgot-password-modal .close {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    outline: none;
+    border: none;
+    background: none;
+               
+  }
+  
+  /* Increase font size for the modal body text */
+  .forgot-password-modal .modal-body p {
+    font-size: 0.8rem;          /* Larger paragraph text */
+    margin-bottom: 1.5rem;
+    color: black;
+  }
+  
+  /* Style the email input field */
+  .forgot-password-modal #email_reset {
+    display: block;             /* Allows margin auto to center */
+    margin: 0 auto 20px;        /* Center horizontally + spacing below */
+    padding: 10px;
+    font-size: 1rem;
+    width: 80%;                 /* Adjust width to your preference */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Style the submit button */
+  .forgot-password-modal button[type="submit"] {
+    background: white;  /* ✅ White background */
+    color: black;  /* ✅ Black text */
+    border: 2px solid black;  /* ✅ Black border */
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  /* Button hover effect */
+  .forgot-password-modal button[type="submit"]:hover {
+    background: black; /* ✅ Turn background black on hover */
+    color: white; /* ✅ Make text white on hover */
+    border: 2px solid black; /* Keep black border */
+}
+  
+  /* Feedback message styling */
+  .forgot-password-modal #forgotPwdMessage {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: green;               /* Change color as desired */
+  }
+  .forgot-password-modal #email_reset {
+    font-size: 10px;
+  }
+  
+  .forgot-password-modal #email_reset::placeholder {
+    font-size: 10px;
+  }
 
+  .forgot-password {
+    display: block;       /* Make the link a block-level element */
+    width: 150px;         /* Give it a fixed width */
+    margin: 20px auto 0;       /* Center horizontally when block-level */
+    text-align: center;   /* Center the link text itself */
+  }
+ 
+  
+  .custom-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 0px;
+    transform: translateY(27px); 
+  }
+  
+
+  
+  
+  
