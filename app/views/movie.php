@@ -122,7 +122,7 @@ if (isset($movieData[0]['id'])) {
                         <?php else :  ?>
                             <p class="review-username"><?= $review['username']; ?></p>
                         <?php endif; ?>
-                        <p class="review-rating"><?= $review['rating']; ?></p>
+                        <p class="review-rating">Overall rating: <?= $review['rating']; ?></p>
                         <p class="review-text"><?= $review['review_text']; ?></p>
                         <p><?= $review['created_at']; ?></p>
 
