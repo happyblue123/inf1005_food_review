@@ -1,51 +1,271 @@
+/* Modern Profile Page Styling */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
 }
+
 .container {
     display: flex;
     flex: 1;
-    padding: 20px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 20px auto;
+    gap: 25px;
 }
+
+/* Tabs Navigation Styling */
 .tabs {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 240px;
     background-color: #fff;
-    border-right: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
+
 .tabs .tab {
-    padding: 15px;
+    padding: 16px 20px;
     cursor: pointer;
-    background-color: #f1f1f1;
+    background-color: #fff;
     text-align: left;
-    border-bottom: 1px solid #ddd;
-    transition: background-color 0.3s;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+    color: #555;
+    font-weight: 500;
 }
+
 .tabs .tab:hover {
-    background-color: #e1e1e1;
+    background-color: #f5f7fa;
+    color: #3498db;
 }
+
 .tabs .tab.active {
-    background-color: #ccc;
-    font-weight: bold;
+    background-color: #ebf5ff;
+    border-left: 4px solid #3498db;
+    color: #3498db;
+    font-weight: 600;
 }
+
+/* Content Area Styling */
 .tab-content {
     display: none;
     flex-grow: 1;
-    padding-left: 20px;
+    padding: 25px 30px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: 20px;
-    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    min-height: 400px;
 }
+
 .tab-content.active {
     display: block;
+    animation: fadeIn 0.4s ease-in;
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-content h2 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e7eef7;
+    font-size: 1.8rem;
+}
+
+/* Account Info Styling */
+#account-info p {
+    font-size: 1.1rem;
+    margin: 12px 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #3498db;
+}
+
+/* Watchlist Styling */
+#watchlist ul, #reviews ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#watchlist li {
+    margin-bottom: 12px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    border-left: 3px solid #e74c3c;
+}
+
+#watchlist li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#watchlist a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+}
+
+#watchlist a:hover {
+    color: #e74c3c;
+}
+
+/* Reviews Styling */
+#reviews li {
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 3px solid #27ae60;
+}
+
+#reviews li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#reviews a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+#reviews a:hover {
+    color: #27ae60;
+}
+
+#reviews p {
+    color: #555;
+    margin: 8px;
+    line-height: 1.5;
+}
+
+/* Form Styling */
+
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .tabs {
+        width: 100%;
+        margin-bottom: 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .tabs .tab {
+        flex: 1 0 auto;
+        text-align: center;
+        padding: 12px 10px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+    
+    .tabs .tab.active {
+        border-left: none;
+        border-bottom: 3px solid #3498db;
+    }
+    
+    .tab-content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .tabs .tab {
+        padding: 10px 5px;
+        font-size: 0.9rem;
+    }
+    
+    .tab-content {
+        padding: 15px;
+    }
+    
+    .tab-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    #account-info p, #watchlist li, #reviews li {
+        padding: 10px;
+    }
+    
+    .form-group input {
+        padding: 10px;
+    }
+    
+    button[type="submit"] {
+        padding: 10px 15px;
+        width: 100%;
+    }
+}
+
 footer {
     background-color: #333;
     color: #fff;

@@ -130,6 +130,14 @@ $login = isset($_SESSION['userid']);
             </div>
         </div>
 
+
+        <div class="content">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>Have a question or concern? Feel free to contact us at public@peoplemoviereview.mail.sg</p>
+            </div>
+        </div>
+
     </div>
 
 
