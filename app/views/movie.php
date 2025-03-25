@@ -36,29 +36,45 @@ if (isset($movieData[0]['id'])) {
         </div>
 
         <div id='moviesearched'>
-            <div class='movie-info'>
-                <i class="watchlist-icon <?= $isInWatchlist ? 'fas fa-star in-watchlist' : 'far fa-star' ?>"
-                data-movie-id="<?= $movieData[0]['id'] ?>"
-                data-movie-name="<?= htmlspecialchars($movieData[0]['title'], ENT_QUOTES, 'UTF-8') ?>"
-                data-in-watchlist="<?= $isInWatchlist ? 'true' : 'false' ?>"
-                onclick="toggleWatchlist(this)">
-                </i>
-                
-                <?php if (!empty($movieData)): ?> <!-- if queried movie is found then display the info -->
-                    <h3><?php echo htmlspecialchars($movieData[0]['title']); ?></h3>
-                    <p><strong>Release Date:</strong> <?php echo htmlspecialchars($movieData[0]['release_date']); ?></p>
-                    <p><strong>Overview:</strong> <?php echo htmlspecialchars($movieData[0]['overview']); ?></p>
-                    <?php if (isset($movieData[0]['poster_path'])): ?>
-                        <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movieData[0]['poster_path']); ?>" alt="<?php echo htmlspecialchars($movieData[0]['title']); ?>">
-                    <?php endif; ?>
-                    <div class='movie-rating'>
-                        <p class='total-reviews'>Total reviews: <?php echo $movieData[0]['total-reviews']?></p>
-                        <p class='avg-rating'>Avg rating: <?php echo $movieData[0]['rating']?></p>
+            <?php if (!empty($movieData)): ?> <!-- if queried movie is found then display the info -->
+                <div class="movie-container">
+                    <!-- Left column: Movie poster -->
+                    <div class="movie-poster-container">
+                        <?php if (isset($movieData[0]['poster_path'])): ?>
+                            <img src="https://image.tmdb.org/t/p/w342<?php echo htmlspecialchars($movieData[0]['poster_path']); ?>" 
+                                alt="<?php echo htmlspecialchars($movieData[0]['title']); ?>">
+                        <?php endif; ?>
                     </div>
-                <?php else: ?>
-                    <p>No movies found matching your search criteria.</p>
-                <?php endif; ?>
-            </div>
+                    
+                    <!-- Right column container -->
+                    <div class="movie-details-container">
+                        <!-- Top right: Title, release date, overview -->
+                        <div class="movie-main-info">
+                            <div class="title-watchlist">
+                                <h3><?php echo htmlspecialchars($movieData[0]['title']); ?></h3>
+                                <i class="watchlist-icon <?= $isInWatchlist ? 'fas fa-star in-watchlist' : 'far fa-star' ?>"
+                                    data-movie-id="<?= $movieData[0]['id'] ?>"
+                                    data-movie-name="<?= htmlspecialchars($movieData[0]['title'], ENT_QUOTES, 'UTF-8') ?>"
+                                    data-in-watchlist="<?= $isInWatchlist ? 'true' : 'false' ?>"
+                                    onclick="toggleWatchlist(this)">
+                                </i>
+                            </div>
+                            <p><strong>Release Date:</strong> <?php echo htmlspecialchars($movieData[0]['release_date']); ?></p>
+                            <p><strong>Overview:</strong> <?php echo htmlspecialchars($movieData[0]['overview']); ?></p>
+                        </div>
+                        
+                        <!-- Bottom right: Ratings and reviews count -->
+                        <div class="movie-ratings-info">
+                            <div class='movie-rating'>
+                                <p class='total-reviews'>Total reviews: <?php echo $movieData[0]['total-reviews']?></p>
+                                <p class='avg-rating'>Average rating: <?php echo $movieData[0]['rating']?>/5</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php else: ?>
+                <p>No movies found matching your search criteria.</p>
+            <?php endif; ?>
         </div>
         
         <div id="reviews">
