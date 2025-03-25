@@ -141,39 +141,40 @@ class AuthController {
             if ($new_pwd !== $new_cfmpwd) {
                 // Passwords don't match, show an error
                 $error = "Passwords do not match.";
-                echo "<script>alert('$error');</script>";
-                echo "<script>window.location.href = '/resetpassword';</script>";
+                $_SESSION['resetpwd_result'] = [0, $error];
+                header('Location: /resetpassword');
                 exit;
             }
 
             // Password length validation
             if (strlen($new_pwd) < 6) {
                 $error = "Password must be at least 6 characters.";
-                echo "<script>alert('$error');</script>";
-                echo "<script>window.location.href = '/resetpassword';</script>";
+                $_SESSION['resetpwd_result'] = [0, $error];
+                header('Location: /resetpassword');
                 exit;
             }
     
             // Validate the current password
             if (!$user->validatePassword($userid, $current_pwd)) {
                 // Current password is incorrect, show an error
-                $error = "There was an error updating your password. Please try again.";
-                echo "<script>alert('$error');</script>";
-                echo "<script>window.location.href = '/resetpassword';</script>";
+                $error = "Current password is incorrect.";
+                $_SESSION['resetpwd_result'] = [0, $error];
+                header('Location: /resetpassword');
                 exit;
             }
     
             // Update the password
             if ($user->updatePassword($userid, $new_cfmpwd)) {
-                echo '<script>alert("Password has been updated successfully.");</script>';
-                echo "<script>window.location.href = '/resetpassword';</script>";
+                $message = "Password has been updated successfully.";
+                $_SESSION['resetpwd_result'] = [1, $message];
+                header('Location: /resetpassword');
                 exit;
             }
             else {
                 // Something went wrong while updating the password
                 $error = "There was an error updating your password. Please try again.";
-                echo "<script>alert('$error');</script>";
-                echo "<script>window.location.href = '/resetpassword';</script>";
+                $_SESSION['resetpwd_result'] = [0, $error];
+                header('Location: /resetpassword');
                 exit;
             }
         }

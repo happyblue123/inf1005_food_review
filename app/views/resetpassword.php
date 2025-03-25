@@ -17,9 +17,20 @@ if (!$login) {
     <?php
     include "inc/header.inc.php";
     ?>
-    <h2>Password Reset</h2>
+    <link rel="stylesheet" href="public/css/resetpwd.css">
+    <!-- <h2>Password Reset</h2> -->
 
     <main class="container">
+
+        <?php if(isset($_SESSION['resetpwd_result'])): ?>
+            <?php 
+            $registerClass = ($_SESSION['resetpwd_result'][0] === 1) ? 'success' : 'error'; 
+            $message = $_SESSION['resetpwd_result'][1];
+            ?>
+            <p class="resetpwd-result <?php echo $registerClass; ?>"><?php echo $message; ?></p>
+            <?php unset($_SESSION['resetpwd_result']); ?>
+        <?php endif; ?>
+
         <form action='/resetpassword' method="POST">
             <?php if (!$login) {
                 echo "<div class='mb-3'>
