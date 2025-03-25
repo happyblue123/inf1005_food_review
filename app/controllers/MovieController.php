@@ -31,13 +31,18 @@ class MovieController {
         } 
     }
 
+    public function readGenres() {
+        $genrelist_file = $_SERVER['DOCUMENT_ROOT'] . '/public/json/genrelist.json';
+        $jsonData = file_get_contents($genrelist_file);
+        $genreList = json_decode($jsonData, true)['genres'];
+        return $genreList;
+    }
+
     public function handleSearch($fullRoute, $param) {
         
 
         // info to populate side panel - genre
-        $genrelist_file = $_SERVER['DOCUMENT_ROOT'] . '/public/json/genrelist.json';
-        $jsonData = file_get_contents($genrelist_file);
-        $genreList = json_decode($jsonData, true)['genres'];
+        $genreList = $this->readGenres();
         
         $queried_parts = explode("/", $fullRoute);
         $route_to = $queried_parts[1];

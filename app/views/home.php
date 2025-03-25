@@ -31,29 +31,36 @@ $login = isset($_SESSION['userid']);
 </div> -->
 
 
-<div class="video-container">
-    <!-- Video Background -->
-    <video autoplay muted loop>
-        <source src="/video/home_page_video_bg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="video-container">
+        <!-- Video Background -->
+        <video autoplay muted loop>
+            <source src="/video/home_page_video_bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
 
-    <!-- Foreground Text -->
-    <div class="content">
-        <h2>Movie reivews <span id="changing-text"></span><span class="cursor">|</span></h2>
-        <p class="gray-darker">Find the latest movie reviews and ratings here!</p>
+        <!-- Foreground Text -->
+        <div class="content">
+            <h2>Movie reivews <span id="changing-text"></span><span class="cursor">|</span></h2>
+            <p class="gray-darker">Find the latest movie reviews and ratings here!</p>
+        </div>
     </div>
-</div>
 
 
+    <div id="genres_list"> <!-- Navigation-like panel with links for different genres -->
+        <ul>
+        <?php foreach ($genreList as $genre): ?>
+            <li><a href="/search/genre/<?=urlencode($genre['name']); ?>"><?= htmlspecialchars($genre['name']); ?></a></li>
+        <?php endforeach; ?>
+        </ul>
+    </div>
         
     <div id="search-container">
-        <h2>Movie Search</h2>
+        <!-- <h2>Movie Search</h2> -->
         <input type="text" id="movie-search" name="movie_name" placeholder="Search for a movie..." required>
     </div>
 
-    <div id='trending-movies'>
-        <h2>Trending Movies</h2>
+    <div class='each_row'>
+        <h2>TRENDING</h2>
         <div id="trendingCarousel" class="carousel slide" data-bs-ride="carousel">
             <!-- Indicators -->
             <div class="carousel-indicators">
@@ -93,17 +100,17 @@ $login = isset($_SESSION['userid']);
             </div>
             
             <!-- Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             </button>
         </div>
     </div>
 
-    <div>
-        <h2>Now Showing</h2>
+    <div class='each_row'>
+        <h2>NOW SHOWING</h2>
         <div id="nowPlayingCarousel" class="carousel slide" data-bs-ride="carousel">
             <!-- Indicators -->
             <div class="carousel-indicators">
@@ -152,8 +159,8 @@ $login = isset($_SESSION['userid']);
         </div>
     </div>
 
-    <div>
-        <h2>Upcoming</h2>
+    <div class='each_row'>
+        <h2>UPCOMING</h2>
         <div id="upcomingCarousel" class="carousel slide" data-bs-ride="carousel">
             <!-- Indicators -->
             <div class="carousel-indicators">

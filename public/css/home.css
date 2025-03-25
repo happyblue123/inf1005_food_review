@@ -6,8 +6,26 @@
 
 /* Center the heading */
 h2 {
-    text-align: center;
-    margin-bottom: 20px;
+    font-family: 'Bebas Neue', sans-serif; /* A bold, modern font */
+    font-size: 3rem; /* Larger text for impact */
+    font-weight: 700;
+    color: #f0f0f0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #ff4d4d, #f0ad4e); /* Gradient from red to orange */
+    -webkit-background-clip: text; /* Gradient text effect */
+    background-clip: text;
+    display: inline-block;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Light shadow for depth */
+    transition: all 0.3s ease-in-out; /* Smooth transition effect */
+    text-align: center; /* Center align the heading */
+    width: 100%; /* Ensure it takes up full width for centering */
+}
+
+h2:hover {
+    transform: scale(1.1); /* Slight scale effect on hover */
+    color: #fff; /* Solid white on hover */
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8); /* Enhanced shadow on hover */
 }
 
 #trending-movie-container {
@@ -161,42 +179,145 @@ div#movie-h3-div{
 }
 
 
-/* Smaller carousel control buttons */
+/* Remove background, padding, and rounded shape */
 .carousel-control-prev,
 .carousel-control-next {
-    width: 5%; /* Reduce width from default 15% */
-    height: 25%;
-    opacity: 0.8;
-    transform: translateY(100%);
+    background: none !important;
+    border: none;
+    padding: 0;
+    width: auto;
 }
 
-/* Make the button icons smaller and more compact */
+/* Ensure Bootstrap's default icons are fully removed */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
+    background: none !important;
     width: 30px;
     height: 30px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    padding: 10px;
 }
 
-/* Position the buttons to be more visible against movie content */
+/* Custom arrow for previous button */
+.carousel-control-prev-icon::before {
+    content: '\2039'; /* Unicode for left arrow ‹ */
+    font-size: 40px;
+    color: white; /* Adjust color as needed */
+}
+
+/* Custom arrow for next button */
+.carousel-control-next-icon::before {
+    content: '\203A'; /* Unicode for right arrow › */
+    font-size: 40px;
+    color: white; /* Adjust color as needed */
+}
+
+/* Position the buttons */
 .carousel-control-prev {
-    left: 0;
+    left: 10px !important;
 }
 
 .carousel-control-next {
-    right: 0;
+    right: 10px !important;
 }
 
 /* Improve hover states for better user experience */
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
     opacity: 1;
+    transform: scale(1.2); /* Slightly enlarge on hover */
 }
+
 
 
 button.active {
     background-color: #007bff;
     color: rgb(255, 255, 255);
 }
+
+.each_row {
+    margin-bottom: 40px; /* Adjust space between each section */
+    padding: 20px; /* Optional: Adds spacing inside each section */
+}
+
+
+
+
+/* genre list */
+#genres_list {
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    width: 80%; /* You can adjust this value */
+    max-width: 1200px; /* Optional: Set a maximum width */
+}
+
+#genres_list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow genres to wrap to the next line */
+    justify-content: center; /* Center the genres */
+}
+
+#genres_list li {
+    margin: 0 10px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    opacity: 1; /* Make sure all genres are initially visible */
+}
+
+/* Initially show the first 8 genres */
+#genres_list li:nth-child(n+7) {
+    display: none; /* Hide genres starting from the 9th one */
+}
+
+/* Reveal all genres on hover */
+#genres_list:hover li {
+    display: inline-block; /* Make all items visible when hovered */
+    opacity: 1;
+}
+
+/* Style for the genre links */
+#genres_list a {
+    color: #f0f0f0;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+#genres_list a:hover {
+    background-color: #86200e;
+    color: white;
+    transform: scale(1.05);
+}
+
+#genres_list a:active {
+    background-color: #420404;
+    transform: scale(1);
+}
+
+/* Ensure no more than 8 genres are displayed in a row */
+#genres_list li:nth-child(6n+7) {
+    clear: left; /* Starts a new row after every 8 genres */
+}
+
+#genres_list li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* Optional: Smooth transition when hovering */
+#genres_list li {
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+
+
