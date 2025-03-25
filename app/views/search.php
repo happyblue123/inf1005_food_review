@@ -74,7 +74,7 @@ $login = isset($_SESSION['userid']);
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <p>No results.</p>
+                    <p id='no-results'>NO RESULTS.</p>
                 <?php endif; ?>
 
                 <?php

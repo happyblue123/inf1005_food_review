@@ -6,6 +6,14 @@ html, body {
     font-family: 'Helvetica Neue', sans-serif;
 }
 
+#no-results {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
 #main-content {
     display: flex;
     justify-content: space-between;
@@ -54,12 +62,12 @@ html, body {
 }
 
 #side-panel ul li a:hover {
-    background-color: #007bff;
+    background-color: rgb(138, 11, 11);
     color: #fff;
 }
 
 #side-panel ul li a:active {
-    background-color: #0056b3;
+    background-color: rgb(80, 1, 1);
 }
 
 #result-container {
@@ -170,7 +178,6 @@ html, body {
 }
 
 .movie-card:hover .movie-rating {
-    background-color: rgba(0, 123, 255, 0.8);
     color: #fff;
 }
 
