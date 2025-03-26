@@ -160,7 +160,7 @@ $login = isset($_SESSION['userid']);
 <div class="content">
     <div class="container text-center">
         <h3>Contact Us</h3>
-        <p>Have a question or concern? Feel free to contact us at <a href="mailto:public@peoplemoviereview.mail.sg">public@peoplemoviereview.mail.sg</a></p>
+        <p>Have a question or concern? Feel free to contact us at <a href="mailto:public@peoplereviewmovies.mail.sg">public@peoplereviewmovies.mail.sg</a></p>
     </div>
 </div>
 
