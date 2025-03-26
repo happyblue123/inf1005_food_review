@@ -232,3 +232,91 @@ p {
 img{
     border-radius: 8px;
 }
+
+/* Ensure each team member is properly sized */
+.team-member {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.team-member:hover {
+    transform: scale(1.05);  /* Zoom effect on hover */
+}
+
+/* Profile images */
+.team-member img {
+    border-radius: 50%;
+    width: 80%; /* Make the images fit within the container */
+    max-width: 150px;
+    margin-bottom: 1rem;
+}
+
+/* Columns configuration for smaller screens and larger screens */
+@media (max-width: 768px) {
+    .team-member {
+        margin-bottom: 2rem; /* Adjust spacing */
+    }
+
+    .col-md-2 {
+        flex: 0 0 33.33333%; /* For tablets and mobile, 3 per row */
+    }
+}
+
+@media (max-width: 576px) {
+    .col-sm-4 {
+        flex: 0 0 50%; /* On small screens (mobile), 2 per row */
+    }
+}
+
+/* Ensuring all team members fit in 1 row on larger screens */
+.row {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.caption h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.caption p {
+    font-size: 1rem;
+    color: #ccc;
+}
+/* Styling for the popcorn GIF section */
+.popcorn-section {
+    margin: 20px 0;  /* Reduce the margin between the sections */
+    display: flex;
+    justify-content: center; /* Center the GIF horizontally */
+    align-items: center;     /* Center the GIF vertically */
+    padding: 10px 0;          /* Reduce any unnecessary padding */
+}
+
+.popcorn-gif {
+    width: 80px;   /* Adjust the size of the GIF */
+    height: auto;   /* Maintain aspect ratio */
+    animation: bounce 1s ease infinite; /* Optional: Add a small bouncing animation to make it more lively */
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Bounces up a little */
+    }
+}
+/* Remove the box around the content */
+.reveal-text {
+    background: none;      /* Remove background */
+    border: none;          /* Remove border */
+    padding: 0;            /* Remove padding */
+    box-shadow: none;      /* Remove any shadow */
+}
+
