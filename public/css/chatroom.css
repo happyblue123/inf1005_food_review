@@ -1,0 +1,259 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+#messagesContainer {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Add this line */
+}
+
+#leaveRoomBtn {
+    position: absolute; /* Add this line */
+    top: 10px; /* Position it 10px from the top */
+    right: 10px; /* Position it 10px from the right */
+    background-color: #dc3545; /* You can change the background color if needed */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#leaveRoomBtn:hover {
+    background-color: #c82333; /* Hover color */
+}
+
+#roomName {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#messages {
+    flex-grow: 1;
+    width: 100%;
+    height: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow-y: scroll;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #fafafa;
+}
+
+#messageInput {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    resize: none;
+}
+
+.message {
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 8px;
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.message .sender {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.self-message {
+    background-color: #e0f7fa;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.other-message {
+    background-color: #fff3e0;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.room-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.room-item span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.join-btn {
+    margin-left: 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.join-btn:hover {
+    background-color: #0056b3;
+}
+
+.leave-message {
+    font-style: italic;
+    color: gray;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-to-createRoom {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+#showCreateRoomModal {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#showCreateRoomModal:hover {
+    background-color: #218838;
+}
+
+/* modal for create room form */
+#createRoomModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    width: 320px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#chatroom_name {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+button[type="submit"] {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* Style for the message input container */
+.message-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#messageInput {
+    width: calc(100% - 50px); /* Adjust to take remaining space after button */
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+#sendMessageBtn {
+    width: 40px; /* Adjust the width */
+    height: 40px; /* Set the height to make it a circular button */
+    background-color: #afb7bf;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Make it circular */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    font-size: 20px; /* Adjust the font size of the icon */
+    margin-left: 10px; /* Add some space between the input and button */
+}
+
+#sendMessageBtn:hover {
+    background-color: #4f555b;
+}

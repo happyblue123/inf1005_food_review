@@ -30,3 +30,10 @@ CREATE TABLE watchlist (
     FOREIGN KEY (userid) REFERENCES users(userid) ON DELETE CASCADE,
     FOREIGN KEY (movieid) REFERENCES movies(movieid) ON DELETE CASCADE
 );
+
+CREATE TABLE chatrooms (
+    chatroomid INT AUTO_INCREMENT PRIMARY KEY,
+    chatroom_name VARCHAR(255) NOT NULL,
+    userid INT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES users(userid) ON DELETE CASCADE
+);

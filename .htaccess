@@ -1,7 +1,9 @@
 RewriteEngine On
 
+RewriteRule ^moviewreviewapp\.sql$ - [F,L]
+RewriteRule ^config\.ini$ - [F,L]
 # Prevent direct access to certain directories (optional, for security)
-RewriteRule ^(app|core|models|views) - [F,L]
+RewriteRule ^(app|core|models|views|vendor) - [F,L]
 
 # Serve static files directly if they exist
 RewriteCond %{REQUEST_FILENAME} -f [OR]
