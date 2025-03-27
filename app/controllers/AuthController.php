@@ -11,10 +11,41 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 class AuthController {
+
+    private function passwordCriteriaValidation($password) {
+        // Password strength validation
+        $pass_password_criteria = true;
+        if (strlen($password) < 8) {
+            $pass_password_criteria = false;
+            $message_pwd_criteria[] = "Password must be at least 8 characters.";
+        }
+
+        // Check for at least one uppercase letter
+        if (!preg_match('/[A-Z]/', $password)) {
+            $pass_password_criteria = false;
+            $message_pwd_criteria[] = "Password must contain at least one uppercase letter.";
+        }
+
+        // Check for at least one numeric character
+        if (!preg_match('/\d/', $password)) {
+            $pass_password_criteria = false;
+            $message_pwd_criteria[] = "Password must contain at least one number.";
+        }
+
+        // Check for at least one special character
+        if (!preg_match('/[\W_]/', $password)) {
+            $pass_password_criteria = false;
+            $message_pwd_criteria[] = "Password must contain at least one special character.";
+        }
+        return [$pass_password_criteria, $message_pwd_criteria];
+    }
+
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             session_start();
-            $errors = [];
+            $message_pwd_criteria = [];
+            $empty_fields = false;
+            $invalid_format = false;
         
             // Sanitize inputs
             $username = htmlspecialchars(trim($_POST['username']));
@@ -24,52 +55,41 @@ class AuthController {
         
             // Validate inputs
             if (empty($username)) {
-                $errors[] = "Username is required.";
+                $empty_fields = true;
             }
             if (empty($email)) {
-                $errors[] = "Email is required.";
+                $empty_fields = true;
             }
             if (empty($password)) {
-                $errors[] = "Password is required.";
+                $empty_fields = true;
             }
-        
+            if ($empty_fields) {
+                $message = "Input fields cannot be empty.";
+                $_SESSION['register_result'] = [0, $message];
+                header('Location: /register');
+                exit;
+            }        
             // Validate email format
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors[] = "Invalid email format.";
+                $message = "Invalid email format.";
+                $_SESSION['register_result'] = [0, $message];
+                header('Location: /register');
+                exit;
             }
-        
-            // Password strength validation
-            if (strlen($password) < 8) {
-                $errors[] = "Password must be at least 8 characters.";
-            }
-
-            if (strlen($username) > 50) {
-                $errors[] = "Username must be less than 50 characters.";
-            }
-
-            if (preg_match('/[A-Z]/', $password)) {
-                $errors[] = "Password must contain at least one uppercase letter.";
-            }
-
-            if (preg_match('/[a-z]/', $password)) {
-                $errors[] = "Password must contain at least one lowercase letter.";
-            }
-
-            if (preg_match('/[0-9]/', $password)) {
-                $errors[] = "Password must contain at least one number.";
-            }
-
-            if (preg_match('/[^A-Za-z0-9]/', $password)) {
-                $errors[] = "Password must contain at least one special character.";
-            }
-
+            
             // Check if password and confirm password match
             if ($password_cfm != $password) {
-                $errors[] = "Please enter the same password.";
+                $message = "Please enter the same password.";
+                $_SESSION['register_result'] = [0, $message];
+                header('Location: /register');  
+                exit;
             }
-    
+
+            $result = $this->passwordCriteriaValidation($password);
+            $pass_password_criteria = $result[0];
+            $message_pwd_criteria = $result[1];
             // If there are no errors, proceed with registration
-            if (empty($errors)) {
+            if ($pass_password_criteria) {
                 $user = new User();
                 $result = $user->register($username, $email, $password_cfm);
         
@@ -87,14 +107,13 @@ class AuthController {
                     $_SESSION['register_result'] = [0, "Registration failed due to a system error."];
                 }
             }
-        
-            // If there are errors, show them in an alert
-            if (!empty($errors)) {
-                $allErrors = implode("\n", $errors);  // Join all errors with a newline character
-                $_SESSION['register_result'] = [0, $allErrors];
+            else {
+                $message = implode("\n", $message_pwd_criteria);
+                $_SESSION['register_result'] = [0, $message];
+                header('Location: /register');
+                exit;
             }
         }
-        
         // Load the registration view (this will show the form again if there are errors)
         require_once __DIR__ . "/../views/register.php";
     }
@@ -166,14 +185,6 @@ class AuthController {
                 header('Location: /resetpassword');
                 exit;
             }
-
-            // Password length validation
-            if (strlen($new_pwd) < 6) {
-                $error = "Password must be at least 6 characters.";
-                $_SESSION['resetpwd_result'] = [0, $error];
-                header('Location: /resetpassword');
-                exit;
-            }
     
             // Validate the current password
             if (!$user->validatePassword($userid, $current_pwd)) {
@@ -183,7 +194,17 @@ class AuthController {
                 header('Location: /resetpassword');
                 exit;
             }
-    
+            
+            $result = $this->passwordCriteriaValidation($password);
+            $pass_password_criteria = $result[0];
+            $message_pwd_criteria = $result[1];
+            if (!($pass_password_criteria)) {
+                $message = implode("\n", $message_pwd_criteria);
+                $_SESSION['resetpwd_result'] = [0, $message];
+                header('Location: /resetpassword');
+                exit;
+            }
+
             // Update the password
             if ($user->updatePassword($userid, $new_cfmpwd)) {
                 $message = "Password has been updated successfully.";
