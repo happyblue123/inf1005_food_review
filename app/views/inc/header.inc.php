@@ -63,9 +63,9 @@
                 </div>
             </div>
         </nav> -->
-      
 
-        <?php 
+
+<?php 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();  // Start the session if it's not already started
     $login = isset($_SESSION['userid']);
@@ -139,85 +139,74 @@ if (session_status() == PHP_SESSION_NONE) {
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-            <div class="gif-container">
-    <img src="/video/login.gif" alt="User GIF" width="60">
-    <img src="/Images/clapperboard.png" alt="Movie Ticket GIF" width="80">
-</div>
-
+                <div class="gif-container">
+                    <img src="/video/login.gif" alt="User GIF" width="60">
+                    <img src="/Images/clapperboard.png" alt="Movie Ticket GIF" width="80">
+                </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <p class="text-center account-text">Don't have an account? <a href="/register">Register</a></p>
-
+                <p class="text-center account-text">Don't have an account? <a href="/register">Register</a></p>
                 <p id="login-error" style="color: red" class="text-center"></p>
-                
                 <form id="loginForm" action="/login" method="POST">
                     <div class="mb-3">
                         <div class="input-group">
                             <span class="input-group-text">
                                 <img src="/Images/email.png" alt="Email Icon" width="20" height="20">
                             </span>
-                            <input type="email" class="form-control" placeholder="Email ID" id="email" name="email"
-                                required>
+                            <input type="email" class="form-control" placeholder="Email ID" id="email" name="email" required>
                         </div>
                     </div>
-
                     <div class="mb-3">
                         <div class="input-group">
                             <span class="input-group-text">
                                 <img src="/Images/padlock.png" alt="Lock Icon" width="20" height="20">
                             </span>
-                            <input type="password" class="form-control" placeholder="Password" id="password"
-                                name="pwd" required>
+                            <input type="password" class="form-control" placeholder="Password" id="password" name="pwd" required>
                             <span class="input-group-text" onclick="togglePassword()" style="cursor: pointer;">
                                 <img id="eye-icon" src="/Images/hidden.png" alt="Show Password" width="20" height="20">
                             </span>
                         </div>
                     </div>
-
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary w-100">LOGIN</button>
                     </div>
-
                     <!-- Forgot Password Trigger -->
-<a href="javascript:void(0)" class="forgot-password" data-toggle="modal" data-target="#forgotPwdModal">
-  Forgot password?
-</a>
+                    <a href="javascript:void(0)" class="forgot-password" data-toggle="modal" data-target="#forgotPwdModal">
+                        Forgot password?
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Forgot Password Modal -->
 <div class="modal fade forgot-password-modal" id="forgotPwdModal" tabindex="-1" role="dialog" aria-labelledby="forgotPwdModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
 
-                                <!-- Modal Header -->
-                                <div class="modal-header border-0">
-                                    <h5 class="modal-title" id="forgotPwdModalLabel">RESET PASSWORD</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none; border: none; background: none;">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                                <!-- Modal Body -->
-                                <div class="modal-body">
-                                    <p>Please enter your email address below, and we will send you a link to reset your password.</p>
-
-                                    <!-- Email Input -->
-                                    <input type="email" id="email_reset" placeholder="Email ID" />
-
-                                    <!-- Submit Button -->
-                                    <button type="submit" onclick="submitForgotPwd()">
-                                        SUBMIT
-                                    </button>
-
-                                    <!-- Feedback Message -->
-                                    <div id="forgotPwdMessage" class="mt-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
+            <!-- Modal Header -->
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="forgotPwdModalLabel">RESET PASSWORD</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p>Please enter your email address below, and we will send you a link to reset your password.</p>
+
+                <!-- Email Input -->
+                <input type="email" id="email_reset" placeholder="Email ID" required />
+
+                <!-- Submit Button -->
+                <button type="button" onclick="submitForgotPwd()">SUBMIT</button>
+
+                <!-- Feedback Message -->
+                <div id="forgotPwdMessage" class="mt-2"></div>
+            </div>
+
         </div>
     </div>
 </div>

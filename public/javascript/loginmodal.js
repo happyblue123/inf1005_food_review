@@ -46,13 +46,25 @@ function submitForgotPwd() {
 }
 
 
-// Auto-reset form when modal closes
 document.addEventListener("DOMContentLoaded", function () {
     var loginModal = document.getElementById('loginModal');
-
+    
+    // Reset the login form when the login modal is closed
     loginModal.addEventListener('hidden.bs.modal', function () {
         document.getElementById('loginForm').reset(); // Reset form when modal closes
+        document.getElementById("login-error").innerText = ""; // Optionally clear any error messages
+    });
+
+    // Close and reset the login modal when the forgot password modal is opened
+    $('#forgotPwdModal').on('show.bs.modal', function () {
+        // Close the login modal if it's open
+        $('#loginModal').modal('hide');
+        
+        // Reset the login form (clear all inputs)
+        $('#loginForm')[0].reset();
+        
+        // Optionally, clear any error messages
+        document.getElementById("login-error").innerText = "";
     });
 });
-
 
