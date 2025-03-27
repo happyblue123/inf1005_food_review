@@ -8,7 +8,9 @@ if (!$login) {
     header("Location: /home");
     exit;
 }
-$username = $_SESSION['username'];
+if ($login) {
+    $username = $_SESSION['username'];
+}
 ?>
 
 <!DOCTYPE html>
