@@ -1,232 +1,237 @@
-img#logo{
-    height: fit-content;
-    height: 100px;
-    margin: 0 auto;
-    display: block;
-    border-radius: 8px;
+/* ================================ */
+/* General Styles */
+/* ================================ */
+img#logo {
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 8px;
 }
-.navbar {
-    background: linear-gradient(90deg, #ffafafd6, #add6ff);
-    margin: 0%;
-}
-
-
-.user-icon {
-    position: absolute;
-    right: 300px; /* Pushes it to the right */
-    top: 50%; /* Aligns it vertically */
-    transform: translateY(-50%); /* Ensures it's centered */
-}
-.user-profile img {
-    width: 25px;
-    height: 25px;
-}
-.input-group {
-    display: flex;
-    align-items: center; /* Aligns all elements properly */
-    border-bottom: 2px solid black; /* Keeps the line under the input */
-    padding: 5px;
-    width: 100%;
-    position: relative; /* Ensures proper placement */
-}
-
-.input-group input {
-    border: none;
-    outline: none;
-    flex: 1; /* Ensures input takes up the remaining space */
-    padding: 8px;
-    font-size: 16px;
-}
-
-.icon, .eye-icon {
-    margin-right: 10px; /* Adds spacing between icons and text */
-    display: flex;
-    align-items: center;
-}
-
-.eye-icon {
-    margin-left: auto; /* Moves the eye icon to the right */
-    cursor: pointer;
-}
-.input-group-text {
-    background: none !important;  /* ✅ Removes background */
-    border: none !important;  /* ✅ Removes border */
-    padding: 0; /* ✅ Ensures no extra spacing */
-}
-
 
 .navbar {
-    height: 60px; /* Adjust height as needed */
-    padding: 5px 15px; /* Reduce padding to make it more compact */
+  background: linear-gradient(90deg, #ffafafd6, #add6ff);
+  height: 60px;
+  padding: 5px 150px;
+  margin: 0;
 }
 
 .navbar-brand img {
-    max-height: 40px; /* Adjust logo size */
+  max-height: 40px;
 }
 
 .navbar-nav .nav-link {
-    font-size: 14px; /* Make text slightly smaller */
-    padding: 8px 10px; /* Reduce spacing between nav items */
+  font-size: 14px;
+  padding: 8px 10px;
 }
 
 .navbar-toggler {
-    padding: 4px 8px; /* Reduce toggle button size */
+  padding: 4px 8px;
 }
 
 .navbar .d-flex {
-    position: absolute;
-    right: 80px;
-    top: 50px;
+  position: absolute;
+  right: 80px;
+  top: 50px;
 }
-/* Style the login button */
+
+/* ================================ */
+/* User Profile & Icon */
+/* ================================ */
+.user-profile img {
+  width: 25px;
+  height: 25px;
+}
+
+.user-icon {
+  position: absolute;
+  right: 300px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ================================ */
+/* Search Bar */
+/* ================================ */
+.input-group {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid black;
+  padding: 5px;
+  width: 100%;
+  position: relative;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.icon,
+.eye-icon {
+  display: flex;
+  align-items: center;
+}
+
+.eye-icon {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.input-group-text {
+  background: none !important;
+  border: none !important;
+  padding: 0;
+}
+
+/* ================================ */
+/* Buttons */
+/* ================================ */
 .btn-primary {
-    background: white;  /* ✅ White background */
-    color: black;  /* ✅ Black text */
-    border: 2px solid black;  /* ✅ Black border */
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: 0.3s;
+  background: white;
+  color: black;
+  border: 2px solid black;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-/* Button hover effect */
 .btn-primary:hover {
-    background: black; /* ✅ Turn background black on hover */
-    color: white; /* ✅ Make text white on hover */
-    border: 2px solid black; /* Keep black border */
+  background: black;
+  color: white;
+  border: 2px solid black;
 }
 
-a.forgot-password {
-    text-decoration: none; /* Default: No underline */
-    
-    transition: all 0.3s ease-in-out; /* Smooth effect */
+/* ================================ */
+/* Forgot Password Section */
+/* ================================ */
+.forgot-password {
+  display: block;
+  width: 150px;
+  margin: 20px auto 0;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 }
 
-a.forgot-password:hover {
-    text-decoration: underline; /* Underline on hover */
+.forgot-password:hover {
+  text-decoration: underline;
 }
-.gif-container {
-    display: flex;
-    justify-content: space-between; /* Moves one to the left, one to the right */
-    align-items: center;
-    width: 100%;  /* Ensure it takes the full width */
-    padding: 0 -15px; /* Adjust spacing */
-}
-.account-text {
-    margin-top: -75px; /* Move up */
-    margin-left: -25px; /* Move left */
-    color: black;
-}
-/*********************************
- * Forgot Password Modal Styles
- *********************************/
 
-/* Ensure the modal dialog is centered and has a reasonable max width */
+/* ================================ */
+/* Forgot Password Modal */
+/* ================================ */
 .forgot-password-modal .modal-dialog {
-    max-width: 500px;           /* Adjust width as needed */
-    margin: auto;
-  }
-  
-  /* Center the modal content and add padding */
-  .forgot-password-modal .modal-content {
-    text-align: center;         /* Horizontally center text */
-    padding: 20px;
-    border-radius: 8px;         /* Rounded corners (optional) */
-  }
-  
-  /* Increase the font size for the modal title and make it bold */
-  .forgot-password-modal .modal-title {
-    font-size: 1rem;            /* Larger font for the heading */
-    font-weight: bold;
-    margin: 0 auto;
-  }
-  
-  /* Remove default border and center the header content */
-  .forgot-password-modal .modal-header {
-    border-bottom: none;
-    justify-content: center;
-    position: relative;
-    text-align: center;
-    color: black;
-    font-size: 0.5rem;
-  }
-  
-  /* Style the close button (X) to be larger and placed at top-right */
-  .forgot-password-modal .close {
-    position: absolute;
-    top: 5px;
-    right: 20px;
-    outline: none;
-    border: none;
-    background: none;
-               
-  }
-  
-  /* Increase font size for the modal body text */
-  .forgot-password-modal .modal-body p {
-    font-size: 0.8rem;          /* Larger paragraph text */
-    margin-bottom: 1.5rem;
-    color: black;
-  }
-  
-  /* Style the email input field */
-  .forgot-password-modal #email_reset {
-    display: block;             /* Allows margin auto to center */
-    margin: 0 auto 20px;        /* Center horizontally + spacing below */
-    padding: 10px;
-    font-size: 1rem;
-    width: 80%;                 /* Adjust width to your preference */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  /* Style the submit button */
-  .forgot-password-modal button[type="submit"] {
-    background: white;  /* ✅ White background */
-    color: black;  /* ✅ Black text */
-    border: 2px solid black;  /* ✅ Black border */
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  /* Button hover effect */
-  .forgot-password-modal button[type="submit"]:hover {
-    background: black; /* ✅ Turn background black on hover */
-    color: white; /* ✅ Make text white on hover */
-    border: 2px solid black; /* Keep black border */
+  max-width: 500px;
+  margin: auto;
 }
-  
-  /* Feedback message styling */
-  .forgot-password-modal #forgotPwdMessage {
-    margin-top: 10px;
-    font-size: 1rem;
-    color: green;               /* Change color as desired */
-  }
-  .forgot-password-modal #email_reset {
-    font-size: 10px;
-  }
-  
-  .forgot-password-modal #email_reset::placeholder {
-    font-size: 10px;
-  }
 
-  .forgot-password {
-    display: block;       /* Make the link a block-level element */
-    width: 150px;         /* Give it a fixed width */
-    margin: 20px auto 0;       /* Center horizontally when block-level */
-    text-align: center;   /* Center the link text itself */
-  }
- 
-  
-  .custom-icon {
-    display: flex;
-    align-items: center;
-    margin-right: 0px;
-    transform: translateY(27px); 
-  }
-  
+.forgot-password-modal .modal-content {
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+}
 
-  
-  
-  
+.forgot-password-modal .modal-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.forgot-password-modal .modal-header {
+  border-bottom: none;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  color: black;
+  font-size: 0.5rem;
+}
+
+.forgot-password-modal .close {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.forgot-password-modal .modal-body p {
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+  color: black;
+}
+
+.forgot-password-modal #email_reset {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 10px;
+  font-size: 1rem;
+  width: 80%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.forgot-password-modal button[type="submit"] {
+  background: white;
+  color: black;
+  border: 2px solid black;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.forgot-password-modal button[type="submit"]:hover {
+  background: black;
+  color: white;
+}
+
+.forgot-password-modal #forgotPwdMessage {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: green;
+}
+
+.forgot-password-modal #email_reset::placeholder {
+  font-size: 10px;
+}
+
+/* ================================ */
+/* Other Elements */
+/* ================================ */
+.gif-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 -15px;
+}
+
+.account-text {
+  margin-top: -75px;
+  margin-left: -25px;
+  color: black;
+}
+
+.custom-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 0px;
+  transform: translateY(27px);
+}
+
+.navbar-collapse {
+  padding: 10px; /* Adds spacing so it's readable */
+  border-radius: 8px; /* Optional: rounded edges */
+}
+
+@media (max-width: 991px) { /* Bootstrap breakpoint for navbar collapse */
+  .navbar-collapse {
+      background:  white; /* Visible only in mobile view */
+      padding: 10px;
+      border-radius: 8px;
+  }
+}

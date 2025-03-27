@@ -11,7 +11,6 @@ $login = isset($_SESSION['userid']);
     <?php include "inc/head.inc.php"; ?>
     <link rel="stylesheet" href="/public/css/about.css">
     <script src="/public/javascript/about.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
     <title>Trending Movies</title>
 </head>
