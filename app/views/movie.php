@@ -128,8 +128,8 @@ if (isset($movieData[0]['id'])) {
 
                         <?php if (isset($_SESSION['userid']) && $review['userid'] == $_SESSION['userid']): ?>
                             <div class="edit_delete_buttons">
-                                <button class="edit_button">Edit</button>
-                                <button class="delete_button">Delete</button>
+                                <button class="edit_button"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button class="delete_button"><i class="fa-solid fa-trash"></i></button>
                             </div>
                         <?php endif; ?>
                     </div>

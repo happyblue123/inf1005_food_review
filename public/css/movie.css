@@ -76,13 +76,13 @@ textarea {
     position: absolute;
     top: 5px;
     right: 5px;
-    background: rgba(0, 0, 0, 0.5);
+    background: whitesmoke;
     padding: 5px;
     border-radius: 5px;
 }
 
 .edit_button, .delete_button {
-    background-color: #007bff;
+    background-color: #526374;
     color: white;
     border: none;
     padding: 5px 10px;
