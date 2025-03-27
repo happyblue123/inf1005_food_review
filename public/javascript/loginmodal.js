@@ -56,13 +56,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("forgotPwdLink").addEventListener("click", function() {
-        var forgotPwdContainer = document.getElementById("forgotPwdContainer");
-        if (forgotPwdContainer.style.display === "none") {
-            forgotPwdContainer.style.display = "block";
-        } else {
-            forgotPwdContainer.style.display = "none";
-        }
-    });
-});
