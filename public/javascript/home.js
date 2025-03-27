@@ -40,6 +40,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
   cycleText(); // Start the typing animation
   
+  // Get all carousels
+  const carousels = document.querySelectorAll('.carousel');
+    
+  // Function to update carousel display based on screen size
+  function updateCarouselDisplay() {
+      const screenWidth = window.innerWidth;
+      
+      carousels.forEach(carousel => {
+          const items = carousel.querySelectorAll('.carousel-item');
+          
+          // Reset all carousels to first slide when screen size changes significantly
+          const activeItem = carousel.querySelector('.carousel-item.active');
+          if (activeItem !== items[0]) {
+              items.forEach(item => item.classList.remove('active'));
+              items[0].classList.add('active');
+          }
+      });
+  }
+  
+  // Add resize listener
+  window.addEventListener('resize', updateCarouselDisplay);
+  
+  // Initial call
+  updateCarouselDisplay();
+  
 });
 
 
