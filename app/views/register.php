@@ -42,13 +42,23 @@ if ($login) {
 
             <label for="pwd" class="form-label">PASSWORD</label>
             <div class="mb-3 password-container">
-                <input required type="password" class="form-control" id="pwd" name="pwd">
+                <input required type="password" class="form-control" id="pwd" name="pwd" onkeyup="checkPasswordStrength()" onkeyup="checkPasswordMatch()">
                 <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon1" onclick="togglePassword('pwd', 'eye-icon1')">
             </div>
+            <small id="password-requirements" class="text-muted">
+                Password must contain at least:
+                <ul>
+                    <li>One uppercase letter (A-Z)</li>
+                    <li>One lowercase letter (a-z)</li>
+                    <li>One number (0-9)</li>
+                    <li>One special character (!@#$%^&*)</li>
+                    <li>Minimum 8 characters</li>
+                </ul>
+            </small>
 
             <label for="pwd_confirm" class="form-label">CONFIRM PASSWORD</label>
             <div class="mb-3 password-container">
-                <input required type="password" class="form-control" id="pwd_confirm" name="pwd_confirm">
+                <input required type="password" class="form-control" id="pwd_confirm" name="pwd_confirm" onkeyup="checkPasswordMatch()">
                 <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon2" onclick="togglePassword('pwd_confirm', 'eye-icon2')">
             </div>
 
@@ -83,5 +93,38 @@ if ($login) {
                 eyeIcon.src = "/Images/hidden.png"; // Change back to hidden eye icon
             }
         }
+
+    function checkPasswordStrength() {
+        let password = document.getElementById('pwd').value;
+        let passwordRequirements = document.getElementById('password-requirements');
+
+        let uppercase = /[A-Z]/.test(password);
+        let lowercase = /[a-z]/.test(password);
+        let number = /[0-9]/.test(password);
+        let specialChar = /[\W]/.test(password);
+        let minlength = password.length >= 8;
+        requirements.innerHTML = `
+        Password must contain at least:
+        <ul>
+            <li>${uppercase ? '✅' : '❌'} One uppercase letter (A-Z)</li>
+            <li>${lowercase ? '✅' : '❌'} One lowercase letter (a-z)</li>
+            <li>${number ? '✅' : '❌'} One number (0-9)</li>
+            <li>${specialChar ? '✅' : '❌'} One special character (!@#$%^&*)</li>
+            <li>${minlength ? '✅' : '❌'} Minimum 8 characters</li>
+        </ul>
+        `;
+    }
+
+    function checkPasswordMatch() {
+        let password = document.getElementById('pwd').value;
+        let confirmPassword = document.getElementById('pwd_confirm').value;
+        let submitBtn = document.querySelector('.submit-btn');
+
+        if (password === confirmPassword) {
+            submitBtn.disabled = false;
+        } else {
+            submitBtn.disabled = true;
+        }
+    }
     </script>
 </body>
