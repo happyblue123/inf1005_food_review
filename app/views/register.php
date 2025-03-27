@@ -103,7 +103,7 @@ if ($login) {
         let number = /[0-9]/.test(password);
         let specialChar = /[\W]/.test(password);
         let minlength = password.length >= 8;
-        requirements.innerHTML = `
+        passwordRequirements.innerHTML = `
         Password must contain at least:
         <ul>
             <li>${uppercase ? '✅' : '❌'} One uppercase letter (A-Z)</li>
