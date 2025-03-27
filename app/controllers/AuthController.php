@@ -195,7 +195,7 @@ class AuthController {
                 exit;
             }
             
-            $result = $this->passwordCriteriaValidation($password);
+            $result = $this->passwordCriteriaValidation($new_cfmpwd);
             $pass_password_criteria = $result[0];
             $message_pwd_criteria = $result[1];
             if (!($pass_password_criteria)) {
