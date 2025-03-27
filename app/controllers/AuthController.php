@@ -285,7 +285,7 @@ class AuthController {
             
             // Recipients
             $mail->setFrom('2403911@sit.singaporetech.edu.sg', 'Peoples Movie');
-            $mail->addAddress("ngyongxianyx@gmail.com", $username);  
+            $mail->addAddress($email, $username);  
             
             // Content
             $mail->isHTML(true);
