@@ -11,6 +11,7 @@ if (!$login) {
     <?php
     include "inc/head.inc.php"
     ?>
+    <link href="stylesheet" src="/public/css/resetpwd.css"></link>
 </head>
 
 <body>

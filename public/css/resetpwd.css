@@ -1,6 +1,69 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Container styles */
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.form-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-weight: normal; 
+    font-size: 14px; 
+    display: block;
+    margin: 8px 0 4px; 
+    color: #333; /* Optional: Adjust text color */
+}
+
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #000; 
+    outline: none;
+    font-size: 16px;
+    position: relative;
+}
+
+
+.password-container {
+    position: relative;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid black;
+    background: white;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: black;
+    color: white;
+}
+
+
 /* Success message */
 .resetpwd-result.success {
-    color: #4CAF50; /* Green for success */
+    color: #4CAF50;
     background-color: #d4edda;
     border: 1px solid #c3e6cb;
     padding: 10px;
@@ -12,7 +75,7 @@
 
 /* Error message */
 .resetpwd-result.error {
-    color: #dc3545; /* Red for error */
+    color: #dc3545;
     background-color: #f8d7da;
     border: 1px solid #f5c6cb;
     padding: 10px;
@@ -21,4 +84,3 @@
     text-align: center;
     margin-bottom: 15px;
 }
-

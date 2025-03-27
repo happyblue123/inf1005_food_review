@@ -11,7 +11,7 @@ if ($login) {
 
 <head>
     <?php include "inc/head.inc.php"; ?>
-    <link rel="stylesheet" href="public/css/register.css">
+    <link rel="stylesheet" href="/public/css/register.css">
 </head>
 
 <body>
