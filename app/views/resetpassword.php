@@ -6,7 +6,8 @@ if (!$login) {
     exit;
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <?php
     include "inc/head.inc.php"
@@ -70,3 +71,4 @@ if (!$login) {
     include "inc/footer.inc.php";
     ?>
 </body>
+</html>

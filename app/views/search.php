@@ -11,7 +11,6 @@ $login = isset($_SESSION['userid']);
 <head>
 <?php include "inc/head.inc.php"; ?>
 <link rel="stylesheet" href="/public/css/search.css">
-<title>Result of Search</title>
 </head>
 <body>
     <?php

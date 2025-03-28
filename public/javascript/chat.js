@@ -1,4 +1,4 @@
-const socketserver = 'ws://localhost:8080'; // when sftp to server, set to server's websocket IP
+const socketserver = 'ws://35.212.143.101:8080'; // when sftp to server, set to server's websocket IP
 document.addEventListener('DOMContentLoaded', function () {
     const socket = new WebSocket(socketserver);
     let currentRoom = '';

@@ -11,7 +11,6 @@ $login = isset($_SESSION['userid']);
     <?php include "inc/head.inc.php"; ?>
     <link rel="stylesheet" href="/public/css/home.css">
     <script src="/public/javascript/home.js"></script>
-    <title>Trending Movies</title>
 </head>
 <body>
     <?php
@@ -81,7 +80,7 @@ $login = isset($_SESSION['userid']);
                             <div class="d-flex justify-content-around">
                                 <?php foreach($movieChunk as $movie): ?>
                                     <div class="movie-item">
-                                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                                        <a href="/movie/<?php echo urlencode($movie['title']); ?>">
                                             <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
                                             <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" 
                                                 alt="<?php echo htmlspecialchars($movie['title']); ?>">
@@ -133,7 +132,7 @@ $login = isset($_SESSION['userid']);
                             <div class="d-flex justify-content-around">
                                 <?php foreach($movieChunk as $movie): ?>
                                     <div class="movie-item">
-                                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                                        <a href="/movie/<?php echo urlencode($movie['title']); ?>">
                                             <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
                                             <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" 
                                                 alt="<?php echo htmlspecialchars($movie['title']); ?>">
@@ -183,7 +182,7 @@ $login = isset($_SESSION['userid']);
                             <div class="d-flex justify-content-around">
                                 <?php foreach($movieChunk as $movie): ?>
                                     <div class="movie-item">
-                                        <a href="/movie/<?php echo htmlspecialchars($movie['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                                        <a href="/movie/<?php echo urlencode($movie['title']); ?>">
                                             <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
                                             <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" 
                                                 alt="<?php echo htmlspecialchars($movie['title']); ?>">

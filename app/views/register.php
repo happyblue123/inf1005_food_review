@@ -8,7 +8,8 @@ if ($login) {
     exit();
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <?php include "inc/head.inc.php"; ?>
     <link rel="stylesheet" href="/public/css/register.css">
@@ -20,7 +21,7 @@ if ($login) {
     ?>
 
     <main class="container">
-        <img id="logo" src="/Images/logo.png" alt="peoplereviewmovies_logo" class="border rounded mb-5">
+        <img src="/Images/logo.png" alt="peoplereviewmovies_logo" class="logo border rounded mb-5">
         <?php if (isset($_SESSION['register_result'])): ?>
             <?php
             $registerClass = ($_SESSION['register_result'][0] === 1) ? 'success' : 'error';
@@ -46,7 +47,7 @@ if ($login) {
                 <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon1"
                     onclick="togglePassword('pwd', 'eye-icon1')">
             </div>
-            <small id ="password-requirements" class="text-muted">
+            <div id ="password-requirements" class="text-muted">
                 Password must contain at least:
                 <ul>
                     <li>One uppercase letter (A-Z)</li>
@@ -55,7 +56,7 @@ if ($login) {
                     <li>One special character (!@#$%^&*)</li>
                     <li>Minimum 8 characters</li>
                 </ul>
-            </small>
+            </div>
             <label for="pwd_confirm" class="form-label">CONFIRM PASSWORD</label>
             <div class="mb-3 password-container">
                 <input required type="password" class="form-control" id="pwd_confirm" name="pwd_confirm">
@@ -120,3 +121,4 @@ if ($login) {
         }
     </script>
 </body>
+</html>

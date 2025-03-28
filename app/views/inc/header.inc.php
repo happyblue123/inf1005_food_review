@@ -10,7 +10,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="/home">
-            <img id="logo" src="/Images/logo.png" alt="peoplereviewmovies_logo">
+            <img class="logo" src="/Images/logo.png" alt="peoplereviewmovies_logo">
         </a>
 
         <!-- Navbar Toggle Button for Mobile -->
@@ -94,7 +94,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <?php endif; ?>
 
 <!-- LOGIN POPUP MODAL -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+<div class="modal fade" id="loginModal" tabindex="-1"
     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -158,7 +158,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <p>Please enter your email address below, and we will send you a link to reset your password.</p>
 
                 <!-- Email Input -->
-                <input type="email" id="email_reset" placeholder="Email ID" required />
+                <input type="email" id="email_reset" placeholder="Email ID" required>
 
                 <!-- Submit Button -->
                 <button type="button" onclick="submitForgotPwd()">SUBMIT</button>

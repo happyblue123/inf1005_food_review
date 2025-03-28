@@ -21,7 +21,6 @@ if (isset($movieData[0]['id'])) {
 <link rel="stylesheet" href="/public/css/watchlist.css">
 <script src="/public/javascript/reviewform.js"></script>
 <script src="/public/javascript/watchlist.js"></script>
-<title>Result of Search</title>
 </head>
 <body>
     <?php
@@ -88,9 +87,7 @@ if (isset($movieData[0]['id'])) {
             <?php if ($login): ?>
                 <button class="new_review">Click here to review</button>
             <?php else: ?>
-                <a href="javascript:void(0);" id="reviewLink">
-                    <button class="">Click here to review</button>
-                </a>
+                <button id="reviewLink">Click here to review</button>
                 <script>
                     document.addEventListener("DOMContentLoaded", function () {
                         // Add an event listener to the button
@@ -153,19 +150,18 @@ if (isset($movieData[0]['id'])) {
                 <form action="/submitReview" method="POST">
                     <input type="hidden" name="review_id" id="review-id" value="">
                     <div>
-                        <label for="rating">Rating:</label>
                         <div id="rating">
                             <i class="fa fa-star" data-index="0"></i>
                             <i class="fa fa-star" data-index="1"></i>
                             <i class="fa fa-star" data-index="2"></i>
                             <i class="fa fa-star" data-index="3"></i>
                             <i class="fa fa-star" data-index="4"></i>
-                            <input type="hidden" name="rating" id="rating-value" value="" required>
+                            <input type="hidden" name="rating" id="rating-value" value="">
                         </div>
                     </div>
 
                     <div>
-                        <label for="review">Your Review:</label>
+                        <label for="review-text">Your Review:</label>
                         <textarea required name="review" id="review-text" maxlength="500" rows="4" placeholder="Write your review here..."></textarea>
                     </div>
 

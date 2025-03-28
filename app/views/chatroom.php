@@ -14,7 +14,6 @@ $username = $_SESSION['username'] ?? "";
 <link rel="stylesheet" href="/public/css/chatroom.css">
 <script src="/public/javascript/createRoomModal.js"></script>
 <script src="/public/javascript/chat.js"></script>
-<title>Chatrooms</title>
 </head>
 <body>
     <?php
