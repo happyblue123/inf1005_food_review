@@ -40,7 +40,7 @@ $login = isset($_SESSION['userid']);
 
         <!-- Foreground Text -->
         <div class="content">
-            <h2>Movie reivews <span id="changing-text"></span><span class="cursor">|</span></h2>
+            <h2>Movie reviews <span id="changing-text"></span><span class="cursor">|</span></h2>
             <p class="gray-darker">Find the latest movie reviews and ratings here!</p>
         </div>
     </div>
