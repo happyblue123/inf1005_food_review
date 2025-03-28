@@ -29,7 +29,7 @@ if (session_status() == PHP_SESSION_NONE) {
             </ul>
             <div id="search-container" class="d-none d-lg-block">
                 <i class="fas fa-search"></i>
-                <input class="form-control" type="text" id="nav-search" name="movie_name" placeholder="Search for a movie..." required>
+                <input class="form-control movie-search" type="text" name="movie_name" placeholder="Search for a movie..." required>
             </div>
             
             <!-- Move user profile inside collapse on mobile -->

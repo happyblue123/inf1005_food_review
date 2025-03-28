@@ -47,7 +47,7 @@ $login = isset($_SESSION['userid']);
 
     <div id="search-container_home">
         <i class="fas fa-search"></i>
-        <input class="form-control" type="text" id="movie-search" name="movie_name" placeholder="Search for a movie..." required>
+        <input class="form-control movie-search" type="text" name="movie_name" placeholder="Search for a movie..." required>
     </div>
 
     <div id="genres_list"> <!-- Navigation-like panel with links for different genres -->

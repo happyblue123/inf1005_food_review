@@ -3,7 +3,7 @@ $(document).ready(function() {
     const apiKey = '6cf96494d2d88470ef456aa5cf938cf2'; // Replace with your TMDb API key
 
     // Autocomplete function for movie search
-    $('#movie-search').autocomplete({
+    $('.movie-search').autocomplete({
         source: function(request, response) {
             $.ajax({
                 url: `https://api.themoviedb.org/3/search/movie`,
