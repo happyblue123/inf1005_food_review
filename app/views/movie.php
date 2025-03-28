@@ -29,12 +29,7 @@ if (isset($movieData[0]['id'])) {
     include "inc/header.inc.php";
     ?>
     
-    <main>  
-        <div id="search-container">
-            <h2>Movie Search</h2>
-            <input type="text" id="movie-search" placeholder="Search for a movie...">
-        </div>
-
+    <main> 
         <div id='moviesearched'>
             <?php if (!empty($movieData)): ?> <!-- if queried movie is found then display the info -->
                 <div class="movie-container">

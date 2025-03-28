@@ -54,10 +54,6 @@ $login = isset($_SESSION['userid']);
         </ul>
     </div>
         
-    <div id="search-container">
-        <!-- <h2>Movie Search</h2> -->
-        <input type="text" id="movie-search" name="movie_name" placeholder="Search for a movie..." required>
-    </div>
 
     <div class='each_row'>
         <h2>TRENDING</h2>

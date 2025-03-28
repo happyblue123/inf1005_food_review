@@ -165,14 +165,6 @@ h2:hover {
     50% { opacity: 0; }
 }
 
-#search-container h2{
-    color: white;
-}
-
-div#search-container {
-    padding: 20px;
-}
-
 body {
     font-family: 'Inter', 'Helvetica Neue', sans-serif;
     background-color: #3e3a3a;
