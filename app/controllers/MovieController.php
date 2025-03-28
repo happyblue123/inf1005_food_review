@@ -103,7 +103,7 @@ class MovieController {
                         'username'    => $review['username'],
                         'rating'      => $review['rating'],
                         'review_text' => $review['review_text'],
-                        'created_at'  => $review['created_at']
+                        'created_at'  => date('d M Y, H:i:s', strtotime($review['created_at']))
                     ];
                 }
                 if ($totalReviews > 0) {
