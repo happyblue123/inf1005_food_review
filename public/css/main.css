@@ -16,7 +16,7 @@ footer p {
 
 /* Optional: Add some style to the placeholder text */
 #movie-search::placeholder {
-    padding: 10px;
+    padding: 0px;
     color: #888;
     /* Sets the placeholder text color */
     font-style: italic;
@@ -38,6 +38,12 @@ footer p {
 }
 
 #movie-search {
+    padding-left: 30px; /* Adds space for the icon */
+    width: 250px; /* Set the width of the input field */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+}
+
+#nav-search {
     padding-left: 30px; /* Adds space for the icon */
     width: 250px; /* Set the width of the input field */
     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
