@@ -31,7 +31,8 @@ class ChatController {
             $chatModel = new Chatroom();
             $userid = $_SESSION['userid'];
             $data = json_decode(file_get_contents("php://input"), true);
-            $chatroomName = $data['chatroom_name'];
+            // $chatroomName = $data['chatroom_name'];
+            $chatroomName = htmlspecialchars($data['chatroom_name'], ENT_QUOTES, 'UTF-8');
     
             // Create the chatroom and get the result
             $result = $chatModel->createChatroom($userid, $chatroomName);
