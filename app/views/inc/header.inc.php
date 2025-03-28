@@ -26,11 +26,11 @@ if (session_status() == PHP_SESSION_NONE) {
                 <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="/home#genres_list">Genre</a></li>
                 <li class="nav-item"><a class="nav-link" href="/chatroom">Chatrooms</a></li>
-                <div id="search-container">
-                    <!-- <h2>Movie Search</h2> -->
-                    <input type="text" id="movie-search" name="movie_name" placeholder="Search for a movie..." required>
-                </div>
             </ul>
+            <div id="search-container" class="d-none d-lg-block">
+                <i class="fas fa-search"></i>
+                <input class="form-control" type="text" id="nav-search" name="movie_name" placeholder="Search for a movie..." required>
+            </div>
             
             <!-- Move user profile inside collapse on mobile -->
             <div class="d-lg-none mb-2">

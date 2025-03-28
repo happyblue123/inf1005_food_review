@@ -405,7 +405,7 @@ button.active {
 /* Style for the search icon inside the input bar */
 #search-container_home i {
     position: relative;
-    left: 30px; /* Adjust positioning within the input */
+    left: 27px; /* Adjust positioning within the input */
     font-size: 18px; /* Adjust icon size */
     color: #888; /* Optional: Change icon color */
 }
