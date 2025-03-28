@@ -19,16 +19,39 @@ if (session_status() == PHP_SESSION_NONE) {
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Navbar Items Aligned to the Left -->
+        <!-- Navbar Content - Reorganized for Mobile -->
         <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav ms-3"> <!-- ms-3 adds left margin for spacing -->
+            <!-- Main Navigation Links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="/chatroom">Chatrooms</a></li>
             </ul>
+            
+            <!-- Move user profile inside collapse on mobile -->
+            <div class="d-lg-none mb-2">
+                <?php if ($login): ?>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMobile" role="button" 
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="/Images/user.png" alt="User Icon" width="30" height="30">
+                            <span class="ms-2">My Account</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMobile">
+                            <li><a class="dropdown-item" href="/profile">My Account</a></li>
+                            <li><a class="dropdown-item" href="/resetpassword">Reset Password</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                <?php else: ?>
+                    <a href="#" class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Login / Register
+                    </a>
+                <?php endif; ?>
+            </div>
         </div>
         
-        <!-- Profile Icon at the Right End -->
-        <div class="user-profile">
+        <!-- Profile Icon at the Right End - Visible only on larger screens -->
+        <div class="user-profile d-none d-lg-block">
             <ul class="navbar-nav ms-5">
                 <li class="nav-item dropdown">
                     <?php if ($login): ?>
@@ -49,7 +72,6 @@ if (session_status() == PHP_SESSION_NONE) {
                 </li>
             </ul>
         </div>
-
     </div>
 </nav>
 

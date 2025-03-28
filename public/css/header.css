@@ -10,13 +10,26 @@ img#logo {
 
 .navbar {
   background: linear-gradient(90deg, #ffafafd6, #add6ff);
-  height: 60px;
-  padding: 5px 150px;
+  padding: 5px 15px; /* Reduced padding for all devices */
   margin: 0;
+}
+
+/* Responsive navbar adjustments */
+@media (min-width: 992px) {
+  .navbar {
+    padding: 5px 150px; /* Original padding only for larger screens */
+  }
 }
 
 .navbar-brand img {
   max-height: 40px;
+}
+
+/* Responsive logo adjustments */
+@media (max-width: 767px) {
+  img#logo {
+    height: 60px; /* Smaller logo on mobile */
+  }
 }
 
 .navbar-nav .nav-link {
@@ -29,7 +42,7 @@ img#logo {
   z-index: 100;
   padding: 8px 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  margin-right: 15px;
+  margin-right: 0;
   cursor: pointer;
 }
 
@@ -272,5 +285,54 @@ img#logo {
   /* Center-align navbar items on mobile */
   .navbar-nav {
     text-align: center;
+  }
+}
+
+/* Mobile navbar improvements */
+@media (max-width: 991px) {
+  /* Container adjustments */
+  .container-fluid {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  /* Fix navbar collapse position */
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 0 0 8px 8px;
+    z-index: 1000;
+  }
+  
+  .navbar-toggler {
+    margin-left: auto;
+  }
+  
+  /* Properly align navbar brand */
+  .navbar-brand {
+    padding: 0;
+    margin-right: 1rem;
+  }
+  
+  /* Proper spacing for collapsed items */
+  .navbar-nav .nav-item {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .navbar-nav .nav-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Reset user profile position */
+  .user-profile {
+    position: static;
+    margin-left: 0;
+    transform: none;
   }
 }
