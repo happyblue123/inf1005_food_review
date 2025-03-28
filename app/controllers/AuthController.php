@@ -53,7 +53,6 @@ class AuthController {
             $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
             $password = trim($_POST['pwd']);
             $password_cfm = trim($_POST['pwd_confirm']);
-        
             // Validate inputs
             if (empty($username)) {
                 $empty_fields = true;
