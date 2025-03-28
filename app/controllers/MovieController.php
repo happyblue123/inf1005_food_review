@@ -47,6 +47,7 @@ class MovieController {
         $queried_parts = explode("/", $fullRoute);
         $route_to = $queried_parts[1];
         $search_by = $queried_parts[2];
+        $formattedReviews = [];
         
         if (strpos($param, '?') === false) { // ensure ?page exist before using explode
             $userinput = $param;
