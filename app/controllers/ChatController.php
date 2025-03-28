@@ -9,10 +9,10 @@ class ChatController {
             session_start();
         }
         
-        if (!isset($_SESSION['userid'])) {
-            header('Location: /home');
-            exit;
-        }
+        // if (!isset($_SESSION['userid'])) {
+        //     header('Location: /home');
+        //     exit;
+        // }
 
         $chatModel = new Chatroom();
         $chatrooms = $chatModel->fetchChatrooms();
