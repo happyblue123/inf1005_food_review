@@ -20,9 +20,6 @@ $login = isset($_SESSION['userid']);
     ?>
     
     <main>
-        <!-- <div id="search-container">
-            <input type="text" id="movie-search" placeholder="Search for a movie...">
-        </div> -->
         <div id="main-content">
             <div id="side-panel"> <!-- Navigation-like panel with links for different genres -->
                 <h3>Genre</h3>
