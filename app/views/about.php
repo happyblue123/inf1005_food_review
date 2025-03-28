@@ -12,15 +12,14 @@ $login = isset($_SESSION['userid']);
     <link rel="stylesheet" href="/public/css/about.css">
     <script src="/public/javascript/about.js"></script>
     
-    <title>Trending Movies</title>
+    <title>About People Movie Review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
-    <?php
-    include "inc/header.inc.php";
-    ?>
-
-
-
+    <!-- Navbar wrapper to control positioning -->
+    <div class="navbar-container">
+        <?php include "inc/header.inc.php"; ?>
+    </div>
 
     <!-- Background parallax elements -->
     <div class="bg-parallax">
