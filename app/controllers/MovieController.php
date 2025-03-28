@@ -47,6 +47,7 @@ class MovieController {
         $queried_parts = explode("/", $fullRoute);
         $route_to = $queried_parts[1];
         $search_by = $queried_parts[2];
+        $formattedReviews = [];
         
         if (strpos($param, '?') === false) { // ensure ?page exist before using explode
             $userinput = $param;
@@ -103,7 +104,7 @@ class MovieController {
                         'username'    => $review['username'],
                         'rating'      => $review['rating'],
                         'review_text' => $review['review_text'],
-                        'created_at'  => $review['created_at']
+                        'created_at'  => date('d M Y, H:i:s', strtotime($review['created_at']))
                     ];
                 }
                 if ($totalReviews > 0) {

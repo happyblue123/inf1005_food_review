@@ -92,8 +92,12 @@ textarea {
     transition: background-color 0.3s ease;
 }
 
-.edit_button:hover, .delete_button:hover {
+.edit_button:hover {
     background-color: #0056b3;
+}
+
+.delete_button:hover {
+    background-color: #ce2626;
 }
 
 /* Show buttons on hover */
@@ -370,6 +374,27 @@ div#search-container h2 {
 .each_review:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+
+/* Styling for the horizontal line (hr) */
+p.hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* Date styling */
+p.review-date {
+    font-size: 14px;
+    color: #888;
+    text-align: right;
+}
+
+/* Optional: Styling for the "me" username if displayed */
+p.review-username {
+    font-weight: bold;
+    color: #007BFF;
 }
 
 p.review-username {

@@ -111,7 +111,7 @@ if (isset($movieData[0]['id'])) {
 
 
             <?php if (!empty($movieData)): ?>
-                <?php foreach ($reviewsData as $review): ?>
+                <?php foreach ($formattedReviews as $review): ?>
                     <div class="each_review" data-review-id="<?= $review['reviewid']; ?>">
                         <?php if ($login): ?>
                             <?php if ($review['userid'] == $_SESSION['userid']): ?>
@@ -122,9 +122,10 @@ if (isset($movieData[0]['id'])) {
                         <?php else :  ?>
                             <p class="review-username"><?= $review['username']; ?></p>
                         <?php endif; ?>
-                        <p class="review-rating">Overall rating: <?= $review['rating']; ?></p>
+                        <p class="review-rating">Rating: <?= $review['rating']; ?> / 5</p>
                         <p class="review-text"><?= $review['review_text']; ?></p>
-                        <p><?= $review['created_at']; ?></p>
+                        <hr>
+                        <p class="review-date"><?= $review['created_at']; ?></p>
 
                         <?php if (isset($_SESSION['userid']) && $review['userid'] == $_SESSION['userid']): ?>
                             <div class="edit_delete_buttons">
