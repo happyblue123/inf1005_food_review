@@ -21,9 +21,9 @@ if ($login) {
 
     <main class="container">
         <img id="logo" src="/Images/logo.png" alt="peoplereviewmovies_logo" class="border rounded mb-5">
-        <?php if(isset($_SESSION['register_result'])): ?>
-            <?php 
-            $registerClass = ($_SESSION['register_result'][0] === 1) ? 'success' : 'error'; 
+        <?php if (isset($_SESSION['register_result'])): ?>
+            <?php
+            $registerClass = ($_SESSION['register_result'][0] === 1) ? 'success' : 'error';
             $message = $_SESSION['register_result'][1];
             ?>
             <p class="register-result <?php echo $registerClass; ?>"><?php echo $message; ?></p>
@@ -42,14 +42,25 @@ if ($login) {
 
             <label for="pwd" class="form-label">PASSWORD</label>
             <div class="mb-3 password-container">
-                <input required type="password" class="form-control" id="pwd" name="pwd">
-                <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon1" onclick="togglePassword('pwd', 'eye-icon1')">
+                <input required type="password" class="form-control" id="pwd" name="pwd" onkeyup="checkPasswordStrength()">
+                <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon1"
+                    onclick="togglePassword('pwd', 'eye-icon1')">
             </div>
-
+            <small id ="password-requirements" class="text-muted">
+                Password must contain at least:
+                <ul>
+                    <li>One uppercase letter (A-Z)</li>
+                    <li>One lowercase letter (a-z)</li>
+                    <li>One number (0-9)</li>
+                    <li>One special character (!@#$%^&*)</li>
+                    <li>Minimum 8 characters</li>
+                </ul>
+            </small>
             <label for="pwd_confirm" class="form-label">CONFIRM PASSWORD</label>
             <div class="mb-3 password-container">
                 <input required type="password" class="form-control" id="pwd_confirm" name="pwd_confirm">
-                <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon2" onclick="togglePassword('pwd_confirm', 'eye-icon2')">
+                <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon2"
+                    onclick="togglePassword('pwd_confirm', 'eye-icon2')">
             </div>
 
             <div class="checkbox-container">
@@ -59,18 +70,42 @@ if ($login) {
 
             <button type="submit" class="submit-btn">CREATE ACCOUNT</button>
 
-            
+
             <p class="text-center account-text">
-    Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-</p>
+                Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+            </p>
 
         </form>
     </main>
 
     <?php include "inc/footer.inc.php"; ?>
 
-    
+
     <script>
+        function checkPasswordStrength() {
+            let password = document.getElementById("pwd").value;
+            let requirements = document.getElementById("password-requirements");
+
+            // Define the complexity rules
+            let uppercase = /[A-Z]/.test(password);
+            let lowercase = /[a-z]/.test(password);
+            let number = /[0-9]/.test(password);
+            let specialChar = /[\W]/.test(password);
+            let minLength = password.length >= 8;
+
+            // Update UI with check marks ❌✅
+            requirements.innerHTML = `
+        Password must contain at least:
+        <ul>
+            <li style="color: ${uppercase ? 'green' : 'red'}">${uppercase ? '✅' : '❌'} One uppercase letter (A-Z)</li>
+            <li style="color: ${lowercase ? 'green' : 'red'}">${lowercase ? '✅' : '❌'} One lowercase letter (a-z)</li>
+            <li style="color: ${number ? 'green' : 'red'}">${number ? '✅' : '❌'} One number (0-9)</li>
+            <li style="color: ${specialChar ? 'green' : 'red'}">${specialChar ? '✅' : '❌'} One special character (!@#$%^&*)</li>
+            <li style="color: ${minLength ? 'green' : 'red'}">${minLength ? '✅' : '❌'} Minimum 8 characters</li>
+        </ul>
+    `;
+        }
+
         function togglePassword(inputId, eyeIconId) {
             var passwordInput = document.getElementById(inputId);
             var eyeIcon = document.getElementById(eyeIconId);
