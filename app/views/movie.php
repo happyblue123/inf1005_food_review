@@ -52,7 +52,7 @@ if (isset($movieData[0]['id'])) {
                         <div class="movie-main-info">
                             <div class="title-watchlist">
                                 <h3><?php echo htmlspecialchars($movieData[0]['title']); ?></h3>
-                                <i class="watchlist-icon <?= $isInWatchlist ? 'fas fa-star in-watchlist' : 'far fa-star' ?>"
+                                <i class="watchlist-icon <?= $isInWatchlist ? 'fas fa-heart in-watchlist' : 'far fa-heart' ?>"
                                     data-movie-id="<?= $movieData[0]['id'] ?>"
                                     data-movie-name="<?= htmlspecialchars($movieData[0]['title'], ENT_QUOTES, 'UTF-8') ?>"
                                     data-in-watchlist="<?= $isInWatchlist ? 'true' : 'false' ?>"
