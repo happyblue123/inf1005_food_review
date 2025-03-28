@@ -392,6 +392,23 @@ button.active {
 .carousel {
     padding: 0 30px;
 }
+/* Style for search bar container */
+#search-container_home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px; /* Optional, for rounded corners */
+    position: relative;
+}
+
+/* Style for the search icon inside the input bar */
+#search-container_home i {
+    position: relative;
+    left: 30px; /* Adjust positioning within the input */
+    font-size: 18px; /* Adjust icon size */
+    color: #888; /* Optional: Change icon color */
+}
 
 /* Responsive breakpoints */
 @media (max-width: 992px) {
