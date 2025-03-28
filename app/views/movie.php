@@ -19,7 +19,6 @@ if (isset($movieData[0]['id'])) {
 <?php include "inc/head.inc.php"; ?>
 <link rel="stylesheet" href="/public/css/movie.css">
 <link rel="stylesheet" href="/public/css/watchlist.css">
-<script src="/public/javascript/searchbar.js"></script>
 <script src="/public/javascript/reviewform.js"></script>
 <script src="/public/javascript/watchlist.js"></script>
 <title>Result of Search</title>
@@ -75,14 +74,14 @@ if (isset($movieData[0]['id'])) {
         <div id="reviews">
             <h2>Reviews</h2>
             <?php if(isset($_SESSION['error_display'])) : ?>
-                <p style="color: red"><?php echo $_SESSION['error_message'];?></p>
+                <h4 class="update_result" style="color: red;"><?php echo $_SESSION['error_message']; ?></h4>
                 <?php
                 unset($_SESSION['error_display']);
                 unset($_SESSION['error_message']);
                 ?>
             <?php endif ?>
             <?php if (isset($_SESSION['delete_result'])): ?>
-                <h4 id="delete_result"><?php echo $_SESSION['delete_result']; ?></h4>
+                <h4 class="update_result"><?php echo $_SESSION['delete_result']; ?></h4>
                 <?php unset($_SESSION['delete_result']); ?>
             <?php endif ?>
             
