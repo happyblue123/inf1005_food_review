@@ -24,6 +24,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <!-- Main Navigation Links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/home#genres_list">Genre</a></li>
                 <li class="nav-item"><a class="nav-link" href="/chatroom">Chatrooms</a></li>
             </ul>
             
@@ -127,7 +128,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <button type="submit" class="btn btn-primary w-100">LOGIN</button>
                     </div>
                     <!-- Forgot Password Trigger -->
-                    <a href="javascript:void(0)" class="forgot-password" data-toggle="modal" data-target="#forgotPwdModal">
+                    <a href="javascript:void(0)" class="forgot-password" data-bs-toggle="modal" data-bs-target="#forgotPwdModal">
                         Forgot password?
                     </a>
                 </form>
