@@ -10,7 +10,6 @@ $login = isset($_SESSION['userid']);
 <head>
     <?php include "inc/head.inc.php"; ?>
     <link rel="stylesheet" href="/public/css/home.css">
-    <script src="/public/javascript/searchbar.js"></script>
     <script src="/public/javascript/home.js"></script>
     <title>Trending Movies</title>
 </head>

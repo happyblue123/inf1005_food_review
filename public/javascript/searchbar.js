@@ -33,7 +33,7 @@ $(document).ready(function() {
     });
 
     // Detect Enter key press in the search field
-    $('#movie-search').on('keydown', function(event) {
+    $('.movie-search').on('keydown', function(event) {
         if (event.key === "Enter") {
             event.preventDefault(); // Prevent default action (like form submission)
             const searchTerm = $(this).val(); // Get the value of the input field

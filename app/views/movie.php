@@ -19,7 +19,6 @@ if (isset($movieData[0]['id'])) {
 <?php include "inc/head.inc.php"; ?>
 <link rel="stylesheet" href="/public/css/movie.css">
 <link rel="stylesheet" href="/public/css/watchlist.css">
-<script src="/public/javascript/searchbar.js"></script>
 <script src="/public/javascript/reviewform.js"></script>
 <script src="/public/javascript/watchlist.js"></script>
 <title>Result of Search</title>
