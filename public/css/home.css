@@ -297,7 +297,6 @@ button.active {
 
 
 
-
 /* genre list */
 #genres_list {
     background-color: #f1f1f1b6;
@@ -536,6 +535,20 @@ button.active {
 /* Ensure carousel has space on sides for buttons */
 .carousel {
     padding: 0 40px;
+}
+
+/* Alternative fix - keep indicators at bottom but no overlap */
+.carousel-indicators {
+    position: absolute !important;
+    bottom: -30px !important;       /* Position below the carousel content */
+    margin-bottom: 0 !important;
+    z-index: 5;
+}
+
+/* Make sure carousel has enough bottom padding */
+.carousel {
+    margin-bottom: 40px !important;
+    padding-bottom: 30px !important;
 }
 
 
