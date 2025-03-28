@@ -26,26 +26,36 @@ document.addEventListener('DOMContentLoaded', function () {
         const messages = document.getElementById('messages');
         const messageElement = document.createElement('div');
         messageElement.classList.add('message');
-    
+        
+        // Handle the user count update
+        if (data.type === 'userCount') {
+            const numOfUsers = data.numOfUsers;
+            document.getElementById('numOfUsers').textContent = `Users: ${numOfUsers}`;
+            return;
+        }
+
         if (data.sender === username) {
             messageElement.classList.add('self-message');
-        } else if (data.sender === "System") {
+        } 
+        else if (data.sender === "System") {
             messageElement.classList.add('leave-message');
             const senderElement = document.createElement('div');
             messageElement.appendChild(senderElement);
-        } else {
+        } 
+        else {
             messageElement.classList.add('other-message');
             const senderElement = document.createElement('div');
             senderElement.classList.add('sender');
             senderElement.textContent = data.sender;
             messageElement.appendChild(senderElement);
         }
-    
+        
         const textElement = document.createElement('div');
         textElement.textContent = data.message;
         messageElement.appendChild(textElement);
         messages.appendChild(messageElement);
         messages.scrollTop = messages.scrollHeight;
+        
     };
     
     socket.onerror = function (error) {

@@ -12,7 +12,6 @@ class Chat implements MessageComponentInterface {
     protected $clients;  // All connected clients with their usernames
     protected $rooms;    // Rooms and their respective clients
 
-    
     public function __construct() {
         $this->clients = new \SplObjectStorage;
         $this->rooms = [];
@@ -21,9 +20,7 @@ class Chat implements MessageComponentInterface {
     public function onOpen(ConnectionInterface $conn) {
         // Debugging message to check the onOpen function
         echo "New connection! ({$conn->resourceId})\n";
-    
     }
-    
 
     public function onClose(ConnectionInterface $conn) {
         // Handle user leaving a room
@@ -32,9 +29,12 @@ class Chat implements MessageComponentInterface {
                 $username = $this->clients->offsetGet($conn)['username'];
                 unset($this->rooms[$room][$conn->resourceId]);
                 echo "Connection {$conn->resourceId} has left room: $room\n";
-    
+
                 // Broadcast the leave message
                 $this->broadcastToRoom($conn, $room, "{$username} has left the chat.", "System");
+
+                // Broadcast the updated user count to the room
+                $this->broadcastUserCountToRoom($room);
 
                 // Check if the room is empty and delete from db
                 if (empty($this->rooms[$room])) {
@@ -45,24 +45,28 @@ class Chat implements MessageComponentInterface {
                 break;
             }
         }
-    
+
         $this->clients->detach($conn);
     }
-    
+
     public function onMessage(ConnectionInterface $from, $msg) {
         $messageData = json_decode($msg, true);
-        
+
         if (isset($messageData['action']) && $messageData['action'] === 'join') {
             // Store the username when joining and join the room
             $this->clients->offsetSet($from, ['username' => $messageData['sender']]);
-            
+
             $this->joinRoom($from, $messageData['sender'], $messageData['room'], $messageData['roomName']);
-    
+
             // Broadcast the join message
             $this->broadcastToRoom($from, $messageData['room'], "{$messageData['sender']} has joined the chat.", "System");
+
+            // Broadcast the updated user count to the room
+            $this->broadcastUserCountToRoom($messageData['room']);
+
             return;
         }
-    
+
         if (isset($messageData['room']) && isset($messageData['message'])) {
             // Broadcast regular chat message
             $this->broadcastToRoom($from, $messageData['room'], $messageData['message'], $messageData['sender']);
@@ -78,7 +82,7 @@ class Chat implements MessageComponentInterface {
         if (!isset($this->rooms[$room])) {
             $this->rooms[$room] = [];
         }
-    
+
         // Remove user from any previous room they might have been in
         foreach ($this->rooms as $r => $clients) {
             if (isset($clients[$conn->resourceId])) {
@@ -86,12 +90,11 @@ class Chat implements MessageComponentInterface {
                 break;
             }
         }
-    
+
         // Add user to the new room
         $this->rooms[$room][$conn->resourceId] = $conn;
         echo "User[$username, $conn->resourceId] joined room[$room, $roomName]\n";
     }
-    
 
     private function broadcastToRoom(ConnectionInterface $from, $room, $message, $sender) {
         if (!isset($this->rooms[$room])) {
@@ -109,6 +112,22 @@ class Chat implements MessageComponentInterface {
         }
     }
 
+    private function broadcastUserCountToRoom($room) {
+        if (!isset($this->rooms[$room])) {
+            return;
+        }
+
+        // Count the number of users in the room
+        $userCount = count($this->rooms[$room]);
+
+        // Broadcast the user count to all clients in the room
+        foreach ($this->rooms[$room] as $client) {
+            $client->send(json_encode([
+                'type' => 'userCount',
+                'numOfUsers' => $userCount
+            ]));
+        }
+    }
 }
 
 $server = IoServer::factory(
