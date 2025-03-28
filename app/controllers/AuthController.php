@@ -14,6 +14,7 @@ class AuthController {
 
     private function passwordCriteriaValidation($password) {
         // Password strength validation
+        $message_pwd_criteria = [];
         $pass_password_criteria = true;
         if (strlen($password) < 8) {
             $pass_password_criteria = false;

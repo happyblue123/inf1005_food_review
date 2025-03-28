@@ -4,13 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $login = isset($_SESSION['userid']);
 
-if (!$login) {
-    header("Location: /home");
-    exit;
-}
-if ($login) {
-    $username = $_SESSION['username'];
-}
+$username = $_SESSION['username'] ?? "";
 ?>
 
 <!DOCTYPE html>

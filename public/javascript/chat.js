@@ -1,4 +1,4 @@
-const socketserver = 'ws://localhost:8080';
+const socketserver = 'ws://localhost:8080'; // when sftp to server, set to server's websocket IP
 document.addEventListener('DOMContentLoaded', function () {
     const socket = new WebSocket(socketserver);
     let currentRoom = '';
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const newMessage = document.createElement("div");
             newMessage.classList.add("message", "self-message");
             newMessage.innerHTML = `
-                <div class="sender">${username}</div>
+                
                 <div class="message-content">${message}</div>
             `;
             messageContainer.appendChild(newMessage);
@@ -132,6 +132,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function openLoginModal() {
+        let loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+        loginModal.show();
+    }
+
     // Add click event listener for the send button
     sendMessageBtn.addEventListener("click", sendMessage);
 
@@ -149,6 +154,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Join Buttons Event Listeners (Joining by roomId)
     document.querySelectorAll('.join-btn').forEach(button => {
         button.addEventListener('click', function () {
+            if (username == "") {
+                openLoginModal();
+                return;
+            }
             const roomName = this.parentElement.querySelector('span').textContent.trim();  // Get room name
             const roomId = this.parentElement.querySelector('span').getAttribute('data-room-id'); // Get roomId
             joinRoom(roomId, roomName);  // Join room using both roomId and roomName
@@ -191,6 +200,5 @@ document.addEventListener('DOMContentLoaded', function () {
             alert("Error creating room!");
         });
     });    
-
-
+    
 });

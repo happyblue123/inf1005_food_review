@@ -22,6 +22,12 @@ body {
     margin: auto;
     text-align: center;
     border: 3px solid #535050; /* Subtle red touch */
+    min-height: 90vh;
+}
+
+#roomList {
+    max-height: 400px; /* Adjust height as needed */
+    overflow: auto; /* Scrollbar appears only when content overflows */
 }
 
 #messagesContainer {
@@ -157,6 +163,9 @@ body {
     align-items: center;
 }
 
+/* #roomList {
+    overflow: scroll;
+} */
 #btn-to-createRoom {
     display: flex;
     justify-content: flex-start;
@@ -191,7 +200,7 @@ body {
     align-items: center;
 }
 
-.modal-content {
+#createRoomModal .modal-content {
     background-color: white;
     padding: 25px;
     border-radius: 8px;

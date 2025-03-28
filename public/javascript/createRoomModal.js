@@ -4,8 +4,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const showModalButton = document.getElementById("showCreateRoomModal");
     const closeModalButton = document.getElementById("closeModal");
 
+    const userInfo = document.getElementById('user-info');
+    const username = userInfo.getAttribute('data-username');
     // Show the modal when the button is clicked
     showModalButton.onclick = function () {
+        
+        if (username == "") {
+            openLoginModal();
+            return
+        }
         modal.style.display = "flex"; // Use "flex" to center the modal
     };
 
@@ -21,3 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 });
+
+function openLoginModal() {
+    let loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+    loginModal.show();
+}
