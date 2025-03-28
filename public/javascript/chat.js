@@ -109,9 +109,16 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '/chatroom';
     }
 
+    function sanitizeInput(input) {
+        const tempDiv = document.createElement("div");
+        tempDiv.textContent = input; // Escapes dangerous characters
+        return tempDiv.innerHTML;
+    }
+
     // Send message on button click or Enter key press
     function sendMessage() {
-        const message = messageInput.value.trim();
+        // const message = messageInput.value.trim();
+        const message = sanitizeInput(messageInput.value.trim());
 
         if (message) {
             // Create the message element
