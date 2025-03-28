@@ -11,6 +11,7 @@ body {
     color: white;
     overflow-x: hidden;
     position: relative;
+    padding-top: 0; /* Remove any top padding that might push content under navbar */
 }
 
 .container-fluid {
@@ -19,6 +20,7 @@ body {
     min-height: 300vh;
     padding: 0;
     z-index: 5; /* Above background images */
+    padding-top: 10px; /* Add space below navbar */
 }
 
 /* Slow-scrolling background images */
@@ -86,7 +88,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2; /* Above slow backgrounds, below content */
+    z-index: 1; /* Above slow backgrounds, below content */
     pointer-events: none;
     overflow: hidden;
 }
