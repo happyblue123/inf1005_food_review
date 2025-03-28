@@ -203,7 +203,7 @@ main .close:hover {
     color: white;
 }
 
-#delete_result {
+.update_result {
     border: 2px solid black;
     text-align: center;
     padding: 10px;
