@@ -41,15 +41,20 @@ $username = $_SESSION['username'] ?? "";
         </div>
 
         <div id="roomList">
-            <?php foreach ($chatrooms as $chatroom) : ?>
-                <div class="room-item">
-                    <span data-room-id=<?php echo htmlspecialchars($chatroom['chatroomid']); ?>><?php echo htmlspecialchars($chatroom['chatroom_name']); ?></span>
-                    <button class="join-btn">Join</button>
-                </div>
-            <?php endforeach; ?>
+            <?php if (!empty($chatrooms)): ?>
+                <?php foreach ($chatrooms as $chatroom) : ?>
+                    <div class="room-item">
+                        <span data-room-id=<?php echo htmlspecialchars($chatroom['chatroomid']); ?>><?php echo htmlspecialchars($chatroom['chatroom_name']); ?></span>
+                        <button class="join-btn">Join</button>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No chatroom available.</p>
+            <?php endif; ?>
         </div>
 
         <div id="messagesContainer" style="display: none;">
+            <div id="numOfUsers"></div>
             <div id="roomName"></div>
             <div id="messages"></div>
             <div class="message-input-container">

@@ -43,6 +43,10 @@ body {
     max-height: 100%;
 }
 
+#messagesContainer > div {
+    text-align: left;
+}
+
 #leaveRoomBtn {
     position: absolute; /* Add this line */
     top: 10px; /* Position it 10px from the top */
