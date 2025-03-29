@@ -52,6 +52,7 @@ if (isset($movieData[0]['id'])) {
                                     onclick="toggleWatchlist(this)">
                                 </i>
                             </div>
+                            <div id="notification-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;"></div>
                             <p><strong>Release Date:</strong> <?php echo htmlspecialchars($movieData[0]['release_date']); ?></p>
                             <p><strong>Overview:</strong> <?php echo htmlspecialchars($movieData[0]['overview']); ?></p>
                         </div>
