@@ -70,5 +70,9 @@ class Router {
     
 }
 
+// Add the /privacy route to your router
+$router = new Router();
+$router->add('/privacy', 'PrivacyController', 'showPrivacyPage');
+
 
 ?>

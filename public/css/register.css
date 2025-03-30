@@ -15,7 +15,7 @@
     font-size: 14px; 
     display: block;
     margin: 8px 0 4px; 
-    color: #333; /* Optional: Adjust text color */
+    color: #333; 
 }
 
 
@@ -56,9 +56,10 @@ form .form-control {
     width: 14px;
     height: 14px;
     margin-right: 8px; 
-    vertical-align: middle;
-    transform: translateY(-3px); 
+    vertical-align: middle; 
+    transform: translateY(0); 
 }
+
 
 .privacy-link {
     
@@ -77,6 +78,7 @@ form .form-control {
     border: 2px solid black;
     background: white;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .submit-btn:hover {

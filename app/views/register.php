@@ -66,7 +66,7 @@ if ($login) {
 
             <div class="checkbox-container">
                 <input required type="checkbox" id="agree" name="agree">
-                <label for="agree">I accept the <a href="#" class="privacy-link">privacy statement</a></label>
+                <label for="agree">I accept the <a href="/app/views/privacy.php" class="privacy-link">privacy statement</a></label>
             </div>
 
             <button type="submit" class="submit-btn">CREATE ACCOUNT</button>
