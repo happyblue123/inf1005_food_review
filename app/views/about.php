@@ -159,8 +159,12 @@ $login = isset($_SESSION['userid']);
     <div class="container text-center">
         <h3>Contact Us</h3>
         <p>Have a question or concern? Feel free to contact us at <a href="mailto:public@peoplereviewmovies.mail.sg">public@peoplereviewmovies.mail.sg</a></p>
+    
+<p>For more help, check out <a href="/app/views/faq.php"><img src="/video/faq.gif" alt="FAQ GIF" style="width: 100px; height: auto;"/></a></p>
+
     </div>
 </div>
+
 
 
 <?php include "inc/footer.inc.php"; ?>
