@@ -18,4 +18,6 @@ $router->add('add-to-watchlist/(:any)', 'WatchlistController', 'saveMovieToWatch
 $router->add('remove-from-watchlist/(:any)', 'WatchlistController', 'removeMovieFromWatchlist');
 $router->add('chatroom', 'ChatController', 'displayChatrooms');
 $router->add('createChatroom', 'ChatController', 'createChatroom');
+$router->add('privacy', 'PrivacyController', 'showPrivacyPage');
+$router->add('faq', 'FAQController', 'displayFAQ');
 ?>

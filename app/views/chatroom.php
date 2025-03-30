@@ -58,12 +58,14 @@ $username = $_SESSION['username'] ?? "";
             <div id="roomName"></div>
             <div id="messages"></div>
             <div class="message-input-container">
-                <textarea id="messageInput" placeholder="Type a message..." rows="3"></textarea>
+                <textarea id="messageInput" placeholder="Type a message..." rows="1"></textarea>
                 <button id="sendMessageBtn" class="send-btn">
                     <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
-            <button id="leaveRoomBtn" style="display: none;">Leave Room</button>
+            <button id="leaveRoomBtn" style="display: none;">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
         </div>
     </main>
 
