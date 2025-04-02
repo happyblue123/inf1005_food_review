@@ -101,7 +101,7 @@ $login = isset($_SESSION['userid']);
         <h3>6. Changes to Terms and Conditions</h3>
         <p>We reserve the right to update or change these Terms and Conditions at any time. We will notify you of significant changes by posting an updated version on the website.</p>
 
-        <p class="back-link"><a href="/app/views/register.php">Back to Registration</a></p>
+        <p class="back-link"><a href="/register.php">Back to Registration</a></p>
 
     </main>
 
