@@ -18,8 +18,7 @@
     color: #333; 
 }
 
-
-form .form-control {
+main form main.form-control {
     width: 100%;
     padding: 10px;
     border: none;
@@ -86,7 +85,7 @@ form .form-control {
     color: white;
 }
 
-.account-text {
+main .account-text {
     text-align: center;
     font-size: 14px;
     margin-top: 10px;

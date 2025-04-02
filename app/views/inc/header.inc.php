@@ -122,7 +122,7 @@ if (session_status() == PHP_SESSION_NONE) {
                                 <img src="/Images/padlock.png" alt="Lock Icon" width="20" height="20">
                             </span>
                             <input type="password" class="form-control" placeholder="Password" id="password" name="pwd" required>
-                            <span class="input-group-text" onclick="togglePassword()" style="cursor: pointer;">
+                            <span class="input-group-text" id="toggle_pwd" style="cursor: pointer;">
                                 <img id="eye-icon" src="/Images/hidden.png" alt="Show Password" width="20" height="20">
                             </span>
                         </div>
@@ -160,7 +160,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <input type="email" id="email_reset" placeholder="Email ID" required>
 
                 <!-- Submit Button -->
-                <button type="button" onclick="submitForgotPwd()">SUBMIT</button>
+                <button type="button" id="forgotpwd_btn">SUBMIT</button>
 
                 <!-- Feedback Message -->
                 <div id="forgotPwdMessage" class="mt-2"></div>
