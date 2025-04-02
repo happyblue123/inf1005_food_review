@@ -147,10 +147,11 @@ if (session_status() == PHP_SESSION_NONE) {
         <div class="modal-content">
 
             <!-- Modal Header -->
-            <div class="modal-header border-0">
-                <h5 class="modal-title" id="forgotPwdModalLabel">RESET PASSWORD</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header border-0 justify-content-center position-relative">
+                <h5 class="modal-title m-0" id="forgotPwdModalLabel">RESET PASSWORD</h5>
+                <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
 
             <!-- Modal Body -->
             <div class="modal-body">
@@ -160,7 +161,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <input type="email" id="email_reset" placeholder="Email ID" required>
 
                 <!-- Submit Button -->
-                <button type="button" id="forgotpwd_btn">SUBMIT</button>
+                <button type="submit" id="btn btn-primary w-100">SUBMIT</button>
 
                 <!-- Feedback Message -->
                 <div id="forgotPwdMessage" class="mt-2"></div>

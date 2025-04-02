@@ -105,7 +105,7 @@ $login = isset($_SESSION['userid']);
                     <img src="/Images/boy.png" alt="Quan Ren" class="img-fluid">
                     <div class="caption">
                         <h5>Quan Ren</h5>
-                        <p>Lead Developer</p>
+                        <p>Frontend Developer</p>
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@ $login = isset($_SESSION['userid']);
                     <img src="/Images/gamer.png" alt="Ng Yong Xian" class="img-fluid">
                     <div class="caption">
                         <h5>Yong Xian</h5>
-                        <p>UI/UX Designer</p>
+                        <p>Backend Developer</p>
                     </div>
                 </div>
             </div>
@@ -125,7 +125,7 @@ $login = isset($_SESSION['userid']);
                     <img src="/Images/girl.png" alt="Aishwarya Shri" class="img-fluid">
                     <div class="caption">
                         <h5>Aishwarya</h5>
-                        <p>Project Manager</p>
+                        <p>UI/UX Designer</p>
                     </div>
                 </div>
             </div>
@@ -135,7 +135,7 @@ $login = isset($_SESSION['userid']);
                     <img src="/Images/male.png" alt="Benson" class="img-fluid">
                     <div class="caption">
                         <h5>Benson</h5>
-                        <p>UI/UX Designer</p>
+                        <p>Backend Developer</p>
                     </div>
                 </div>
             </div>

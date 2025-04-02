@@ -335,4 +335,9 @@ img.logo {
     margin-left: 0;
     transform: none;
   }
+
+  .modal-title {
+    text-align: center;
+    flex: 1;
+}
 }

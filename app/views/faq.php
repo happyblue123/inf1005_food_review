@@ -51,17 +51,24 @@ $login = isset($_SESSION['userid']);
                 </div>
             </div>
 
-            <!-- <div class="faq-item">
-                <h3 class="faq-question">How can I report inappropriate reviews?</h3>
+            <div class="faq-item">
+                <h3 class="faq-question">How can I see my past ratings and reviews?</h3>
                 <div class="faq-answer">
-                    <p>If you come across an inappropriate review, you can report it by clicking the "Report" button next to the review. Our moderation team will review the report and take necessary action.</p>
+                    <p>Absolutely! Head to your profile and select the “My Reviews” tab. There you’ll find a full list of all the reviews you’ve submitted, along with the rating and the movie titles.</p>
                 </div>
-            </div> -->
+            </div>
 
             <div class="faq-item">
                 <h3 class="faq-question">How do I edit my profile information?</h3>
                 <div class="faq-answer">
                     <p>You can update your profile by going to "My Account" then click "Edit Profile". From there, you can update your username, email.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">Can I create a watchlist or mark movies as ‘watched’?</h3>
+                <div class="faq-answer">
+                    <p>Yes! You can add movies to your personal watchlist by clicking the “favourites" icon on any movie page. You can manage your entire list from your profile under the Watchlist tab.</p>
                 </div>
             </div>
 
@@ -75,7 +82,7 @@ $login = isset($_SESSION['userid']);
 
         <div class="contact-section">
     <div class="contact-icon">
-        <span>&#x2709;</span> <!-- Envelope icon -->
+        <span>&#x2709;</span> 
     </div>
     <div class="contact-text">
         <p><strong>CAN'T FIND WHAT YOU'RE LOOKING FOR?</strong></p>
@@ -84,7 +91,7 @@ $login = isset($_SESSION['userid']);
 </div>
 
 
-        <!-- <p class="back-link"><a href="/app/views/home.php">Back to Home</a></p> -->
+       
     </main>
 
     <?php include "inc/footer.inc.php"; ?>

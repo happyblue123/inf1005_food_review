@@ -30,7 +30,7 @@ $userReviews = $reviewModel->getReviewsByUserId($_SESSION['userid']);
         <div class="tabs">
             <div class="tab active" data-tab="account-info">Account Info</div>
             <div class="tab" data-tab="watchlist">Watchlist/Favourites</div>
-            <div class="tab" data-tab="reviews">Reviews Made</div>
+            <div class="tab" data-tab="reviews">My Reviews</div>
             <div class="tab" data-tab="edit-profile">Edit Profile</div>
         </div>
         <div id="account-info" class="tab-content active">
@@ -54,7 +54,7 @@ $userReviews = $reviewModel->getReviewsByUserId($_SESSION['userid']);
         </div>
         <div id="reviews" class="tab-content">
             <!-- Content for Reviews Made -->
-            <h2>Reviews Made</h2>
+            <h2>My Reviews</h2>
             <?php if (!empty($userReviews)): ?>
                 <ul>
                     <?php foreach ($userReviews as $review): ?>

@@ -9,22 +9,15 @@ if (!$login) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php
-    include "inc/head.inc.php"
-    ?>
-    <link href="stylesheet" src="/public/css/resetpwd.css"></link>
+    <?php include "inc/head.inc.php"; ?>
+    <link rel="stylesheet" href="/public/css/resetpwd.css">
 </head>
 
 <body>
-    <?php
-    include "inc/header.inc.php";
-    ?>
-    <link rel="stylesheet" href="public/css/resetpwd.css">
-    <!-- <h2>Password Reset</h2> -->
+    <?php include "inc/header.inc.php"; ?>
 
     <main class="container">
-
-        <?php if(isset($_SESSION['resetpwd_result'])): ?>
+        <?php if (isset($_SESSION['resetpwd_result'])): ?>
             <?php 
             $registerClass = ($_SESSION['resetpwd_result'][0] === 1) ? 'success' : 'error'; 
             $message = $_SESSION['resetpwd_result'][1];
@@ -34,41 +27,58 @@ if (!$login) {
         <?php endif; ?>
 
         <form action='/resetpassword' method="POST">
-            <?php if (!$login) {
-                echo "<div class='mb-3'>
-                <label for='email' class='form-label'>Email:</label>
-                <input required maxlength='45' type='email' id='email' name='email' class='form-control'
-                    placeholder='Enter email'>
-                </div>";
-            }
-            ?>
-            
-            <?php
-            if ($login) { // show below to users who are logged in
-                echo "<div class='mb-3'>
+            <?php if (!$login): ?>
+                <div class='mb-3'>
+                    <label for='email' class='form-label'>Email:</label>
+                    <input required maxlength='45' type='email' id='email' name='email' class='form-control'
+                        placeholder='Enter email'>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($login): ?>
+                <div class='mb-3 password-container'>
                     <label for='cpwd' class='form-label'>Current Password:</label>
                     <input required type='password' id='cpwd' name='cpwd' class='form-control' placeholder='Enter current password'>
-                </div>";
-            }                  
-            
-            ?>
-            <div class="mb-3">
+                    <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon1"
+                        onclick="togglePassword('cpwd', 'eye-icon1')">
+                </div>
+            <?php endif; ?>
+
+            <div class="mb-3 password-container">
                 <label for="newpwd" class="form-label">New Password:</label>
                 <input required type="password" id="newpwd" name="newpwd" class="form-control" placeholder="Enter password">
+                <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon2"
+                    onclick="togglePassword('newpwd', 'eye-icon2')">
             </div>
-            <div class="mb-3">
+
+            <div class="mb-3 password-container">
                 <label for="newpwd_confirm" class="form-label">Confirm Password:</label>
                 <input required type="password" id="newpwd_confirm" name="newpwd_confirm" class="form-control"
                     placeholder="Confirm password">
+                <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon3"
+                    onclick="togglePassword('newpwd_confirm', 'eye-icon3')">
             </div>
+
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
     </main>
 
-    <?php
-    include "inc/footer.inc.php";
-    ?>
+    <?php include "inc/footer.inc.php"; ?>
+
+    <script>
+        function togglePassword(inputId, eyeIconId) {
+            var input = document.getElementById(inputId);
+            var icon = document.getElementById(eyeIconId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.src = "/Images/eye.png";
+            } else {
+                input.type = "password";
+                icon.src = "/Images/hidden.png";
+            }
+        }
+    </script>
 </body>
 </html>
