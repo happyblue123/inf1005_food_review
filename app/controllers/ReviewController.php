@@ -74,11 +74,13 @@ class ReviewController {
             if (isset($_POST['review_id']) && !empty($_POST['review_id'])) { // if there is a reviewid set
                 $reviewId = (int) $_POST['review_id'];
                 $result = $review->updateReview($reviewId, $userid, $movieid, $moviename, $rating, $user_review);
+                $_SESSION['success_message'] = "Review updated.";
             } 
             else {
                 $result = $review->submitReview($userid, $movieid, $moviename, $rating, $user_review);
+                $_SESSION['success_message'] = "Review created.";
             }
-    
+
             header('Location: /movie/' . urlencode($moviename));
             exit;
             require_once __DIR__ . "/../views/movie.php";

@@ -21,6 +21,7 @@ if (isset($movieData[0]['id'])) {
 <link rel="stylesheet" href="/public/css/watchlist.css">
 <script src="/public/javascript/reviewform.js"></script>
 <script src="/public/javascript/watchlist.js"></script>
+<script src="/public/javascript/notification_review.js"></script>
 </head>
 <body>
     <?php
@@ -70,18 +71,22 @@ if (isset($movieData[0]['id'])) {
                 <p>No movies found matching your search criteria.</p>
             <?php endif; ?>
         </div>
-        
+
         <div id="reviews">
             <h2>Reviews</h2>
+            <?php if(isset($_SESSION['success_message'])) : ?>
+                <h4 class="update_result success"><?php echo $_SESSION['success_message']; ?></h4>
+                <?php unset($_SESSION['success_message']); ?>
+                <?php endif ?>
             <?php if(isset($_SESSION['error_display'])) : ?>
-                <h4 class="update_result" style="color: red;"><?php echo $_SESSION['error_message']; ?></h4>
+                <h4 class="update_result error"><?php echo $_SESSION['error_message']; ?></h4>
                 <?php
                 unset($_SESSION['error_display']);
                 unset($_SESSION['error_message']);
                 ?>
             <?php endif ?>
             <?php if (isset($_SESSION['delete_result'])): ?>
-                <h4 class="update_result"><?php echo $_SESSION['delete_result']; ?></h4>
+                <h4 class="update_result success"><?php echo $_SESSION['delete_result']; ?></h4>
                 <?php unset($_SESSION['delete_result']); ?>
             <?php endif ?>
             

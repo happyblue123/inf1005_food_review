@@ -204,13 +204,29 @@ main .close:hover {
 }
 
 .update_result {
+    position: fixed;
+    bottom: 10px;  /* Changed from top to bottom */
+    right: 10px;  /* Changed from left to right */
     border: 2px solid black;
     text-align: center;
-    padding: 10px;
-    margin: 20px auto;
+    padding: 12px 20px;
     width: fit-content;
     font-size: 16px;
-    background-color: #f4f4f4;
+    color: rgb(80, 74, 74);
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Initially invisible */
+    transform: translateY(10px); /* Slide up when appearing */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.success {
+    background-color: #90EE90;
+}
+
+/* Error Message */
+.error {
+    background-color: pink;
 }
 
 /* Movie information layout */
