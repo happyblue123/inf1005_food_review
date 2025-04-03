@@ -7,7 +7,8 @@ CREATE TABLE users (
 
 CREATE TABLE movies (
     movieid INT PRIMARY KEY,
-    moviename VARCHAR(255) NOT NULL
+    moviename VARCHAR(255) NOT NULL,
+    posterpath VARCHAR(255)
 );
 
 CREATE TABLE reviews (

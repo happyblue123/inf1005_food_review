@@ -251,7 +251,7 @@ require_once __DIR__ . '/../models/Watchlist.php';
                                 <?php foreach($movieChunk as $movie): ?>
                                     <div class="movie-item text-center mx-2 mb-4">
                                         <a href="/movie/<?= urlencode($movie['moviename']); ?>">
-                                            <img src="https://image.tmdb.org/t/p/w200<?= urlencode($movie['poster_path'] ?? '/default.jpg'); ?>" 
+                                            <img src="https://image.tmdb.org/t/p/w200<?= urlencode($movie['posterpath'] ?? '/default.jpg'); ?>" 
                                                  alt="<?= htmlspecialchars($movie['moviename']); ?>" 
                                                  style="width: 150px; height: auto; border-radius: 8px;">
                                             <h4 style="margin-top: 10px; font-size: 16px;">
