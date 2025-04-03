@@ -27,22 +27,12 @@ if (!$login) {
         <?php endif; ?>
 
         <form action='/resetpassword' method="POST">
-            <?php if (!$login): ?>
-                <div class='mb-3'>
-                    <label for='email' class='form-label'>Email:</label>
-                    <input required maxlength='45' type='email' id='email' name='email' class='form-control'
-                        placeholder='Enter email'>
-                </div>
-            <?php endif; ?>
-
-            <?php if ($login): ?>
-                <div class='mb-3 password-container'>
-                    <label for='cpwd' class='form-label'>Current Password:</label>
-                    <input required type='password' id='cpwd' name='cpwd' class='form-control' placeholder='Enter current password'>
-                    <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon1"
-                        onclick="togglePassword('cpwd', 'eye-icon1')">
-                </div>
-            <?php endif; ?>
+            <div class='mb-3 password-container'>
+                <label for='cpwd' class='form-label'>Current Password:</label>
+                <input required type='password' id='cpwd' name='cpwd' class='form-control' placeholder='Enter current password'>
+                <img src="/Images/hidden.png" alt="Show Password" class="eye-icon" id="eye-icon1"
+                    onclick="togglePassword('cpwd', 'eye-icon1')">
+            </div>
 
             <div class="mb-3 password-container">
                 <label for="newpwd" class="form-label">New Password:</label>
