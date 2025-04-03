@@ -8,11 +8,24 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Fetch user reviews
 require_once __DIR__ . "/../models/Review.php";
+require_once __DIR__ . "/../models/WatchHistory.php";
+require_once __DIR__ . "/../models/Watchlist.php";
+
+// Fetch user reviews
 $reviewModel = new Review();
 $userReviews = $reviewModel->getReviewsByUserId($_SESSION['userid']);
+
+// Fetch watch history
+$historyModel = new WatchHistory();
+$watchHistory = $historyModel->getWatchHistoryByUserId($_SESSION['userid']);
+
+// Fetch watchlist
+$watchlistModel = new Watchlist();
+$watchlist = $watchlistModel->getWatchlistByUserId($_SESSION['userid']);
+
 ?>
+
 
 <head>
     <?php
@@ -30,6 +43,7 @@ $userReviews = $reviewModel->getReviewsByUserId($_SESSION['userid']);
         <div class="tabs">
             <div class="tab active" data-tab="account-info">Account Info</div>
             <div class="tab" data-tab="watchlist">Watchlist/Favourites</div>
+            <div class="tab" data-tab="watchhistory">Watch History</div> 
             <div class="tab" data-tab="reviews">My Reviews</div>
             <div class="tab" data-tab="edit-profile">Edit Profile</div>
         </div>
@@ -42,6 +56,7 @@ $userReviews = $reviewModel->getReviewsByUserId($_SESSION['userid']);
         <div id="watchlist" class="tab-content">
             <!-- Content for Watchlist/Favourites -->
             <h2>Watchlist/Favourites</h2>
+            <p>Your watchlist contains movies that you've saved for future viewing. Add your favorite movies here and access them anytime!</p>
             <?php if (!empty($watchlist)): ?>
                 <ul>
                     <?php foreach ($watchlist as $movie): ?>
@@ -52,6 +67,22 @@ $userReviews = $reviewModel->getReviewsByUserId($_SESSION['userid']);
                 <p>Your watchlist is empty.</p>
             <?php endif; ?>
         </div>
+        <div id="watchhistory" class="tab-content">
+    <h2>Watch History</h2>
+    <p>Keep track of the movies you've watched. Revisit your viewing history anytime!</p>
+
+
+    <?php if (!empty($watchHistory)): ?>
+        <ul class="watchhistory-list">
+            <?php foreach ($watchHistory as $movie): ?>
+                <li><a href="/movie/<?= urlencode($movie['moviename']); ?>"><?= htmlspecialchars($movie['moviename']); ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>Your watch history is empty.</p>
+    <?php endif; ?>
+</div>
+
         <div id="reviews" class="tab-content">
             <!-- Content for Reviews Made -->
             <h2>My Reviews</h2>

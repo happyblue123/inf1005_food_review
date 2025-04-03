@@ -66,11 +66,18 @@ $login = isset($_SESSION['userid']);
             </div>
 
             <div class="faq-item">
-                <h3 class="faq-question">Can I create a watchlist or mark movies as ‘watched’?</h3>
+                <h3 class="faq-question">Can I create a watchlist or add movies to favourites?</h3>
                 <div class="faq-answer">
                     <p>Yes! You can add movies to your personal watchlist by clicking the “favourites" icon on any movie page. You can manage your entire list from your profile under the Watchlist tab.</p>
                 </div>
             </div>
+
+            <div class="faq-item">
+    <h3 class="faq-question">What is Watch History and how does it work?</h3>
+    <div class="faq-answer">
+        <p>Watch History lets you keep track of movies you've seen. Just click the eye icon on any movie page to mark it as watched. You can view and manage your full watch history from your profile under the Watch History tab.</p>
+    </div>
+</div>
 
             <div class="faq-item">
                 <h3 class="faq-question">Can I rate a movie multiple times?</h3>

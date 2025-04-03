@@ -82,6 +82,7 @@ body {
     font-size: 1.8rem;
 }
 
+
 /* Account Info Styling */
 #account-info p {
     font-size: 1.1rem;
@@ -280,4 +281,36 @@ footer {
 .button-wrapper {
     margin-top: 30px;
     text-align: left; 
+}
+/* Watch History Styling */
+#watchhistory ul.watchhistory-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#watchhistory ul.watchhistory-list li {
+    margin-bottom: 12px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    border-left: 3px solid #9b59b6;
+}
+
+#watchhistory ul.watchhistory-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#watchhistory ul.watchhistory-list a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+}
+
+#watchhistory ul.watchhistory-list a:hover {
+    color: #9b59b6;
 }

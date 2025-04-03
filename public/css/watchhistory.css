@@ -1,0 +1,28 @@
+/* ================================ */
+/*      WATCH HISTORY (EYE ICON)    */
+/* ================================ */
+
+.eye-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    filter: grayscale(40%);
+}
+
+.eye-icon:hover {
+    transform: scale(1.15);
+    filter: grayscale(0%);
+}
+
+/* Notification message (reused) */
+.notification.success {
+    background-color: #28a745;
+    color: white;
+}
+
+.notification.error {
+    background-color: #dc3545;
+    color: white;
+}

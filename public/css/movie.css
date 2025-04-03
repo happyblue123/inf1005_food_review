@@ -404,3 +404,33 @@ p.review-username {
     font-weight: 700;
     margin-bottom: 5px;
 }
+/* .watch-history-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #141414;
+    color: #3498db;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    padding: 5px 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.watch-history-toggle:hover {
+    background-color: #1e1e1e;
+}
+
+.watch-history-toggle.watched {
+    border: 1px solid #3498db;
+} */
+
+.eye-icon-img {
+    width: 20px;
+    height: 20px;
+}
+
+.eye-label {
+    font-size: 14px;
+}

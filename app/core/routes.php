@@ -22,4 +22,7 @@ $router->add('privacy', 'PrivacyController', 'showPrivacyPage');
 $router->add('faq', 'FAQController', 'displayFAQ');
 $router->add('deleteaccount', 'UserController', 'deleteAccount');
 $router->add('goodbye', 'HomeController', 'goodbye');
+$router->add('add-to-watchhistory/(:any)', 'WatchhistoryController', 'saveMovieToHistory');
+$router->add('remove-from-watchhistory/(:any)', 'WatchhistoryController', 'removeMovieFromHistory');
+
 ?>
