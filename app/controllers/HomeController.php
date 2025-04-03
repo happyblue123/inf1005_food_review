@@ -17,13 +17,10 @@ class HomeController {
             session_start();
         }
         
-        if (!isset($_SESSION['userid'])) {
-            return $watchlist;
+        if (isset($_SESSION['userid'])) {
+            $watchlistModel = new Watchlist();
+            $watchlist = $watchlistModel->getWatchlistByUserId($_SESSION['userid']);
         }
-
-        
-        $watchlistModel = new Watchlist();
-        $watchlist = $watchlistModel->getWatchlistByUserId($_SESSION['userid']);
 
         // Pass the data to the home view
         require_once __DIR__ . '/../views/home.php';
