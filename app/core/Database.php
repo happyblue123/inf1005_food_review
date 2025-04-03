@@ -14,5 +14,10 @@ class Database {
             die("Connection failed: " . $e->getMessage());
         }
     }
+
+      
+      public function getConnection() {
+        return $this->conn;
+    }
 }
 ?>

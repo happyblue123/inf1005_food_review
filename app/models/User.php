@@ -115,5 +115,10 @@ class User {
         $stmt->execute([$newpwd, $userid]);
     }
 
+    public function deleteUser($userid) {
+        $stmt = $this->db->conn->prepare("DELETE FROM users WHERE userid = ?");
+        $stmt->execute([$userid]);
+    }
+
 }
 ?>

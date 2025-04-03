@@ -7,48 +7,51 @@ class Watchlist {
 
     public function __construct() {
         $this->db = new Database();
-        $this->conn = $this->db->conn; // Use the existing connection from the Database class
+        $this->conn = $this->db->conn; // Access the connection directly
     }
 
+    // ✅ Add movie to watchlist (if not already there)
     public function addMovie($userid, $movieid, $moviename) {
         try {
-            // Check if the entry already exists
             $stmt = $this->conn->prepare("SELECT COUNT(*) FROM watchlist WHERE userid = ? AND movieid = ?");
             $stmt->execute([$userid, $movieid]);
-            $exists = $stmt->fetchColumn();
 
-            if ($exists > 0) {
-                // Entry already exists, avoid duplicate insert
-                return "exists";
+            if ($stmt->fetchColumn() > 0) {
+                return "exists"; // Already in watchlist
             }
 
-            // If not exists, insert the movie
             $stmt = $this->conn->prepare("INSERT INTO watchlist (userid, movieid, moviename) VALUES (?, ?, ?)");
             return $stmt->execute([$userid, $movieid, $moviename]);
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             return false;
         }
     }
 
+    // ✅ Remove movie from watchlist
     public function removeMovie($userId, $movieId) {
         $stmt = $this->conn->prepare("DELETE FROM watchlist WHERE userid = ? AND movieid = ?");
         $stmt->execute([$userId, $movieId]);
         return $stmt->rowCount() > 0;
     }
 
+    // ✅ Check if movie is already in user's watchlist
     public function isMovieInWatchlist($userId, $movieId) {
-        $sql = "SELECT COUNT(*) FROM watchlist WHERE userid = ? AND movieid = ?";
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM watchlist WHERE userid = ? AND movieid = ?");
         $stmt->execute([$userId, $movieId]);
-        $count = $stmt->fetchColumn();
-        return $count > 0;
+        return $stmt->fetchColumn() > 0;
     }
 
+    // ✅ Get all movies in a user's watchlist
     public function getWatchlistByUserId($userId) {
         $stmt = $this->conn->prepare("SELECT * FROM watchlist WHERE userid = ?");
         $stmt->execute([$userId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // ✅ Delete all watchlist entries for a user (used in account deletion)
+    public function deleteWatchlistByUser($userid) {
+        $stmt = $this->conn->prepare("DELETE FROM watchlist WHERE userid = ?");
+        $stmt->execute([$userid]);
     }
 }
 ?>

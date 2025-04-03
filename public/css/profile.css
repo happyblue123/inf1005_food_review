@@ -176,6 +176,7 @@ body {
     border-radius: 6px;
     font-size: 1rem;
     transition: border-color 0.3s;
+    margin-bottom: 10px;
 }
 
 .form-group input:focus {
@@ -274,4 +275,9 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+.button-wrapper {
+    margin-top: 30px;
+    text-align: left; 
 }

@@ -62,38 +62,7 @@ $login = isset($_SESSION['userid']);
                 </div>
             </div>
         </div>
-        
-        
-        <!-- Second content section
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 col-md-12">
-                        <div class="reveal-text">
-                            <h2>Up to date with all the movies</h2>
-                            <p>Our site has a index of most movies in the world.</p>
-                            <p>Find movies from the 80s all the way to upcomming movies, and review them.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-        Third content section -->
-        <!-- <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 col-md-12">
-                        <div class="reveal-text">
-                            <h2>Not for sale</h2>
-                            <p>Our website operates with no sponsorship as well as no ads.</p>
-                            <p>We are editorially independent and will never accept sponsorship and implement ads.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+
 
         <div class="content">
     <div class="container">
