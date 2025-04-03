@@ -218,7 +218,19 @@ if ($login) {
     </div>
 
     <div class='each_row'>
-        <h2>YOUR WATCHLIST</h2>
+    <h2>YOUR WATCHLIST</h2>
+    <?php if (!$login): ?>
+        <div class="empty-watchlist-message text-center">
+    <img src="/video/watchlist.gif" alt="Watchlist GIF" class="watchlist-gif" style="max-width: 100px; margin: 20px auto; display: block;">
+    <p style="margin-top: 10px; font-weight: bold;">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" style="color: inherit; text-decoration: underline;">Sign in</a>
+        to access your Watchlist
+    </p>
+</div>
+
+
+
+    <?php else: ?>
         <div id="watchlistCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <?php if (!empty($watchlist)): 
@@ -229,6 +241,7 @@ if ($login) {
                     <?php endfor; ?>
                 <?php endif; ?>
             </div>
+
             <div class="carousel-inner">
                 <?php if (!empty($watchlist)): 
                     $chunks = array_chunk($watchlist, 4);
@@ -259,7 +272,9 @@ if ($login) {
                 <?php endif; ?>
             </div>
         </div>
-    </div>
+    <?php endif; ?>
+</div>
+
 
             <button class="carousel-control-prev" type="button" data-bs-target="#watchlistCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
