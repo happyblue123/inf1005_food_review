@@ -79,6 +79,15 @@ $login = isset($_SESSION['userid']);
                 </div>
             </div>
         </div>
+        <div class="faq-item">
+    <h3 class="faq-question">Can I permanently delete my account?</h3>
+    <div class="faq-answer">
+        <p>Yes, you can permanently delete your account. Please note that once your account is deleted, all your data, including reviews and watchlist, <b>will be permanently removed</b> and <b>cannot be undone.</b></p>
+        <p>If you wish to delete your account, you can do so from the Edit Profile section under your account settings.</p>
+    </div>
+</div>
+
+</div>
 
         <div class="contact-section">
     <div class="contact-icon">
