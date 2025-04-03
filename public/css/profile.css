@@ -338,4 +338,28 @@ footer {
 .remove-icon:hover {
     color: #ff4040;
 }
+.movie-watchlist-item {
+    position: relative;
+    padding: 10px 40px 10px 15px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.watchlist-remove-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-size: 24px;
+    transition: color 0.2s;
+}
+
+.watchlist-remove-icon:hover {
+    color: #ff4040;
+}
+
 

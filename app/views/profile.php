@@ -58,12 +58,17 @@ $watchlist = $watchlistModel->getWatchlistByUserId($_SESSION['userid']);
             <h2>Watchlist/Favourites</h2>
             <p>Your watchlist contains movies that you've saved for future viewing. Add your favorite movies here and access them anytime!</p>
             <?php if (!empty($watchlist)): ?>
-                <ul>
-                    <?php foreach ($watchlist as $movie): ?>
-                        <li><a href="/movie/<?= urlencode($movie['moviename']); ?>"><?= htmlspecialchars($movie['moviename']); ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else: ?>
+        <ul class="watchlist-list">
+            <?php foreach ($watchlist as $movie): ?>
+                <li id="watchlist-movie-<?= $movie['movieid'] ?>" class="movie-watchlist-item">
+                    <a href="/movie/<?= urlencode($movie['moviename']); ?>">
+                        <?= htmlspecialchars($movie['moviename']); ?>
+                    </a>
+                    <span class="watchlist-remove-icon" data-movieid="<?= $movie['movieid'] ?>">&times;</span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
                 <p>Your watchlist is empty.</p>
             <?php endif; ?>
         </div>
@@ -166,6 +171,28 @@ document.querySelectorAll('.remove-icon').forEach(icon => {
     });
 });
 </script>
+
+<script>
+document.querySelectorAll('.watchlist-remove-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+        const movieid = this.getAttribute('data-movieid');
+
+        fetch(`/remove-from-watchlist/${movieid}`, {
+            method: 'POST'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                document.getElementById(`watchlist-movie-${movieid}`).remove();
+            } else {
+                console.error('Error:', data.message);
+            }
+        })
+        .catch(err => console.error('Fetch error:', err));
+    });
+});
+</script>
+
 
 
     <footer>
