@@ -39,13 +39,12 @@ class WatchHistoryController {
             echo json_encode(["status" => "error", "message" => "Please login to remove movies from watch history."]);
             exit;
         }
-
-        $movieId = explode('&', $param)[0];
-        $moviename = urldecode(explode('&', $param)[1]);
-
+    
+        $movieId = $param; // simplified
+    
         $history = new WatchHistory();
         $result = $history->removeMovie($_SESSION['userid'], $movieId);
-
+    
         if ($result) {
             echo json_encode(["status" => "success", "message" => "Removed from watch history."]);
         } else {

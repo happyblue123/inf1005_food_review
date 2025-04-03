@@ -314,3 +314,28 @@ footer {
 #watchhistory ul.watchhistory-list a:hover {
     color: #9b59b6;
 }
+
+.movie-history-item {
+    position: relative;
+    padding: 10px 40px 10px 15px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.remove-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-size: 24px; /* Adjusted icon size */
+    transition: color 0.2s;
+}
+
+.remove-icon:hover {
+    color: #ff4040;
+}
+

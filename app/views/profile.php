@@ -70,18 +70,21 @@ $watchlist = $watchlistModel->getWatchlistByUserId($_SESSION['userid']);
         <div id="watchhistory" class="tab-content">
     <h2>Watch History</h2>
     <p>Keep track of the movies you've watched. Revisit your viewing history anytime!</p>
-
-
     <?php if (!empty($watchHistory)): ?>
         <ul class="watchhistory-list">
             <?php foreach ($watchHistory as $movie): ?>
-                <li><a href="/movie/<?= urlencode($movie['moviename']); ?>"><?= htmlspecialchars($movie['moviename']); ?></a></li>
+                <li id="movie-<?= $movie['movieid'] ?>" class="movie-history-item">
+                    <a href="/movie/<?= urlencode($movie['moviename']); ?>">
+                        <?= htmlspecialchars($movie['moviename']); ?>
+                    </a>
+                    <span class="remove-icon" data-movieid="<?= $movie['movieid'] ?>">&times;</span>
+                </li>
             <?php endforeach; ?>
         </ul>
     <?php else: ?>
-        <p>Your watch history is empty.</p>
-    <?php endif; ?>
-</div>
+                <p>Your watch history is empty.</p>
+            <?php endif; ?>
+        </div>
 
         <div id="reviews" class="tab-content">
             <!-- Content for Reviews Made -->
@@ -143,6 +146,27 @@ $watchlist = $watchlistModel->getWatchlistByUserId($_SESSION['userid']);
             });
         });
     </script>
+  <script>
+document.querySelectorAll('.remove-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+        const movieid = this.getAttribute('data-movieid');
+
+        fetch(`/remove-from-watchhistory/${movieid}`, {
+            method: 'POST'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                document.getElementById(`movie-${movieid}`).remove();
+            } else {
+                console.error('Error:', data.message);
+            }
+        })
+        .catch(err => console.error('Fetch error:', err));
+    });
+});
+</script>
+
 
     <footer>
         <?php include "inc/footer.inc.php"; ?>
