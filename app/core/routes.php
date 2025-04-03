@@ -20,10 +20,4 @@ $router->add('chatroom', 'ChatController', 'displayChatrooms');
 $router->add('createChatroom', 'ChatController', 'createChatroom');
 $router->add('privacy', 'PrivacyController', 'showPrivacyPage');
 $router->add('faq', 'FAQController', 'displayFAQ');
-$router->add('deleteaccount', 'UserController', 'deleteAccount');
-$router->add('goodbye', 'HomeController', 'goodbye');
-
-
-
-
 ?>
