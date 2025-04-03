@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../models/Watchhistory.php';
+require_once __DIR__ . '/../models/WatchHistory.php';
 require_once __DIR__ . '/../models/Movie.php';
 
 class WatchHistoryController {
