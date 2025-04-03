@@ -87,8 +87,18 @@ $userReviews = $reviewModel->getReviewsByUserId($_SESSION['userid']);
                     <input type="email" name="email" id="email" value="<?= htmlspecialchars($user['email']); ?>" required>
                 </div>
                 
-                <button type="submit">Update Profile</button>
+                <div class="form-group button-wrapper">
+    <button type="submit">Update Profile</button>
+</div>
             </form>
+            <hr>
+<div class="delete-account-section">
+    <form action="/deleteaccount" method="POST" onsubmit="return confirm('Are you sure you want to permanently delete your account? This cannot be undone.');">
+        <input type="hidden" name="userid" value="<?= $_SESSION['userid'] ?>">
+        <button type="submit" class="delete-button">Delete Account</button>
+    </form>
+</div>
+
         </div>
     </main>
 
