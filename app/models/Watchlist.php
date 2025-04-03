@@ -43,7 +43,12 @@ class Watchlist {
 
     // ✅ Get all movies in a user's watchlist
     public function getWatchlistByUserId($userId) {
-        $stmt = $this->conn->prepare("SELECT * FROM watchlist WHERE userid = ?");
+        $stmt = $this->conn->prepare("
+            SELECT watchlist.userid, watchlist.movieid, watchlist.moviename, movies.posterpath
+            FROM watchlist
+            JOIN movies ON watchlist.movieid = movies.movieid
+            WHERE watchlist.userid = ?
+        ");
         $stmt->execute([$userId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
