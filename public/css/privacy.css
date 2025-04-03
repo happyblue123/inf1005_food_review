@@ -70,6 +70,15 @@ a:hover {
     text-decoration: none;
     color: #1e3d58;
 }
+.container.text-center a {
+    color: #5dade2;
+    text-decoration: underline;
+}
+
+.container.text-center a:hover {
+    color: #3498db;
+}
+
 
 
 

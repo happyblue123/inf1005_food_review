@@ -73,6 +73,13 @@ $login = isset($_SESSION['userid']);
             </div>
 
             <div class="faq-item">
+    <h3 class="faq-question">How do I report a review?</h3>
+    <div class="faq-answer">
+        <p>If you come across a review that is inappropriate or violates our guidelines, you can report it by contacting us at <a href="mailto:public@peoplereviewmovies.mail.sg">public@peoplereviewmovies.mail.sg</a>. Our moderation team will review it and take appropriate action.</p>
+    </div>
+</div>
+
+            <div class="faq-item">
     <h3 class="faq-question">What is Watch History and how does it work?</h3>
     <div class="faq-answer">
         <p>Watch History lets you keep track of movies you've seen. Just click the eye icon on any movie page to mark it as watched. You can view and manage your full watch history from your profile under the Watch History tab.</p>

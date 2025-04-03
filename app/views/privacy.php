@@ -55,10 +55,8 @@ $login = isset($_SESSION['userid']);
         <h3>5. Your Rights Under GDPR (General Data Protection Regulation)</h3>
         <p>As a user, you have the following rights:</p>
         <ul>
-            <li>The right to access: You can request a copy of your personal information stored by us.</li>
             <li>The right to correction: You can update or correct any inaccurate information.</li>
             <li>The right to erasure: You can request that we delete your personal data (under certain conditions).</li>
-            <li>The right to object: You can opt-out of receiving marketing communications at any time.</li>
         </ul>
        
         <h3>6. Cookies Policy</h3>
@@ -101,7 +99,10 @@ $login = isset($_SESSION['userid']);
         <h3>6. Changes to Terms and Conditions</h3>
         <p>We reserve the right to update or change these Terms and Conditions at any time. We will notify you of significant changes by posting an updated version on the website.</p>
 
-        <p class="back-link"><a href="/register">Back to Registration</a></p>
+        <p class="back-link">
+    <a href="<?= isset($_SERVER['HTTP_REFERER']) ? htmlspecialchars($_SERVER['HTTP_REFERER']) : '/home' ?>">Back</a>
+</p>
+
 
     </main>
 
