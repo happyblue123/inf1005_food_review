@@ -38,7 +38,7 @@ $login = isset($_SESSION['userid']);
                                 </a>
                             </div>
                             <div class="movie-content">
-                                <?php if (isset($movie['poster_path'])): ?>
+                                <?php if (isset($movie['poster_path'])): http://35.212.143.101/?>
                                     <div class="movie-poster">
                                         <a href="/movie/<?php echo urlencode($movie['title']); ?>">
                                         <img src="https://image.tmdb.org/t/p/w200<?php echo htmlspecialchars($movie['poster_path']); ?>" 
