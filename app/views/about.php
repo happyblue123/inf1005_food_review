@@ -133,7 +133,7 @@ $login = isset($_SESSION['userid']);
         </p>
 
         <p>For more help, check out 
-            <a href="/app/views/faq.php">
+            <a href="/faq">
                 <img src="/video/faq.gif" alt="FAQ GIF" style="width: 100px; height: auto;"/>
             </a>
         </p>
