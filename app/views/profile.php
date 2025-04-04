@@ -58,30 +58,38 @@ $watchlist = $watchlistModel->getWatchlistByUserId($_SESSION['userid']);
             <h2>Watchlist/Favourites</h2>
             <p>Your watchlist contains movies that you've saved for future viewing. Add your favorite movies here and access them anytime!</p>
             <?php if (!empty($watchlist)): ?>
-                <ul>
-                    <?php foreach ($watchlist as $movie): ?>
-                        <li><a href="/movie/<?= urlencode($movie['moviename']); ?>"><?= htmlspecialchars($movie['moviename']); ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else: ?>
+        <ul class="watchlist-list">
+            <?php foreach ($watchlist as $movie): ?>
+                <li id="watchlist-movie-<?= $movie['movieid'] ?>" class="movie-watchlist-item">
+                    <a href="/movie/<?= urlencode($movie['moviename']); ?>">
+                        <?= htmlspecialchars($movie['moviename']); ?>
+                    </a>
+                    <span class="watchlist-remove-icon" data-movieid="<?= $movie['movieid'] ?>">&times;</span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
                 <p>Your watchlist is empty.</p>
             <?php endif; ?>
         </div>
         <div id="watchhistory" class="tab-content">
     <h2>Watch History</h2>
     <p>Keep track of the movies you've watched. Revisit your viewing history anytime!</p>
-
-
     <?php if (!empty($watchHistory)): ?>
         <ul class="watchhistory-list">
             <?php foreach ($watchHistory as $movie): ?>
-                <li><a href="/movie/<?= urlencode($movie['moviename']); ?>"><?= htmlspecialchars($movie['moviename']); ?></a></li>
+                <li id="movie-<?= $movie['movieid'] ?>" class="movie-history-item">
+                    <a href="/movie/<?= urlencode($movie['moviename']); ?>">
+                        <?= htmlspecialchars($movie['moviename']); ?>
+                    </a>
+                    <span class="remove-icon" data-movieid="<?= $movie['movieid'] ?>">&times;</span>
+                </li>
             <?php endforeach; ?>
         </ul>
     <?php else: ?>
-        <p>Your watch history is empty.</p>
-    <?php endif; ?>
-</div>
+                <p>Your watch history is empty.</p>
+            <?php endif; ?>
+        </div>
 
         <div id="reviews" class="tab-content">
             <!-- Content for Reviews Made -->
@@ -143,6 +151,49 @@ $watchlist = $watchlistModel->getWatchlistByUserId($_SESSION['userid']);
             });
         });
     </script>
+  <script>
+document.querySelectorAll('.remove-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+        const movieid = this.getAttribute('data-movieid');
+
+        fetch(`/remove-from-watchhistory/${movieid}`, {
+            method: 'POST'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                document.getElementById(`movie-${movieid}`).remove();
+            } else {
+                console.error('Error:', data.message);
+            }
+        })
+        .catch(err => console.error('Fetch error:', err));
+    });
+});
+</script>
+
+<script>
+document.querySelectorAll('.watchlist-remove-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+        const movieid = this.getAttribute('data-movieid');
+
+        fetch(`/remove-from-watchlist/${movieid}`, {
+            method: 'POST'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                document.getElementById(`watchlist-movie-${movieid}`).remove();
+            } else {
+                console.error('Error:', data.message);
+            }
+        })
+        .catch(err => console.error('Fetch error:', err));
+    });
+});
+</script>
+
+
 
     <footer>
         <?php include "inc/footer.inc.php"; ?>
