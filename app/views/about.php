@@ -12,7 +12,6 @@ $login = isset($_SESSION['userid']);
     <link rel="stylesheet" href="/public/css/about.css">
     <script src="/public/javascript/about.js"></script>
     
-    <title>About People Movie Review</title>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 </head>
 <body>
