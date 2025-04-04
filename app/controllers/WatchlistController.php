@@ -9,6 +9,7 @@ require_once __DIR__ . '/../models/Movie.php';
 class WatchlistController {
 
     public function saveMovieToWatchlist($fullRoute, $param) {
+        header('Content-Type: application/json');
         if (!isset($_SESSION['userid'])) {
             
             http_response_code(401);
@@ -41,8 +42,7 @@ class WatchlistController {
             exit;
         }
     
-        $movieId = $param; 
-    
+        $movieId = explode('&', $param)[0];
         $watchlist = new Watchlist();
         $result = $watchlist->removeMovie($_SESSION['userid'], $movieId);
     

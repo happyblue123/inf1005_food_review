@@ -36,9 +36,9 @@ if ($login) {
                 <input type="text" id="username" name="username" class="form-control">
             </div>
 
-            <label for="email" class="form-label">E-MAIL ADDRESS</label>
+            <label for="email_register" class="form-label">E-MAIL ADDRESS</label>
             <div class="mb-3">
-                <input required type="email" id="email" name="email" class="form-control">
+                <input required type="email" id="email_register" name="email" class="form-control">
             </div>
 
             <label for="pwd" class="form-label">PASSWORD</label>

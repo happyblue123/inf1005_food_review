@@ -9,6 +9,7 @@ require_once __DIR__ . '/../models/Movie.php';
 class WatchHistoryController {
 
     public function saveMovieToHistory($fullRoute, $param) {
+        header('Content-Type: application/json');
         if (!isset($_SESSION['userid'])) {
             http_response_code(401);
             echo json_encode(["status" => "error", "message" => "Please login to mark movies as watched."]);
@@ -40,8 +41,8 @@ class WatchHistoryController {
             exit;
         }
     
-        $movieId = $param; // simplified
-    
+        // $movieId = $param; // simplified
+        $movieId = explode('&', $param)[0];
         $history = new WatchHistory();
         $result = $history->removeMovie($_SESSION['userid'], $movieId);
     

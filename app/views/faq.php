@@ -10,9 +10,8 @@ $login = isset($_SESSION['userid']);
 <head>
     <?php include "inc/head.inc.php"; ?>
     <link rel="stylesheet" href="/public/css/faq.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help & FAQ - PeopleReviewMovies</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <title>Help & FAQ - PeopleReviewMovies</title> -->
 </head>
 <body>
 
@@ -101,9 +100,8 @@ $login = isset($_SESSION['userid']);
     </div>
 </div>
 
-</div>
 
-        <div class="contact-section">
+<div class="contact-section">
     <div class="contact-icon">
         <span>&#x2709;</span> 
     </div>

@@ -40,9 +40,9 @@ $login = isset($_SESSION['userid']);
                         We provide honest, insightful, and engaging movie reviews to help viewers choose the best films to watch.
                     </h4>
 
-                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif" />
-                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif" />
-                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif" />
+                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif">
+                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif">
+                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif">
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@ $login = isset($_SESSION['userid']);
 
         <p>For more help, check out 
             <a href="/faq">
-                <img src="/video/faq.gif" alt="FAQ GIF" style="width: 100px; height: auto;"/>
+                <img src="/video/faq.gif" alt="FAQ GIF" style="width: 100px; height: auto;">
             </a>
         </p>
     </div>
