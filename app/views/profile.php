@@ -26,7 +26,7 @@ $watchlist = $watchlistModel->getWatchlistByUserId($_SESSION['userid']);
 
 ?>
 
-
+<html lang="en">
 <head>
     <?php
     include "inc/head.inc.php"
@@ -199,3 +199,5 @@ document.querySelectorAll('.watchlist-remove-icon').forEach(icon => {
         <?php include "inc/footer.inc.php"; ?>
     </footer>
 </body>
+
+</html>

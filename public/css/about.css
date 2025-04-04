@@ -363,6 +363,11 @@ img{
     }
 }
 
+a{
+    color: #9ed2ffd6;
+}
+
+
 /* Ensuring all team members fit in 1 row on larger screens */
 .row {
     display: flex;

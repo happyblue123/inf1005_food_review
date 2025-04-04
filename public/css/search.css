@@ -199,6 +199,7 @@ html, body {
     display: inline-block;
     width: 45%;
     text-align: center;
+    color: black;
 }
 
 .pagination a:hover {

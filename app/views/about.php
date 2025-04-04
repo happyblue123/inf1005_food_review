@@ -13,7 +13,7 @@ $login = isset($_SESSION['userid']);
     <script src="/public/javascript/about.js"></script>
     
     <title>About People Movie Review</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 </head>
 <body>
     <!-- Navbar wrapper to control positioning -->

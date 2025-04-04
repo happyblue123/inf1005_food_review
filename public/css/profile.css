@@ -47,8 +47,8 @@ body {
 
 .tabs .tab.active {
     background-color: #ebf5ff;
-    border-left: 4px solid #3498db;
-    color: #3498db;
+    border-left: 4px solid #0099ffa9;
+    color: #2e2e2e;
     font-weight: 600;
 }
 
@@ -228,7 +228,7 @@ button[type="submit"]:hover {
     
     .tabs .tab.active {
         border-left: none;
-        border-bottom: 3px solid #3498db;
+        border-bottom: 3px solid #1b9ef5;
     }
     
     .tab-content {
