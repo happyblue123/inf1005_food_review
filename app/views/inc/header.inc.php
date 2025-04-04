@@ -161,7 +161,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <input type="email" id="email_reset" placeholder="Email ID" required>
 
                 <!-- Submit Button -->
-                <button type="submit" id="btn btn-primary w-100">SUBMIT</button>
+                <button type="submit" class="btn btn-primary w-100">SUBMIT</button>
 
                 <!-- Feedback Message -->
                 <div id="forgotPwdMessage" class="mt-2"></div>
