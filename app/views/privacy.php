@@ -11,7 +11,7 @@ $login = isset($_SESSION['userid']);
     <?php include "inc/head.inc.php"; ?>
     <link rel="stylesheet" href="/public/css/privacy.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Privacy Statement - PeopleReviewMovies</title>
 </head>
 <body>

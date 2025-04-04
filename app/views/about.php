@@ -12,8 +12,9 @@ $login = isset($_SESSION['userid']);
     <link rel="stylesheet" href="/public/css/about.css">
     <script src="/public/javascript/about.js"></script>
     
-    <title>About People Movie Review</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- <title>About People Movie Review</title> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
 </head>
 <body>
     <!-- Navbar wrapper to control positioning -->
@@ -40,9 +41,9 @@ $login = isset($_SESSION['userid']);
                         We provide honest, insightful, and engaging movie reviews to help viewers choose the best films to watch.
                     </h4>
 
-                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif" />
-                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif" />
-                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif" />
+                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif">
+                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif">
+                    <img src="/video/popcorn.gif" alt="Popcorn" class="popcorn-gif">
                 </div>
             </div>
         </div>
@@ -134,7 +135,7 @@ $login = isset($_SESSION['userid']);
 
         <p>For more help, check out 
             <a href="/faq">
-                <img src="/video/faq.gif" alt="FAQ GIF" style="width: 100px; height: auto;"/>
+                <img src="/video/faq.gif" alt="FAQ GIF" style="width: 100px; height: auto;">
             </a>
         </p>
     </div>
