@@ -282,8 +282,6 @@ require_once __DIR__ . '/../models/Watchlist.php';
         <?php endif; ?>
     </div>
     
-            <!--  -->
-    </div>
 
     <?php include "inc/footer.inc.php"; ?>
 </body>
