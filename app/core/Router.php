@@ -30,7 +30,9 @@ class Router {
         }
 
         // If no route matches, show a 404 error
-        echo "404 - Route Not Found";
+        header('Location: /error');
+        exit;
+        // echo "404 - Route Not Found";
     }
 
     // Dispatch controller and method for static routes

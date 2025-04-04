@@ -26,6 +26,10 @@ class HomeController {
         require_once __DIR__ . '/../views/home.php';
     }
 
+    public function noroutefound() {
+        require_once __DIR__ . '/../views/error.php';
+    }
+
     // Add this goodbye method
     public function goodbye() {
         // Display the goodbye page

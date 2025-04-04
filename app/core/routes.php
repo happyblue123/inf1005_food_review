@@ -24,5 +24,5 @@ $router->add('deleteaccount', 'UserController', 'deleteAccount');
 $router->add('goodbye', 'HomeController', 'goodbye');
 $router->add('add-to-watchhistory/(:any)', 'WatchhistoryController', 'saveMovieToHistory');
 $router->add('remove-from-watchhistory/(:any)', 'WatchhistoryController', 'removeMovieFromHistory');
-
+$router->add('error', 'HomeController', 'noroutefound');
 ?>
